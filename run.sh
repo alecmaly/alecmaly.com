@@ -1,0 +1,1 @@
+docker-compose -f ./exploit-server/docker-compose.yml up

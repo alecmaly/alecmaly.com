@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  flood-fire-riskfactor-server:
+    restart: unless-stopped
+    build: ./services/riskfactor_server
+    # command: python run.py run
+    command: python server.py
+    env_file:
+      - .env
+    expose: 
+      - 8000      
+
+  nginx:
+    restart: unless-stopped
+    # image: jonasal/nginx-certbot:latest
+    build: ./services/nginx
+    # environment:
+    #   - CERTBOT_EMAIL
+    env_file:
+      - ./services/nginx/nginx-certbot.env
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./services/nginx/user_conf.d:/etc/nginx/user_conf.d
+      - /var/www/html:/var/www/html
+    depends_on:
+      - flood-fire-riskfactor-server
+
+volumes:
+  nginx_secrets:
