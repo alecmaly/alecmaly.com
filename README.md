@@ -24,13 +24,15 @@ sudo apt update && apt upgrade -y
 apt install -y jq
 ```
 
-## build
-```bash
+Make /blog directory and clone blog repo 
+```
+mkdir blog
 cd ./blog
 git clone --branch gh-pages https://github.com/alecmaly/blog.git
-git pull
+```
 
-
+## build
+```bash
 ## rebuild image
 # docker build -t blog .
 
