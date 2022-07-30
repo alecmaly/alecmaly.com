@@ -44,7 +44,9 @@ def main():
             if dirpath.endswith('/amp'):
                 continue
 
-            uri = '%s/' % dirpath[len(site_dir):]
+            # print(f"{fname} - {dirpath}")
+
+            uri = '%s/' % dirpath[len(site_dir):] + fname            
             data = ''
             title = ''
             post_date = ''

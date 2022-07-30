@@ -35,6 +35,7 @@ git clone --branch gh-pages https://github.com/alecmaly/blog.git
 ```bash
 ## rebuild image
 # docker build -t blog .
+cd blog
 
 # build blog using container
 rm -rf /var/www/html/blog
