@@ -6,6 +6,7 @@ import shutil
 from bs4 import BeautifulSoup
 from whoosh.fields import Schema, TEXT, ID
 from whoosh.index import create_in
+import re
 
 INDEX_DIR_NAME = '_search_index'
 EXERPT_LENGTH = 300
@@ -68,8 +69,10 @@ def main():
                 post_date = node.text.strip()
 
             node = tree.find(class_='content') # post-content
-            content = node.text.strip().replace('\n', ' ');
-
+            html = re.sub("^(.|\n)*?<!-- post body -->", '', str(node)).strip() # strip until pot body
+            soup = BeautifulSoup(html)
+            content = soup.get_text().replace('\n', ' ')
+            
             writer.add_document(uri=uri, title=title, content=content, excerpt=content[:EXERPT_LENGTH], post_date=post_date)
 
     writer.commit()
