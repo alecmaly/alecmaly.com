@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  flood-fire-riskfactor-server:
+  riskfactor-server:
     restart: unless-stopped
     build: ./services/riskfactor_server
     # command: python run.py run
@@ -9,7 +9,20 @@ services:
     env_file:
       - .env
     expose: 
-      - 8000      
+      - 8000
+
+  blog-search-server:
+    restart: unless-stopped
+    build: ./services/blog_search_service
+    # command: python run.py run
+    command: bash run.sh
+    env_file:
+      - .env
+    volumes:
+      - /var/www/html/blog:/var/www/html/blog
+      - ./services/blog_search_service:/opt/app
+    expose: 
+      - 5000
 
   nginx:
     restart: unless-stopped
@@ -25,9 +38,9 @@ services:
     volumes:
       - nginx_secrets:/etc/letsencrypt
       - ./services/nginx/user_conf.d:/etc/nginx/user_conf.d
-      - /var/www/html:/var/www/html
+      - /var/www/html/blog:/var/www/html/blog
     depends_on:
-      - flood-fire-riskfactor-server
+      - riskfactor-server
 
 volumes:
   nginx_secrets:
