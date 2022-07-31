@@ -24,7 +24,7 @@ def main():
 
     print('Creating index at: "%s"' % index_dir)
 
-    schema = Schema(uri=ID(stored=True), title=TEXT(stored=True), content=TEXT, excerpt=TEXT(stored=True), post_date=TEXT(stored=True))
+    schema = Schema(uri=ID(stored=True), title=TEXT(stored=True), tags=TEXT(stored=True), description=TEXT(stored=True), content=TEXT, excerpt=TEXT(stored=True), post_date=TEXT(stored=True), date_sortable=TEXT(sortable=True))
     try:
         if os.path.exists(index_dir):
             shutil.rmtree(index_dir)
@@ -50,6 +50,8 @@ def main():
             uri = '%s/' % dirpath[len(site_dir):] + fname            
             data = ''
             title = ''
+            tags = ''
+            description = ''
             post_date = ''
             content = ''
             with open(os.path.join(dirpath, fname), 'rb') as f:
@@ -61,19 +63,35 @@ def main():
 
             print('Adding: %s' % uri)
 
+            # title
             node = tree.find(class_='post-title')
             title = node.text.strip()
 
+            # tags
+            node = tree.find(class_='post-tags')
+            if node:
+                tags = str(node).strip()
+
+            # description
+            node = tree.find(class_='post-description')
+            description = node.text.strip()
+
+            # post date
             node = tree.find(class_='post-date') # entry-date
             if node:
                 post_date = node.text.strip()
 
+            # content
             node = tree.find(class_='content') # post-content
-            html = re.sub("^(.|\n)*?<!-- post body -->", '', str(node)).strip() # strip until pot body
-            soup = BeautifulSoup(html)
-            content = soup.get_text().replace('\n', ' ')
+            content = node.text.replace('\n', ' ').strip()
+            # html = re.sub("^(.|\n)*?<!-- post body -->", '', str(node)).strip() # strip until post body
+            # soup = BeautifulSoup(html)
+            # content = soup.get_text().replace('\n', ' ')
             
-            writer.add_document(uri=uri, title=title, content=content, excerpt=content[:EXERPT_LENGTH], post_date=post_date)
+
+            date_sortable = "".join(uri.replace('/blog/', '').split('/')[:3])
+
+            writer.add_document(uri=uri, title=title, tags=tags, description=description, content=content, excerpt=content[:EXERPT_LENGTH], post_date=post_date, date_sortable=date_sortable)
 
     writer.commit()
 

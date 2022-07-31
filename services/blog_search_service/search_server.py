@@ -4,6 +4,7 @@ import json
 import falcon
 from whoosh.index import open_dir
 from whoosh.qparser import QueryParser
+from whoosh import sorting
 
 class SearchResource(object):
 
@@ -15,19 +16,30 @@ class SearchResource(object):
 
         with self._ix.searcher() as searcher:
             qp = QueryParser('content', self._ix.schema)
-            q = qp.parse(query_str)
-            results = searcher.search_page(q, page, 15)
+
+            if query_str != '' and query_str != None:
+                q = qp.parse(query_str)
+                results = searcher.search_page(q, page, 15)
+            else:
+                q = qp.parse("Tags") # return all pages (they all have a Tags section)
+                date_facet = sorting.FieldFacet("date_sortable", reverse=True)
+                results = searcher.search_page(q, page, 15, sortedby=date_facet)
+            # results = searcher.search_page(q, page, 15)
+            
 
             ret['page'] = results.pagenum
             ret['pages'] = results.pagecount
             ret['hits'] = []
 
             for h in results:
+                # print(h)
                 match = {
                     'uri': h['uri'],
                     'title': h['title'],
+                    'description': h['description'],
+                    'tags': h['tags'],
                     'post_date': h['post_date'],
-                    'excerpt': h['excerpt']
+                    # 'excerpt': h['excerpt']
                 }
                 ret['hits'].append(match)
 
