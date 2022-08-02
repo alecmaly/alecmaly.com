@@ -19,12 +19,12 @@ class SearchResource(object):
 
             if query_str != '' and query_str != None:
                 q = qp.parse(query_str)
-                results = searcher.search_page(q, page, 15)
+                results = searcher.search_page(q, page, 10)
             else:
                 q = qp.parse("Tags") # return all pages (they all have a Tags section)
                 date_facet = sorting.FieldFacet("date_sortable", reverse=True)
-                results = searcher.search_page(q, page, 15, sortedby=date_facet)
-            # results = searcher.search_page(q, page, 15)
+                results = searcher.search_page(q, page, 10, sortedby=date_facet)
+            # results = searcher.search_page(q, page, 10)
             
 
             ret['page'] = results.pagenum

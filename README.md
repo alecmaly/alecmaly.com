@@ -40,7 +40,7 @@ cd blog
 # build blog using container
 rm -rf /var/www/html/blog
 mkdir -p /var/www/html/blog
-docker run -v "/var/www/html/blog:/var/www/html" -v "$(pwd):/opt/blog" blog /opt/blog/docker_build.sh
+docker run -v "/var/www/html:/var/www/html" -v "$(pwd):/opt/blog" blog /opt/blog/docker_build.sh
 
 cd ..
 ```
