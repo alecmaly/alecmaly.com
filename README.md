@@ -28,7 +28,11 @@ Make /blog directory and clone blog repo
 ```
 mkdir blog
 cd ./blog
-git clone --branch gh-pages https://github.com/alecmaly/blog.git
+git clone --branch gh-pages https://github.com/alecmaly/blog.git /opt/blog
+
+# install requirements for building search index
+sudo apt update && sudo apt install python3-pip
+pip3 install -r /opt/alecmaly.com/services/blog_search_service/requirements.txt
 ```
 
 ## build
@@ -44,3 +48,4 @@ docker run -v "/var/www/html:/var/www/html" -v "$(pwd):/opt/blog" blog /opt/blog
 
 cd ..
 ```
+
