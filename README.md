@@ -12,12 +12,22 @@ docker-compose up
 docker-machine ip
 ```
 
+# Setup: Random Info Website
 
-# BLOG SETUP
+## Dependencies
+```bash
+git clone https://github.com/alecmaly/random-info-website.git 
+cd /opt/random-info-website
+
+docker build --rm -f Dockerfile -t alecmaly/random-info-website .
+```
+
+
+# Setup:  alecmaly.com Blog
 
 - https://elternativeht.github.io/2019/04/operations-on-vps/
 
-## setup
+## Dependencies
 ```bash
 sudo apt update && apt upgrade -y
 
@@ -25,10 +35,11 @@ apt install -y jq
 ```
 
 Make /blog directory and clone blog repo 
-```
-mkdir blog
-cd ./blog
+```bash
+# mkdir /opt/blog
+# cd /opt/blog
 git clone --branch gh-pages https://github.com/alecmaly/blog.git /opt/blog
+cd /opt/blog
 
 # install requirements for building search index
 sudo apt update && sudo apt install python3-pip

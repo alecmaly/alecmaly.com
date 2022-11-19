@@ -1,6 +1,14 @@
 version: '3.3'
 
 services:
+  random-info-website:
+    restart: unless-stopped
+    image: alecmaly/random-info-website
+    # command: python run.py run
+    command: npm run start
+    expose: 
+      - 8001
+
   riskfactor-server:
     restart: unless-stopped
     build: ./services/riskfactor_server
