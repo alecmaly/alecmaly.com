@@ -1,7 +1,11 @@
-# Info
+# Project Info
 
 Blog is built in the ./blog directory, output goes to /var/www/html/blog
 /var/www/html/blog is used as a volume in the nginx server and .html files are hosted
+
+## Dependencies
+
+- docker / docker-machine
 
 # Run it
 
@@ -10,6 +14,16 @@ docker-machine env default | Invoke-Expression
 docker-compose up
 
 docker-machine ip
+```
+
+# Setup: alecmaly.com
+```bash
+git clone https://github.com/alecmaly/alecmaly.com /opt/alecmaly.com
+cd /opt/alecmaly.com
+
+# install requirements for building search index
+sudo apt update && sudo apt install python3-pip
+pip3 install -r /opt/alecmaly.com/services/blog_search_service/requirements.txt
 ```
 
 # Setup: Random Info Website
@@ -23,7 +37,7 @@ docker build --rm -f Dockerfile -t alecmaly/random-info-website .
 ```
 
 
-# Setup:  alecmaly.com Blog
+# Setup: Blog
 
 - https://elternativeht.github.io/2019/04/operations-on-vps/
 
@@ -40,10 +54,6 @@ Make /blog directory and clone blog repo
 # cd /opt/blog
 git clone --branch gh-pages https://github.com/alecmaly/blog.git /opt/blog
 cd /opt/blog
-
-# install requirements for building search index
-sudo apt update && sudo apt install python3-pip
-pip3 install -r /opt/alecmaly.com/services/blog_search_service/requirements.txt
 ```
 
 ## build
