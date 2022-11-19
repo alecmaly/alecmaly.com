@@ -13,7 +13,7 @@ services:
     image: alecmaly/random-info-website
     command: npm run start
     expose: 
-      - 8001
+      - 3000
 
   riskfactor-server:
     restart: unless-stopped
