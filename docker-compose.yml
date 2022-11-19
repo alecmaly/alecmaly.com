@@ -49,6 +49,7 @@ services:
       - /var/www/html/blog:/var/www/html/blog
     depends_on:
       - riskfactor-server
+      - random-info-website
 
 volumes:
   nginx_secrets:
