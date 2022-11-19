@@ -1,6 +1,14 @@
 version: '3.3'
 
 services:
+  sharepoint-json-helper:
+    restart: unless-stopped
+    image: alecmaly/sharepoint-json-helper
+    # command: python run.py run
+    command: npm start
+    expose: 
+      - 3000
+
   random-info-website:
     restart: unless-stopped
     image: alecmaly/random-info-website
@@ -50,6 +58,7 @@ services:
     depends_on:
       - riskfactor-server
       - random-info-website
+      - sharepoint-json-helper
 
 volumes:
   nginx_secrets:

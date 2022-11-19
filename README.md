@@ -26,6 +26,17 @@ sudo apt update && sudo apt install python3-pip
 pip3 install -r /opt/alecmaly.com/services/blog_search_service/requirements.txt
 ```
 
+# Setup: SharePoint JSON Formatter
+
+## Dependencies
+```bash
+git clone https://github.com/alecmaly/sharepoint-json-helper.git /opt/sharepoint-json-helper
+cd /opt/sharepoint-json-helper
+
+docker build --rm -f Dockerfile -t alecmaly/sharepoint-json-helper .
+```
+
+
 # Setup: Random Info Website
 
 ## Dependencies
