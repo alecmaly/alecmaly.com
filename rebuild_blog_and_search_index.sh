@@ -4,6 +4,11 @@
 # sudo apt update && sudo apt install python3-pip
 # pip3 install -r /opt/alecmaly.com/services/blog_search_service/requirements.txt
 
+# these may be needed for github auth
+# - if broken, regenerate key `ssh-keygen -t rsa -b 4096 ` + upload public key to GitHub
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
 
 pushd /opt/blog
 git fetch
