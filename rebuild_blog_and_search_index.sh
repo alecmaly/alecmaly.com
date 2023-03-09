@@ -9,6 +9,9 @@
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
+# Capture PID of ssh-agent process
+SSH_AGENT_PID=$!
+
 
 pushd /opt/blog
 git fetch
@@ -37,3 +40,6 @@ if [ ! -z "$neec_to_pull" ]; then
 else
     echo "No action necessary"
 fi
+
+# Kill ssh-agent process
+kill $SSH_AGENT_PID
