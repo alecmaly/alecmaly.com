@@ -23,14 +23,14 @@ if [ ! -z "$need_to_pull" ]; then
     # re-build blog
     sudo rm -rf /opt/blog
     sudo mkdir -p /opt/blog
-    sudo git clone --branch=gh-pages https://github.com/alecmaly/blog.git /opt/blog
-
+    sudo git clone --branch=gh-pages git@github.com:alecmaly/blog.git /opt/blog
+    
     pushd /opt/blog
     # build tags
-    python3 tag_generator.py
+    python3 tag_generator.py 
 
     docker run -v "/var/www/html:/var/www/html" -v "$(pwd):/opt/blog" blog /opt/blog/docker_build.sh
-    popd
+    popd 
 
     # rebuild search index
     pushd /opt/alecmaly.com/services/blog_search_service/
