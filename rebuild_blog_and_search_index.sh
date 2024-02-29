@@ -14,12 +14,12 @@ ssh-add ~/.ssh/id_rsa
 
 pushd /opt/blog
 git fetch
-need_to_pull=$(git status | grep -i "Your branch is behind")
+need_to_pull=$(git status 2>&1 | grep -iE "(Your branch is behind|not a git repository)")
 popd
 
 if [ ! -z "$need_to_pull" ]; then
     echo "Need to pull"
-
+    
     # re-build blog
     sudo rm -rf /opt/blog
     sudo mkdir -p /opt/blog
