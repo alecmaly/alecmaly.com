@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.padded {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+td ul {
+    max-height: 10em; /* Set max height on the ul */
+    overflow-y: auto; /* Allows scrolling if content exceeds max height */
+    /* list-style: none; Optional: Removes bullet points */
+}
+
+td { 
+    max-width: 5em;
+
+    text-align: center;
+    border: 1px solid black;
+
+    word-wrap: break-word; /* Break long words */
+}    
