@@ -17,6 +17,8 @@ services:
   oss-vuln-server:
     restart: unless-stopped
     build: ./services/oss_vuln_server
+    volumes:
+      - ./services/oss_vuln_server:/opt/app
     expose: 
       - 3000
 

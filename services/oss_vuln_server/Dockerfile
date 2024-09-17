@@ -13,7 +13,7 @@ COPY main.js .
 COPY mark.min.js .
 COPY download_oss.py .
 # old version of report before being updated
-COPY report.html . 
+COPY report.html .
 
 RUN pip install -r requirements.txt
 
@@ -33,11 +33,11 @@ RUN adduser --disabled-password --gecos '' myuser
 RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
 
 # RUN chown -R myuser /opt/app
-USER myuser
+# USER myuser
 
 EXPOSE 3001
 
 # CMD [ "python", "./download_oss.py"]
 # disable directory listing
 
-CMD ["/bin/bash", "-c", "sudo service cron start && python run_server.py"]
+CMD ["/bin/bash", "-c", "sudo service cron start && /usr/local/bin/python run_server.py"]
