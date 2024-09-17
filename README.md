@@ -1,3 +1,4 @@
+
 # Project Info
 
 Blog is built in the ./blog directory, output goes to /var/www/html/blog
@@ -81,3 +82,14 @@ docker run -v "/var/www/html:/var/www/html" -v "$(pwd):/opt/blog" blog /opt/blog
 cd ..
 ```
 
+<br>
+<br><hr>
+<br>
+
+# Upgrade requirements.txt
+
+```shell
+# python venv
+pip install pip-upgrader
+pip-upgrade path/to/requirements.txt
+```
