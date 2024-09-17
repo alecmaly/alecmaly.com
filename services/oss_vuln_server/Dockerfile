@@ -7,6 +7,7 @@ WORKDIR /opt/app
 
 
 COPY requirements.txt .
+COPY run_server.py .
 COPY styles.css .
 COPY main.js .
 COPY mark.min.js .
