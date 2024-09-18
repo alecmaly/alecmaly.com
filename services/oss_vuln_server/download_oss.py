@@ -176,17 +176,29 @@ def main():
         <script src="mark.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="purecss.min.css">
     <body>"""
 
     # # add sticky search bar that hides rows that don't match the search
     html += """
-    <div class='form-container'>
-        <input type='text' id='search' class='form-control' onkeyup='debounce()' placeholder='Search for ecosystems..'>
-        <select id='ecosystem' class='form-control' onchange='buildTable()'></select>
-        <select id='lang' class='form-control' onchange='buildTable()'></select>
-        <input type='number' id='cvss-min' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS min' onkeyup='debounce()'>
-        <input type='number' id='cvss-max' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS max' onkeyup='debounce()'>
+    <div class="pure-g form-container">
+        <div class="pure-u-1 pure-u-md-1-2">
+            <input class="pure-input-1" type="text" id="search" onkeyup="debounce()" placeholder="Search for ecosystems..">
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4">
+            <select class="pure-input-1" id="ecosystem" onchange="buildTable()"></select>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4">
+            <select class="pure-input-1" id="lang" onchange="buildTable()"></select>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4">
+            <input class="pure-input-1" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
+        </div>
+        <div class="pure-u-1 pure-u-md-1-4">
+            <input class="pure-input-1" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
+        </div>
     </div>
+
     
     <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
     """
