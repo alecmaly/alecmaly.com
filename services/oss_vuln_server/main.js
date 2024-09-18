@@ -57,13 +57,12 @@ function buildTable() {
     // Load the initial data
     loadMoreData();
     
-    // Highlight the search term
-    const instance = new Mark(table);
-    instance.markRegExp(new RegExp(search_term, "i"));
+
 }
 
 function loadMoreData() {
     console.log("Loading more data...")
+    let search_term = document.getElementById("search").value || "";
     let table = document.querySelector("table");
 
     // Determine the starting and ending index for the current page
@@ -84,7 +83,7 @@ function loadMoreData() {
             <td>${row.published.replace("T", "<br>")}</td>
             <td class="padded">${row.severity}</td>
             <td class="padded">${row.langs}</td>
-            <td style="text-align: left; max-width: 30em">
+            <td class='references' style="text-align: left; max-width: 30em">
                 <ul>
                     ${row.references}
                 </ul>
@@ -95,6 +94,17 @@ function loadMoreData() {
 
     table.appendChild(fragment);
 
+
+    // Highlight the search term
+    const instance = new Mark(table);
+    instance.markRegExp(new RegExp(search_term, "i"));
+
+    // mark references
+    
+    for (let ele of table.querySelectorAll(".references")) {
+        let inst = new Mark(ele)
+        inst.markRegExp(new RegExp("/[^/]*?#L\\d+"))
+    }
     // Increment the page for the next load
     currentPage++;
 }
