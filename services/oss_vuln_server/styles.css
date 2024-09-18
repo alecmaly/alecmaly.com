@@ -4,8 +4,13 @@ html, body {
     margin: 0px;
     padding: 0px;
 }
-    
-    table {
+
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for table content */
+    width: 100vw; /* Ensure the container stays within the viewport */
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
 }

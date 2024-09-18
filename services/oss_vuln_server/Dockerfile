@@ -9,6 +9,7 @@ WORKDIR /opt/app
 COPY requirements.txt .
 COPY run_server.py .
 COPY styles.css .
+COPY purecss.min.css .
 COPY main.js .
 COPY mark.min.js .
 COPY download_oss.py .
@@ -31,9 +32,9 @@ RUN touch /var/log/cron.log
 RUN adduser --disabled-password --gecos '' myuser
 # Give 'myuser' permission to run 'service cron start' without a password
 RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
-RUN echo "myuser ALL=(ALL) NOPASSWD: /path/to/download_oss.py" >> /etc/sudoers
+RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/local/bin/python /opt/app/download_oss.py" >> /etc/sudoers
 
-# RUN chown -R myuser /opt/app
+
 USER myuser
 
 EXPOSE 3001
@@ -41,4 +42,4 @@ EXPOSE 3001
 # CMD [ "python", "./download_oss.py"]
 # disable directory listing
 
-CMD ["/bin/bash", "-c", "sudo service cron start && sudo /usr/local/bin/python download_oss.py & && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "sudo service cron start && sudo /usr/local/bin/python /opt/app/download_oss.py & /usr/local/bin/python run_server.py"]

@@ -227,11 +227,16 @@ def main():
         <script>
             var data = """ + json_output + """;
         </script>
-    """
-    html += "<table></table>"
-    html += "<script src='main.js'></script>"
-    html += "</body></html>"
 
+        <div class='table-container'>
+            <table></table>
+        </div>
+
+        <script src='main.js'></script>
+    </body>
+</html>
+    """
+    
 
     with open('report.html', 'w', encoding='utf-8') as file:
         file.write(html)
