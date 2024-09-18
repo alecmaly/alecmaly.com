@@ -176,8 +176,7 @@ def main():
         <script src="mark.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="styles.css">
-    <body>
-        <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>"""
+    <body>"""
 
     # # add sticky search bar that hides rows that don't match the search
     html += """
@@ -188,7 +187,10 @@ def main():
         <input type='number' id='cvss-min' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS min' onkeyup='debounce()'>
         <input type='number' id='cvss-max' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS max' onkeyup='debounce()'>
     </div>
+    
+    <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
     """
+
 
 
     def sanitize_xss(s):
