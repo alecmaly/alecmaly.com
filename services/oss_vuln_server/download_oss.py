@@ -175,8 +175,8 @@ def main():
         </head>
         <script src="mark.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="styles.css">
         <link rel="stylesheet" type="text/css" href="purecss.min.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     <body>"""
 
     # # add sticky search bar that hides rows that don't match the search
@@ -190,7 +190,10 @@ def main():
         <button class="button-secondary pure-u-1-6 pure-u-sm-1-10" id="reset-btn" onclick="resetFilters()">Reset Filters</button>
     </div>
     
-    <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
+    <div class='container'>
+        <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
+        <p>Note: This attempts to filter for only vulns that have a github link to source code (github.com/path/to/file#L)</p>
+    </div>
     """
 
 
