@@ -171,27 +171,24 @@ def main():
     html = """
     <html>
         <head>
-            <title>OSV</title>
+            <title>Open Source Vulnerabilities</title>
         </head>
         <script src="mark.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="styles.css">
     <body>
-        <h1>Data from: https://osv.dev/list</h1>"""
+        <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>"""
 
     # # add sticky search bar that hides rows that don't match the search
-    html += "<input type='text' id='search' onkeyup='debounce()' placeholder='Search for ecosystems..'>"
-
-
-
-    # filters
-    html += "<select id='ecosystem' onchange='buildTable()'></select>"
-    html += "<select id='lang' onchange='buildTable()'></select>"
-    html += "<input type='number' id='cvss-min' min='0' max='10' step='0.5' placeholder='CVSS min' onkeyup='debounce()'>"
-    html += "<input type='number' id='cvss-max' min='0' max='10' step='0.5' placeholder='CVSS max' onkeyup='debounce()'>"
-
-
-
+    html += """
+    <div class='form-container'>
+        <input type='text' id='search' class='form-control' onkeyup='debounce()' placeholder='Search for ecosystems..'>
+        <select id='ecosystem' class='form-control' onchange='buildTable()'></select>
+        <select id='lang' class='form-control' onchange='buildTable()'></select>
+        <input type='number' id='cvss-min' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS min' onkeyup='debounce()'>
+        <input type='number' id='cvss-max' class='form-control' min='0' max='10' step='0.5' placeholder='CVSS max' onkeyup='debounce()'>
+    </div>
+    """
 
 
     def sanitize_xss(s):
