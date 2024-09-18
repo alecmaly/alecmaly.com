@@ -7,8 +7,18 @@ function debounce() {
 }
 
 
+function resetFilters() {
+    document.getElementById("search").value = ""
+    document.getElementById("ecosystem").selectedIndex = 0
+    document.getElementById("lang").selectedIndex = 0
+    document.getElementById("cvss-min").value = ""
+    document.getElementById("cvss-max").value = ""
+    buildTable();
+}
+
 
 function buildTable() {
+    console.log("Building table")
     let table = document.querySelector("table");
     // let data = window.data
     let search_term = document.getElementById("search").value || ""

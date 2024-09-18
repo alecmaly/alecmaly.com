@@ -185,8 +185,9 @@ def main():
         <input class="pure-u-1 pure-u-sm-1-5" type="text" id="search" onkeyup="debounce()" placeholder="Search for ecosystems..">
         <select class="pure-u-1-4 pure-u-sm-1-7" id="ecosystem" onchange="buildTable()"></select>
         <select class="pure-u-1-4 pure-u-sm-1-7" id="lang" onchange="buildTable()"></select>
-        <input class="pure-u-1-4 pure-u-sm-1-10" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
-        <input class="pure-u-1-4 pure-u-sm-1-10" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
+        <input class="pure-u-1-6 pure-u-sm-1-10" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
+        <input class="pure-u-1-6 pure-u-sm-1-10" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
+        <button class="button-secondary pure-u-1-6 pure-u-sm-1-10" id="reset-btn" onclick="resetFilters()">Reset Filters</button>
     </div>
     
     <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
