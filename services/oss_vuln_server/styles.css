@@ -41,6 +41,7 @@ td {
     padding: 10px; /* Padding for a cleaner look */
     z-index: 1000; /* Ensures the form stays on top of other content */
     border-bottom: 1px solid #ddd; /* Optional: adds a subtle border for separation */
+    width: 100%; /* Full width */
 }
 
 /* General styles for all form elements */
