@@ -29,7 +29,6 @@ td {
 
 
 
-
 /* Container for form elements */
 .form-container {
     display: flex;
@@ -41,7 +40,8 @@ td {
     padding: 10px; /* Padding for a cleaner look */
     z-index: 1000; /* Ensures the form stays on top of other content */
     border-bottom: 1px solid #ddd; /* Optional: adds a subtle border for separation */
-    width: 100%; /* Full width */
+    width: 100%; /* Makes the container span the full width */
+    box-sizing: border-box; /* Includes padding and border in the element's total width */
 }
 
 /* General styles for all form elements */
@@ -53,6 +53,7 @@ td {
     font-size: 16px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     flex: 1; /* Flex grow to fill available space */
+    background-color: #fff; /* Ensures the form controls have a solid background */
 }
 
 /* Specific styles for search input to make it larger */
@@ -60,10 +61,14 @@ td {
     flex: 2; /* Makes the search input take more space */
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
     .form-container {
         flex-direction: column; /* Stacks elements vertically on small screens */
+    }
+
+    .form-control {
+        width: 100%; /* Ensures each control takes up the full width on small screens */
     }
 
     #search {
@@ -77,4 +82,3 @@ td {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
-
