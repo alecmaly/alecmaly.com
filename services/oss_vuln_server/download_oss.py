@@ -34,7 +34,7 @@ def download_ecosystem(ecosystem):
 
 
 CURRENT_YEAR = datetime.datetime.now().year
-TIME_THRESHOLD_YEARS = .05  # only keep vulnerabilities published in the last 3 years
+TIME_THRESHOLD_YEARS = 3  # only keep vulnerabilities published in the last 3 years
 
 
 
@@ -185,16 +185,16 @@ def main():
         <div class="pure-u-1 pure-u-md-1-2">
             <input class="pure-input-1" type="text" id="search" onkeyup="debounce()" placeholder="Search for ecosystems..">
         </div>
-        <div class="pure-u-1 pure-u-md-1-6">
+        <div class="pure-u-1 pure-u-md-1-8">
             <select class="pure-input-1" id="ecosystem" onchange="buildTable()"></select>
         </div>
-        <div class="pure-u-1 pure-u-md-1-6">
+        <div class="pure-u-1 pure-u-md-1-8">
             <select class="pure-input-1" id="lang" onchange="buildTable()"></select>
         </div>
-        <div class="pure-u-1 pure-u-md-1-6">
+        <div class="pure-u-1 pure-u-md-1-8">
             <input class="pure-input-1" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
         </div>
-        <div class="pure-u-1 pure-u-md-1-6">
+        <div class="pure-u-1 pure-u-md-1-8">
             <input class="pure-input-1" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
         </div>
     </div>
