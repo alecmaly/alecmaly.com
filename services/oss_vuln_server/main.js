@@ -24,32 +24,58 @@ function resetFilters() {
 
 
 
+
+let currentPage = 0;
+const itemsPerPage = 100;
+let filtered_data = [];
+
 function buildTable() {
     let table = document.querySelector("table");
-    // let data = window.data
-    let search_term = document.getElementById("search").value || ""
-    let ecosystem = document.getElementById("ecosystem").selectedOptions[0].value || "all"
-    let lang = document.getElementById("lang").selectedOptions[0].value || "all"
-    let cvss_min = document.getElementById("cvss-min").value || ""
-    let cvss_max = document.getElementById("cvss-max").value || ""
-    
-    let filtered_data = data.filter(function(row) {
+    let search_term = document.getElementById("search").value || "";
+    let ecosystem = document.getElementById("ecosystem").selectedOptions[0].value || "all";
+    let lang = document.getElementById("lang").selectedOptions[0].value || "all";
+    let cvss_min = document.getElementById("cvss-min").value || "";
+    let cvss_max = document.getElementById("cvss-max").value || "";
+
+    // Filter the data based on the search and filters
+    filtered_data = data.filter(function(row) {
         return (
-            ecosystem == "all" || row.ecosystem == ecosystem) && 
+            (ecosystem == "all" || row.ecosystem == ecosystem) && 
             (lang == "all" || row.langs.match(new RegExp("\\b" + lang + "\\b", "i"))) &&
             (row.summary + row.details).match(new RegExp(search_term, "i")) &&
             (cvss_min == "" || parseFloat(row.severity) >= parseFloat(cvss_min)) &&
             (cvss_max == "" || parseFloat(row.severity) <= parseFloat(cvss_max))
-
+        );
     });
-
-
 
     updateDropdowns(filtered_data);
 
+    // Reset the table and page number
+    table.innerHTML = "";
+    currentPage = 0;
+    
+    // Load the initial data
+    loadMoreData();
+    
+    // Highlight the search term
+    const instance = new Mark(table);
+    instance.markRegExp(new RegExp(search_term, "i"));
+}
 
+function loadMoreData() {
+    console.log("Loading more data...")
+    let table = document.querySelector("table");
+
+    // Determine the starting and ending index for the current page
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, filtered_data.length);
+
+    // Create document fragment to append the rows
     let fragment = document.createDocumentFragment();
-    for (let row of filtered_data) {
+
+    // Append the rows for the current page
+    for (let i = startIndex; i < endIndex; i++) {
+        let row = filtered_data[i];
         let row_ele = document.createElement("tr");
         row_ele.innerHTML = `
             <td>${row.ecosystem}</td>
@@ -63,18 +89,26 @@ function buildTable() {
                     ${row.references}
                 </ul>
             </td>
-            `
-
-            
-        fragment.appendChild(row_ele);  
+        `;
+        fragment.appendChild(row_ele);
     }
-    table.innerHTML = "";
+
     table.appendChild(fragment);
 
-    // Highlight the search_term
-    const instance = new Mark(table);
-    instance.markRegExp(new RegExp(search_term, "i"));
-}    
+    // Increment the page for the next load
+    currentPage++;
+}
+
+// Add an event listener to handle scrolling and load more data when needed
+window.addEventListener('scroll', () => {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        loadMoreData();
+    }
+});
+
+
+
+
 
 function updateDropdowns(data) {
     let ecosystems = {}

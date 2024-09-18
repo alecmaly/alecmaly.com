@@ -34,7 +34,7 @@ def download_ecosystem(ecosystem):
 
 
 CURRENT_YEAR = datetime.datetime.now().year
-TIME_THRESHOLD_YEARS = 3  # only keep vulnerabilities published in the last 3 years
+TIME_THRESHOLD_YEARS = 10  # only keep vulnerabilities published in the last 3 years
 
 
 
