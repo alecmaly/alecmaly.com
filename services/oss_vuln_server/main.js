@@ -1,24 +1,30 @@
 // debounce for X time, then call buildTable
-let TIMEOUT = 1000;
+let TIMEOUT = 750;
 let timer;
-function debounce() {
+function debounceBuildTable() {
     clearTimeout(timer);
     timer = setTimeout(buildTable, TIMEOUT);
 }
 
 
 function resetFilters() {
+    document.getElementById("reset-btn").classList.add("pure-button-disabled")
+    document.getElementById("reset-btn").disabled = true
+    
     document.getElementById("search").value = ""
     document.getElementById("ecosystem").selectedIndex = 0
     document.getElementById("lang").selectedIndex = 0
     document.getElementById("cvss-min").value = ""
     document.getElementById("cvss-max").value = ""
-    buildTable();
+    debounceBuildTable();
+
+    document.getElementById("reset-btn").classList.remove("pure-button-disabled")
+    document.getElementById("reset-btn").disabled = false
 }
 
 
+
 function buildTable() {
-    console.log("Building table")
     let table = document.querySelector("table");
     // let data = window.data
     let search_term = document.getElementById("search").value || ""
