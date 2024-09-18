@@ -34,7 +34,7 @@ RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoe
 RUN echo "myuser ALL=(ALL) NOPASSWD: /path/to/download_oss.py" >> /etc/sudoers
 
 # RUN chown -R myuser /opt/app
-# USER myuser
+USER myuser
 
 EXPOSE 3001
 
