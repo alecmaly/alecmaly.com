@@ -79,7 +79,7 @@ function loadMoreData() {
         row_ele.innerHTML = `
             <td>${row.ecosystem}</td>
             <td><a href="https://osv.dev/vulnerability/${row.id}" target="_blank">${row.id}</a></td>
-            <td class="padded" style="text-align: left; max-width: 60em">${row.summary ? `<b>${row.summary}</b><br>` : ""}${row.details}</td>
+            <td class="padded summary" style="text-align: left; max-width: 60em">${row.summary ? `<b>${row.summary}</b><br>` : ""}${row.details}</td>
             <td>${row.published.replace("T", "<br>")}</td>
             <td class="padded">${row.severity}</td>
             <td class="padded">${row.langs}</td>
@@ -96,11 +96,12 @@ function loadMoreData() {
 
 
     // Highlight the search term
-    const instance = new Mark(table);
-    instance.markRegExp(new RegExp(search_term, "i"));
+    for (let ele of table.querySelectorAll(".summary")) {
+        let instance = new Mark(ele);
+        instance.markRegExp(new RegExp(search_term, "i"));
+    }
 
-    // mark references
-    
+    // mark references    
     for (let ele of table.querySelectorAll(".references")) {
         let inst = new Mark(ele)
         inst.markRegExp(new RegExp("/[^/]*?#L\\d+"))
