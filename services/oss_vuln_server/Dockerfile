@@ -20,7 +20,7 @@ RUN pip install -r requirements.txt
 
 
 # update cronjob to run python script every day, should be run out of /opt/app
-RUN echo "0 0 * * * root cd /opt/app && /usr/local/bin/python /opt/app/download_oss.py 2>&1 >> /opt/app/log.txt" > /etc/cron.d/refresh_oss_vulns
+RUN echo "* */6 * * * root cd /opt/app && /usr/local/bin/python /opt/app/download_oss.py 2>&1 >> /opt/app/log.txt" > /etc/cron.d/refresh_oss_vulns
 RUN chmod 0644 /etc/cron.d/refresh_oss_vulns
 RUN crontab /etc/cron.d/refresh_oss_vulns
 # Create the log file to be able to run tail
