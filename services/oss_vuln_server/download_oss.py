@@ -182,21 +182,11 @@ def main():
     # # add sticky search bar that hides rows that don't match the search
     html += """
     <div class="pure-form pure-g" style="position: sticky; top: 0; background-color: #fff; padding: 10px; z-index: 1000; border-bottom: 1px solid #ddd;">
-        <div class="pure-u-1-5 pure-u-md-1-2">
-            <input class="pure-input-1" type="text" id="search" onkeyup="debounce()" placeholder="Search for ecosystems..">
-        </div>
-        <div class="pure-u-1-7 pure-u-md-1-8">
-            <select class="pure-input-1" id="ecosystem" onchange="buildTable()"></select>
-        </div>
-        <div class="pure-u-1-7 pure-u-md-1-8">
-            <select class="pure-input-1" id="lang" onchange="buildTable()"></select>
-        </div>
-        <div class="pure-u-1-10 pure-u-md-1-8">
-            <input class="pure-input-1" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
-        </div>
-        <div class="pure-u-1-10 pure-u-md-1-8">
-            <input class="pure-input-1" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
-        </div>
+        <input class="pure-u-1 pure-u-sm-1-5" type="text" id="search" onkeyup="debounce()" placeholder="Search for ecosystems..">
+        <select class="pure-u-1-4 pure-u-sm-1-7" id="ecosystem" onchange="buildTable()"></select>
+        <select class="pure-u-1-4 pure-u-sm-1-7" id="lang" onchange="buildTable()"></select>
+        <input class="pure-u-1-4 pure-u-sm-1-10" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounce()">
+        <input class="pure-u-1-4 pure-u-sm-1-10" type="number" id="cvss-max" min="0" max="10" step="0.5" placeholder="CVSS max" onkeyup="debounce()">
     </div>
     
     <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
