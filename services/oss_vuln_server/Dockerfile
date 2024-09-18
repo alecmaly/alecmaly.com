@@ -40,4 +40,4 @@ EXPOSE 3001
 # CMD [ "python", "./download_oss.py"]
 # disable directory listing
 
-CMD ["/bin/bash", "-c", "sudo service cron start && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "sudo service cron start && /usr/local/bin/python download_oss.py & && /usr/local/bin/python run_server.py"]
