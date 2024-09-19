@@ -144,8 +144,11 @@ function loadMoreData() {
     loadingData = false
 }
 
-// instead of on scroll, run on interval
-setInterval(() => {
+
+
+
+// Add an event listener to handle scrolling and load more data when needed
+function handleScrollToBottom() {
     // show top button if scrolled down, hide if at top
     if (window.scrollY > 0) {
         document.getElementById("top-btn").style.display = "block";
@@ -158,25 +161,10 @@ setInterval(() => {
     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
         loadMoreData();
     }
-}, 500);
+}
 
-
-// // Add an event listener to handle scrolling and load more data when needed
-// window.addEventListener('scroll', () => {
-//     // show top button if scrolled down, hide if at top
-//     if (window.scrollY > 0) {
-//         document.getElementById("top-btn").style.display = "block";
-//     } else {
-//         document.getElementById("top-btn").style.display = "none";
-//     }
-
-//     const scrollableElement = document.scrollingElement || document.documentElement;
-    
-//     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
-//         loadMoreData();
-//     }
-// });
-
+window.addEventListener('scroll', handleScrollToBottom);
+window.addEventListener('resize', buildTable);
 
 function updateDropdowns(data) {
     let ecosystems = {}
