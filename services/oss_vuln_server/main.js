@@ -158,15 +158,13 @@ function handleScrollToBottom() {
 
     const scrollableElement = document.scrollingElement || document.documentElement;
     
-    document.getElementById("top-btn").innerText = `${window.scrollY} - ${window.innerHeight} - ${scrollableElement.scrollHeight} - ${window.scrollY + window.innerHeight >= scrollableElement.scrollHeight}`
-
-    if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
+    // +2 to account for rounding errors
+    if (window.scrollY + window.innerHeight + 2 >= scrollableElement.scrollHeight) {
         loadMoreData();
     }
 }
 
 window.addEventListener('scroll', handleScrollToBottom);
-window.addEventListener('touchend', buildTable);
 
 function updateDropdowns(data) {
     let ecosystems = {}
@@ -181,7 +179,6 @@ function updateDropdowns(data) {
         }
     }
 
-    
     ecosystems = Object.fromEntries(Object.entries(ecosystems).sort(([, valueA], [, valueB]) => valueB - valueA));
     langs = Object.fromEntries(Object.entries(langs).sort(([, valueA], [, valueB]) => valueB - valueA));
 
