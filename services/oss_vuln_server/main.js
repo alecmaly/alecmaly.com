@@ -79,11 +79,11 @@ function loadMoreData() {
         row_ele.innerHTML = `
             <td>${row.ecosystem}</td>
             <td><a href="https://osv.dev/vulnerability/${row.id}" target="_blank">${row.id}</a></td>
-            <td class="padded summary" style="text-align: left; max-width: 60em">${row.summary ? `<b>${row.summary}</b><br>` : ""}${row.details}</td>
+            <td class="padded summary" style="text-align: left; max-width: 30vw">${row.summary ? `<b>${row.summary}</b><br>` : ""}${row.details}</td>
             <td>${row.published.replace("T", "<br>")}</td>
             <td class="padded">${row.severity}</td>
             <td class="padded">${row.langs}</td>
-            <td class='references' style="text-align: left; max-width: 30em">
+            <td class='references' style="text-align: left; max-width: 20vw">
                 ${row.references}
             </td>
         `;
