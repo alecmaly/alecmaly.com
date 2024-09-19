@@ -166,7 +166,7 @@ function handleScrollToBottom() {
 }
 
 window.addEventListener('scroll', handleScrollToBottom);
-window.addEventListener('resize', buildTable);
+window.addEventListener('touchend', buildTable);
 
 function updateDropdowns(data) {
     let ecosystems = {}
