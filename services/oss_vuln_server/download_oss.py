@@ -202,9 +202,9 @@ def main():
 
             // Check if it's a subdomain
             var parts = hostname.split('.');
-            if (parts.length > 2) {
-            // Strip off the subdomain to get the main domain
-            parts.shift(); // Removes the subdomain part
+            while (parts.length > 2) {
+                // Strip off the subdomain to get the main domain
+                parts.shift(); // Removes the subdomain part
             }
             var mainDomain = parts.join('.');
 
