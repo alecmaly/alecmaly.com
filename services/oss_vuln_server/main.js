@@ -158,6 +158,8 @@ function handleScrollToBottom() {
 
     const scrollableElement = document.scrollingElement || document.documentElement;
     
+    document.getElementById("top-btn").innerText = `${window.scrollY} - ${window.innerHeight} - ${scrollableElement.scrollHeight} - ${window.scrollY + window.innerHeight >= scrollableElement.scrollHeight}`
+
     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
         loadMoreData();
     }
