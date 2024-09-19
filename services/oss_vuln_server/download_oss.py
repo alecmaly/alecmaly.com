@@ -18,6 +18,8 @@ import datetime
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+global all_references
+all_references = set()
 
 def download_ecosystem(ecosystem):
     filename = ecosystem + ".zip"
@@ -43,6 +45,7 @@ TIME_THRESHOLD_YEARS = 99  # only keep vulnerabilities published in the last 3 y
 def process_ecosystem(args, ecosystem):
     global total
     global unique_langs
+    global all_references
     output = []
     zip_filepath = os.path.join('data', ecosystem + '.zip')
 
@@ -70,6 +73,7 @@ def process_ecosystem(args, ecosystem):
 
                 if 'references' in data:
                     refs = [ref for ref in data['references'] if ref['type'] not in ['ADVISORY', 'FIX'] and 'url' in ref]
+                    all_references.update([ref['url'] for ref in refs])
 
                     # Time since published
                     years_since_published = 99
@@ -89,9 +93,25 @@ def process_ecosystem(args, ecosystem):
                             else:
                                 raise Exception("CVSS version not supported")
 
-                        has_good_ref = any([r for r in refs if "github" in r['url'] and "#L" in r['url']])
+                        ref_urls_lowercase = [r['url'].lower() for r in refs]
+                        has_good_ref = any([url for url in ref_urls_lowercase if 
+                                            ("github.com" in url and "#l" in url) or
+                                            "hackerone.com" in url or
+                                            "huntr.dev" in url or
+                                            "huntr.com" in url or
+                                            "notion.site" in url or
+                                            "medium.com" in url or
+                                            "report" in url or
+                                            "writeup" in url or 
+                                            ("nodejs.org" not in url and "blog" in url) or
+                                            ".pdf" in url or
+                                            ".md" in url or
 
-                        lang = ""
+                                            # "/commit/" in url or
+                                            "github.com" and "/issues/" in url
+                                        ])
+
+                        langs = ""
                         refs_w_line_num = [r for r in refs if "github" in r['url'] and "#L" in r['url']]
                         if len(refs_w_line_num) > 0:
                             # All file extensions from lines w/ line number + dedupe languages
@@ -244,7 +264,10 @@ def main():
 
     with open('report.html', 'w', encoding='utf-8') as file:
         file.write(html)
-        
+    
+    global all_references
+    with open('all_references.txt', 'w', encoding='utf-8') as file:
+        file.write("\n".join(all_references))
 
     print("[+] Done.")
 
