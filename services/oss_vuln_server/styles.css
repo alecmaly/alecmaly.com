@@ -59,5 +59,13 @@ td {
 }
 
 
+/* top button, sticky to bottom right of page */
+#top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+}
 
 

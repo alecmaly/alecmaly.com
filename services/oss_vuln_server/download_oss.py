@@ -222,7 +222,10 @@ def main():
 
         <link rel="stylesheet" type="text/css" href="purecss.min.css">
         <link rel="stylesheet" type="text/css" href="styles.css">
-    <body>"""
+    <body>
+    
+    <button id="top-btn" onclick="topFunction()">Top</button>
+    """
 
     # # add sticky search bar that hides rows that don't match the search
     html += """

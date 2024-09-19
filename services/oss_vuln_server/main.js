@@ -133,6 +133,13 @@ function loadMoreData() {
 
 // Add an event listener to handle scrolling and load more data when needed
 window.addEventListener('scroll', () => {
+    // show top button if scrolled down, hide if at top
+    if (window.scrollY > 0) {
+        document.getElementById("top-btn").style.display = "block";
+    } else {
+        document.getElementById("top-btn").style.display = "none";
+    }
+
     const scrollableElement = document.scrollingElement || document.documentElement;
     
     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
@@ -216,7 +223,10 @@ function buildDropdowns(data) {
 }
 
 
-
+function topFunction() {
+    // scroll to top of page - smooth scroll
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
 
