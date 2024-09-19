@@ -224,7 +224,7 @@ def main():
         <link rel="stylesheet" type="text/css" href="styles.css">
     <body>
     
-    <button id="top-btn" onclick="topFunction()">Top</button>
+    <button id="top-btn" class='pure-button' onclick="topFunction()">Top</button>
     """
 
     # # add sticky search bar that hides rows that don't match the search
