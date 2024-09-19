@@ -194,6 +194,9 @@ def main():
         <head>
             <title>Open Source Vulnerabilities</title>
         </head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
         <script src="mark.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="purecss.min.css">
