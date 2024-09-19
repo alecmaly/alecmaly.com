@@ -194,9 +194,30 @@ def main():
         <head>
             <title>Open Source Vulnerabilities</title>
         </head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+        <!-- Favicon - dynamically look at parent domain -->
+        <script type="text/javascript">
+            // Get the current hostname
+            var hostname = window.location.hostname;
+
+            // Check if it's a subdomain
+            var parts = hostname.split('.');
+            if (parts.length > 2) {
+            // Strip off the subdomain to get the main domain
+            parts.shift(); // Removes the subdomain part
+            }
+            var mainDomain = parts.join('.');
+
+            // Create a link element for the favicon
+            var link = document.createElement('link');
+            link.rel = 'icon';
+            link.href = 'https://' + mainDomain + '/favicon.ico';
+            link.type = 'image/x-icon';
+
+            // Append the favicon link to the head of the document
+            document.head.appendChild(link);
+        </script>
+        
         <script src="mark.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="purecss.min.css">
