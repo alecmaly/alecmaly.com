@@ -60,7 +60,13 @@ function buildTable() {
 
 }
 
+let loadingData = false
 function loadMoreData() {
+    if (loadingData) {
+        return
+    }
+    loadingData = true
+
     console.log("Loading more data...")
     let search_term = document.getElementById("search").value || "";
     let table = document.querySelector("table");
@@ -68,6 +74,11 @@ function loadMoreData() {
     // Determine the starting and ending index for the current page
     const startIndex = currentPage * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, filtered_data.length);
+
+    // if already loaded all items, return
+    if (startIndex >= filtered_data.length) {
+        return
+    }
 
     // Create document fragment to append the rows
     let fragment = document.createDocumentFragment();
@@ -129,10 +140,12 @@ function loadMoreData() {
     }
     // Increment the page for the next load
     currentPage++;
+
+    loadingData = false
 }
 
-// Add an event listener to handle scrolling and load more data when needed
-window.addEventListener('scroll', () => {
+// instead of on scroll, run on interval
+setInterval(() => {
     // show top button if scrolled down, hide if at top
     if (window.scrollY > 0) {
         document.getElementById("top-btn").style.display = "block";
@@ -145,7 +158,24 @@ window.addEventListener('scroll', () => {
     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
         loadMoreData();
     }
-});
+}, 500);
+
+
+// // Add an event listener to handle scrolling and load more data when needed
+// window.addEventListener('scroll', () => {
+//     // show top button if scrolled down, hide if at top
+//     if (window.scrollY > 0) {
+//         document.getElementById("top-btn").style.display = "block";
+//     } else {
+//         document.getElementById("top-btn").style.display = "none";
+//     }
+
+//     const scrollableElement = document.scrollingElement || document.documentElement;
+    
+//     if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
+//         loadMoreData();
+//     }
+// });
 
 
 function updateDropdowns(data) {
