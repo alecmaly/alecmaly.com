@@ -7,7 +7,7 @@ html, body {
 
 .table-container {
     overflow-x: auto; /* Enable horizontal scrolling for table content */
-    width: 100vw; /* Ensure the container stays within the viewport */
+    width: 98.5vw; /* Ensure the container stays within the viewport */
 }
 
 .container {
@@ -33,7 +33,7 @@ ul {
 }
 
 td ul {
-    max-height: 10em; /* Set max height on the ul */
+    max-height: 20em; /* Set max height on the ul */
     overflow-y: auto; /* Allows scrolling if content exceeds max height */
     /* list-style: none; Optional: Removes bullet points */
 }
@@ -57,3 +57,7 @@ td {
     background: rgb(66, 184, 221);
     /* this is a light blue */
 }
+
+
+
+

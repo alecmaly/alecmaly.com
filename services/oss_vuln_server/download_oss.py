@@ -108,7 +108,8 @@ def process_ecosystem(args, ecosystem):
                                             ".md" in url or
 
                                             # "/commit/" in url or
-                                            "github.com" and "/issues/" in url
+                                            ("github.com" and "/security/advisories/" in url) or
+                                            ("github.com" and "/issues/" in url)
                                         ])
 
                         langs = ""

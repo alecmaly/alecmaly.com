@@ -42,7 +42,7 @@ function buildTable() {
         return (
             (ecosystem == "all" || row.ecosystem == ecosystem) && 
             (lang == "all" || row.langs.match(new RegExp("\\b" + lang + "\\b", "i"))) &&
-            (row.summary + row.details).match(new RegExp(search_term, "i")) &&
+            (`${row.id};${row.summary};${row.details};${row.references}`).match(new RegExp(search_term, "i")) &&
             (cvss_min == "" || parseFloat(row.severity) >= parseFloat(cvss_min)) &&
             (cvss_max == "" || parseFloat(row.severity) <= parseFloat(cvss_max))
         );
@@ -84,9 +84,7 @@ function loadMoreData() {
             <td class="padded">${row.severity}</td>
             <td class="padded">${row.langs}</td>
             <td class='references' style="text-align: left; max-width: 30em">
-                <ul>
-                    ${row.references}
-                </ul>
+                ${row.references}
             </td>
         `;
         fragment.appendChild(row_ele);
@@ -104,7 +102,30 @@ function loadMoreData() {
     // mark references    
     for (let ele of table.querySelectorAll(".references")) {
         let inst = new Mark(ele)
+
+        // highlight files with line numbers
         inst.markRegExp(new RegExp("/[^/]*?#L\\d+"))
+
+        // highlight common report sites
+        inst.markRegExp(new RegExp("(hackerone\.com|huntr\.dev|huntr\.com|notion\.site|medium\.com|report|writeup)"), { 
+            each: function(node) {
+                node.style.backgroundColor = "cyan";
+            }
+        })
+            
+        // highlight common report files
+        inst.markRegExp(new RegExp("(.pdf|.md)"), { 
+        each: function(node) {
+            node.style.backgroundColor = "chartreuse";
+            }
+        })
+
+        // highlight issues/security advisories, these are not always descriptive but may provide vuln details
+        inst.markRegExp(new RegExp("(/issues/|/security/advisories/)"), { 
+            each: function(node) {
+                node.style.backgroundColor = "bisque";
+            }
+        })
     }
     // Increment the page for the next load
     currentPage++;
@@ -112,13 +133,12 @@ function loadMoreData() {
 
 // Add an event listener to handle scrolling and load more data when needed
 window.addEventListener('scroll', () => {
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+    const scrollableElement = document.scrollingElement || document.documentElement;
+    
+    if (window.scrollY + window.innerHeight >= scrollableElement.scrollHeight) {
         loadMoreData();
     }
 });
-
-
-
 
 
 function updateDropdowns(data) {
