@@ -240,7 +240,7 @@ def main():
     
     <div class='container'>
         <h1>Data from: <a href='https://osv.dev/list' target='_blank'>https://osv.dev/list</a></h1>
-        <p>Note: This list to filter for only vulns that have a github link to source code (//github.com/path/to/file#L<line_num>)</p>
+        <p>Note: This list to filter for only vulns that have a github link to source code (//github.com/path/to/file#L<line_num>) or potential writeup</p>
     </div>
     """
 
