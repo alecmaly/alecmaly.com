@@ -282,10 +282,12 @@ def main():
 
     # handle xss that may occur in output
     json_output = json.dumps(html_output)
+    open('data.js', 'w').write("""
+        var data = """ + json_output + """;
+    """)
+
     html += """
-        <script>
-            var data = """ + json_output + """;
-        </script>
+        <script src="data.js"></script>
 
         <div class='table-container'>
             <table></table>
