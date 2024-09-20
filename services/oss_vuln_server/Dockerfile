@@ -15,6 +15,7 @@ COPY mark.min.js .
 COPY download_oss.py .
 # old version of report before being updated
 COPY report.html .
+COPY data.js .
 
 RUN pip install -r requirements.txt
 
