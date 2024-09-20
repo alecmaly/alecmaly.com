@@ -237,7 +237,7 @@ def main():
     # # add sticky search bar that hides rows that don't match the search
     html += """
     <div class="pure-form pure-g" style="position: sticky; top: 0; background-color: #fff; padding: 10px; z-index: 1000; border-bottom: 1px solid #ddd;">
-        <input class="pure-u-1 pure-u-sm-1-5" type="text" id="search" onkeyup="debounceBuildTable()" placeholder="Search for ecosystems..">
+        <input class="pure-u-1 pure-u-sm-1-5" type="text" id="search" onkeyup="debounceBuildTable()" placeholder="Search regex..">
         <select class="pure-u-1-4 pure-u-sm-1-7" id="ecosystem" onchange="debounceBuildTable()"></select>
         <select class="pure-u-1-4 pure-u-sm-1-7" id="lang" onchange="debounceBuildTable()"></select>
         <input class="pure-u-1-6 pure-u-sm-1-10" type="number" id="cvss-min" min="0" max="10" step="0.5" placeholder="CVSS min" onkeyup="debounceBuildTable()">
