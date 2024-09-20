@@ -198,7 +198,7 @@ def main():
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://oss-vulns.alecmaly.com" />
             <meta property="og:image" content="https://alecmaly.com/assets/images/tech-thumbnail.jpg" />
-
+            <meta property="og:description" content="Filtered list of //osv.dev for enhanced searching" />
             
             <script src="mark.min.js"></script>
 
