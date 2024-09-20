@@ -193,35 +193,42 @@ def main():
     <html>
         <head>
             <title>Open Source Vulnerabilities</title>
+
+            <meta property="og:title" content="open source vulnerabilities" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://oss-vulns.alecmaly.com" />
+            <meta property="og:image" content="https://alecmaly.com/assets/images/tech-thumbnail.jpg" />
+
+            
+            <script src="mark.min.js"></script>
+
+            <link rel="stylesheet" type="text/css" href="purecss.min.css">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+
+            
+            <!-- Favicon - dynamically look at parent domain -->
+            <script type="text/javascript">
+                // Get the current hostname
+                var hostname = window.location.hostname;
+
+                // Check if it's a subdomain
+                var parts = hostname.split('.');
+                while (parts.length > 2) {
+                    // Strip off the subdomain to get the main domain
+                    parts.shift(); // Removes the subdomain part
+                }
+                var mainDomain = parts.join('.');
+
+                // Create a link element for the favicon
+                var link = document.createElement('link');
+                link.rel = 'icon';
+                link.href = 'https://' + mainDomain + '/favicon.ico';
+                link.type = 'image/x-icon';
+
+                // Append the favicon link to the head of the document
+                document.head.appendChild(link);
+            </script>
         </head>
-
-        <!-- Favicon - dynamically look at parent domain -->
-        <script type="text/javascript">
-            // Get the current hostname
-            var hostname = window.location.hostname;
-
-            // Check if it's a subdomain
-            var parts = hostname.split('.');
-            while (parts.length > 2) {
-                // Strip off the subdomain to get the main domain
-                parts.shift(); // Removes the subdomain part
-            }
-            var mainDomain = parts.join('.');
-
-            // Create a link element for the favicon
-            var link = document.createElement('link');
-            link.rel = 'icon';
-            link.href = 'https://' + mainDomain + '/favicon.ico';
-            link.type = 'image/x-icon';
-
-            // Append the favicon link to the head of the document
-            document.head.appendChild(link);
-        </script>
-        
-        <script src="mark.min.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="purecss.min.css">
-        <link rel="stylesheet" type="text/css" href="styles.css">
     <body>
     
     <button id="top-btn" class='pure-button' onclick="topFunction()">Top</button>
