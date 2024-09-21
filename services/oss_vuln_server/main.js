@@ -77,6 +77,7 @@ function loadMoreData() {
 
     // if already loaded all items, return
     if (startIndex >= filtered_data.length) {
+        loadingData = false
         return
     }
 
