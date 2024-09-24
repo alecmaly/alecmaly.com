@@ -16,14 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq li
 #     rm powershell_7.4.5-1.deb_amd64.deb
 
 
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
-    mkdir powershell && \
-    tar -xvf powershell-7.4.5-linux-arm64.tar.gz -C powershell && \
-    cd powershell && \
-    chmod +x pwsh
-
-ENV PATH="/app/powershell:${PATH}"
-
 
 RUN adduser --disabled-password --gecos '' myuser
 # Give 'myuser' permission to run 'service cron start' without a password
@@ -32,6 +24,16 @@ RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoe
 
 RUN chown -R myuser:myuser /app
 USER myuser
+
+
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
+    mkdir powershell && \
+    tar -xvf powershell-7.4.5-linux-arm64.tar.gz -C powershell && \
+    cd powershell && \
+    chmod +x pwsh
+
+ENV PATH="/app/powershell:${PATH}"
+
 
 # Update cronjob to run the python script every day as myuser
 RUN echo "0 0 * * * cd /app && ./0_runAll.sh" > /tmp/refresh_oss_vulns
