@@ -59,6 +59,8 @@ COPY 9_addPatchDiffDetails.ps1 .
 COPY 10_review.ps1 .
 COPY 11_generateHTMLReview.ps1 .
 
+RUN chmod +x 0_runAll.sh
+
 # import old data
 COPY contract_monitoring contract_monitoring 
 
