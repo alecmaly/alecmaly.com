@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Tables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Live Contracts</h2>
+    <select id="liveContractsSelection" onchange="generateScript()">
+        <option value="address">Address</option>
+        <option value="implementation">Implementation</option>
+    </select>
+    <h2>Proxies</h2>
+    <select id="proxiesSelection" onchange="generateScript()">
+        <option value="address">Address</option>
+        <option value="impl_address" selected="selected">Implementation Address</option>
+    </select>
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>address</th>
+                <th>chain</th>
+                <th>date</th>
+                <th>impl_address</th>
+                <th>project</th>
+                <th>ProxyCompilerVersion</th>
+                <th>ProxyContractName</th>
+                <th>type</th>
+                <th>max bounty</th>
+                <th>prevVersionCount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x91E677b07F7AF907ec9a428aafA9fc14a0d3A338</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x731a0ad160e407393ff662231add6dd145ad3fea</td>
+                <td>eigenlayer</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/eigenlayer/'>2,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xd8534197Bd587F8226d12E0C864ef2CaE6f82f5C</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xf9a42821bc7b13c47a6c934704645111ead836a9</td>
+                <td>spool</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/spool/'>1,500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x23Daf34e2b9Af02A74dC19cB52Af727B19403874</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x16db68c86edfdb60ba733563326ed392b319eb2b</td>
+                <td>spool</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/spool/'>1,500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x7b533e72E0cDC63AacD8cDB926AC402b846Fbd13</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xb8fb182be348d7ca51576a29a7eb7420d3b761ae</td>
+                <td>spool</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/spool/'>1,500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x8aa6174333F75421903b2B5c70DdF8DA5D84f74F</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x2a9129038130146872dafc2b413644e59a266af4</td>
+                <td>spool</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/spool/'>1,500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x402c84de2ce49af88f5e2ef3710ff89bfed36cb6</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x5f68b4614ddaad4ed1088e9e706efdff66be5812</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xb52af7889b05eF652468E98D249700415a9F587D</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x9fd4daD032324bC569decC3795731aEC309c2923</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x9586878Ea437CBB6D4b6381Bde7B064f531CfB77</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x09D466663586292F5f0c1D99e9547A7A81E887f5</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x2604D728D8c6918b8C427bF42aa2ed07ceB5cf23</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x51F74C024936E296132c6F4E59b9EEd677eb3B1c</td>
+                <td>beanstalk</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/beanstalk/'>1,100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr
+                data-patches='WwogIHsKICAgICJkYXRlIjogIjEyLzEyLzIwMjMiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHgwYjU3MjZiNzM0OGVmQmRBODYyMEQ1QzM3NEY4NUNiZThmMDQwQjZhIiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIwLjAiCiAgfSwKICB7CiAgICAiZGF0ZSI6ICI1LzI0LzIwMjQiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHg3RDE5NDBmRGZGMEIzN2MxMzdCMTA1Y2U3OTY3QjNCODZEQjQyNjQ4IiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIxLjAiCiAgfQpd'>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x6e378C84e657C57b2a8d183CFf30ee5CC8989b61</td>
+                <td>lifi</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/lifi/'>1,000,000</a></td>
+                <td>2 - 12/12/2023, 5/24/2024</td>
+            </tr>
+            <tr
+                data-patches='WwogIHsKICAgICJkYXRlIjogIjEyLzEyLzIwMjMiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHgwYjU3MjZiNzM0OGVmQmRBODYyMEQ1QzM3NEY4NUNiZThmMDQwQjZhIiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIwLjAiCiAgfSwKICB7CiAgICAiZGF0ZSI6ICI1LzI0LzIwMjQiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHg3RDE5NDBmRGZGMEIzN2MxMzdCMTA1Y2U3OTY3QjNCODZEQjQyNjQ4IiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIxLjAiCiAgfQpd'>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x8810F64f9802292aB71FCfd0E2aB8B3E3335F6c4</td>
+                <td>lifi</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/lifi/'>1,000,000</a></td>
+                <td>2 - 12/12/2023, 5/24/2024</td>
+            </tr>
+            <tr
+                data-patches='WwogIHsKICAgICJkYXRlIjogIjEyLzEyLzIwMjMiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHgwYjU3MjZiNzM0OGVmQmRBODYyMEQ1QzM3NEY4NUNiZThmMDQwQjZhIiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIwLjAiCiAgfSwKICB7CiAgICAiZGF0ZSI6ICI1LzI0LzIwMjQiLAogICAgInByb2plY3QiOiAibGlmaSIsCiAgICAiY2hhaW4iOiAiZXRoZXJzY2FuLmlvIiwKICAgICJhZGRyZXNzIjogIjB4MTIzMWRlYjZmNTc0OWVmNmNlNjk0M2EyNzVhMWQzZTc0ODZmNGVhZSIsCiAgICAidHlwZSI6ICJkaWFtb25kX2ZhY2V0IiwKICAgICJpbXBsX2FkZHJlc3MiOiAiMHg3RDE5NDBmRGZGMEIzN2MxMzdCMTA1Y2U3OTY3QjNCODZEQjQyNjQ4IiwKICAgICJQcm94eUNvbnRyYWN0TmFtZSI6ICIiLAogICAgIlByb3h5Q29tcGlsZXJWZXJzaW9uIjogIiIsCiAgICAicHJldlZlcnNpb25Db3VudCI6ICIxLjAiCiAgfQpd'>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x00990C0FfBB7eAB014351652aFB65AaE00db43A4</td>
+                <td>lifi</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/lifi/'>1,000,000</a></td>
+                <td>2 - 12/12/2023, 5/24/2024</td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x0d7E906BD9cAFa154b048cFa766Cc1E54E39AF9B</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x137cc585f607edebbc3ca6360affcfeab507b374</td>
+                <td>scroll</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/scroll/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xa13BAF47339d63B743e7Da8741db5456DAc1E556</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x9bb163401e8c72573854c4cd968afa7a7b02d25f</td>
+                <td>scroll</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/scroll/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x7941D082D46a9A8c3E8c2106187A24B74cc1bdD3</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xfc31c8eb86867c1258d1dc8240a5828e7f2c685c</td>
+                <td>benddao</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/benddao/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x39254033945AA2E4809Cc2977E7087BEE48bd7Ab</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x49b60053869a0a7ef60242ea7a4d1317a8d51f54</td>
+                <td>origindefi</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/origindefi/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xbC9f74b3b14f460a6c47dCdDFd17411cBc7b6c53</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x152442d77e9fb9c210953d583cbb2da88027fcb9</td>
+                <td>polygon</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/polygon/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x4579709627CA36BCe92f51ac975746f431890930</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x42d98c63f642797c132b3e99c20ff6f751aad3a</td>
+                <td>angleprotocol</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/angleprotocol/'>500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x052Ab3fd33cADF9D9f227254252da3f996431f75</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x6351a8b9d49b7c0f8be21fba148959a658bb8968</td>
+                <td>elixirprotocol</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/elixirprotocol/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x1344A36A1B56144C3Bc62E7757377D288fDE0369</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x5c424c3d0f32b21cb3d51b780eb1b38b6ae8923f</td>
+                <td>notional</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/notional/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x47D74516B33eD5D70ddE7119A40839f6Fcc24e57</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x7762cbfa8f62999a8a40d800b751686e99a31c9a</td>
+                <td>pendle</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/pendle/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x1e56299ebc8a1010cec26005d12e3e5c5cc2db00</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x9be875cdbb8409dbc1a553c8ddc1fc05cddf80ce</td>
+                <td>pendle</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/pendle/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x453213a019585764ecf11075ce600bf8ec7d8c16</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x76ba3eC5f5adBf1C58c91e86502232317EeA72dE</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xea541f8a21ae817177269503f78cafb50d3a88a8</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xebC85d44cefb1293707b11f707bd3CEc34B4D5fA</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x28b844ec6d9dfadffb01b9b5e3aa910ee0871ff7</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x196bF3A63c50BcA1Eff5A5809B72DFc58F0C2c1a</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x2eab66fbae64a6ad0839707cb2e60e1e6a24be3c</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xb2c2c72f57864baca7bda6bcb5965ab8f58f9610</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xebf12fa5ceb309b5d8cac007d1e2a7fbbf91ef79</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xA950974f64aA33f27F6C5e017eEE93BF7588ED07</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x3f6b71c19d884c04d2da732f0a975627b24c0152</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x77F6aBDE8bBf87c51A800C43e7b93A7EBDbA605f</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xe51738efdfcbcf348a602338968b091d0ce5922f</td>
+                <td>radiant</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/radiant/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xa430A427bd00210506589906a71B54d6C256CEdb</td>
+                <td>optimistic.etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xbcea5139048557c89d394c3d003f2de382d4d00</td>
+                <td>exactly</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/exactly/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x81C9A7B55A4df39A9B7B5F781ec0e53539694873</td>
+                <td>optimistic.etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xcaa6136c4f85bca3b309b28e559fd3a27e0c40b3</td>
+                <td>exactly</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/exactly/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xc4d4500326981eacD020e20A81b1c479c161c7EF</td>
+                <td>optimistic.etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xad973ef23cd21dd9b38dc84132adcb4ff64f8da5</td>
+                <td>exactly</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/exactly/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x22ab31Cd55130435b5efBf9224b6a9d5EC36533F</td>
+                <td>optimistic.etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x3e5a7019e3e59f355e2575556cf8baf83f3f4c2a</td>
+                <td>exactly</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/exactly/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xBd1ba78A3976cAB420A9203E6ef14D18C2B2E031</td>
+                <td>optimistic.etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x59611c1e363e76e85f246dd26a821b324841930f</td>
+                <td>exactly</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/exactly/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x3E14dC1b13c488a8d5D310918780c983bD5982E7</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x550872b190d1e01770fce79a1817345b1c558aa6</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x6EeE6060f715257b970700bc2656De21dEdF074C</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xf9e63dffb32593ba65a8e1bf21d7dab805aa8edc</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xcd6870a8d963626bf55fd0327f9d8f5ef275cd86</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x2C90719f25B10Fc5646c82DA3240C76Fa5BcCF34</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xec28f34fc1206377f68c355cd2177a0c84387702</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xfd83982ee75892781242141ee19e1b42428b8220</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x27e1e4E6BC79D93032abef01025811B7E4727e85</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xfd83982ee75892781242141ee19e1b42428b8220</td>
+                <td>superfluid</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/superfluid/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xfdc7b8bFe0DD3513Cc669bB8d601Cb83e2F69cB0</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x46c89397aa6e8aed9721e6e3b933e41fae9528db</td>
+                <td>dhedge</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/dhedge/'>50,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xE803684B9E391D01Dc1cdF76baC9aE3A596B2ae0</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x9837b8f1fa26b137b91e1653cb927391105fe72c</td>
+                <td>cyan</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/cyan/'>25,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xbAf5f3A05BD7Af6f3a0BBA207803bf77e2657c8F</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xac1d13f58967deca7938f4d701a46ce351b8e0b1</td>
+                <td>renzoprotocol</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/renzoprotocol/'>500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x4994EFc62101A9e3F885d872514c2dC7b3235849</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x2d2ed89f15d6f1dd95d46ebd2b9163545bd4c5f3</td>
+                <td>renzoprotocol</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/renzoprotocol/'>500,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x2c3d9CE6b090CB46865e97a891F776e5EDeaD001</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xF83A2d873fAB404fa12c0830F5997EB85a3e2802</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xfC467E0156d7A6e8886aC3cB172a9A06846A31A9</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xa2545e9B23224150e11CD62180e8429e3E3b10DD</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xE2097353397f143c92A2d20e8c48879Ec4F2Bf06</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x53D2127954Dd01f9bEFc2acF110ADCF3200fd868</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x6b59f17142DA542dD3a152153993Ce47f76e58BB</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x2E954D6064035db849F8665a2129829b9962a3E4</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x209A9A01980377916851af2cA075C2b170452018</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0xA097899EbDA90Edc460e451eBd44Fa202E4635D7</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x7e01c3f7dcB8bc5FD0be6bd6d86675fea1Edf356</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x052a1C48cFFf2548Ccd94902ECC76faE43072021</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x22a31bFfCCd5FA5C45Dfae100E2b6f567Cbf1d12</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x3E0Ba164b5B32C7A2f1cC61e8D579cDBC00d7F3E</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xd06fc0A992147fc620c47fce01C3f77441e78843</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x33333838325C25b0f8Ea5ea51cb747d64a625B48</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0xF380f230672a85eBec2E4c7417060979d16DD7C8</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x058DD4f5415eE2EfdD5C90eDEF15a5610Ce5ec4B</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFF162c694eAA571f685030649814282eA457f169</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x212a3c0B8bF54aB5Dc0c8274A4948B402E54374C</td>
+                <td>gainsnetwork</td>
+                <td></td>
+                <td></td>
+                <td>diamond_facet</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/gainsnetwork/'>400,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xA479582c8b64533102F6F528774C536e354B8d32</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x271b9f70822f4799017327d4d2ac553d4ef08ff9</td>
+                <td>origindefi</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/origindefi/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x8bBBCB5F4D31a6db3201D40F478f30Dc4F704aE2</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x708d06a7de6295a1ba6ae9d7fe535e8862d73523</td>
+                <td>origindefi</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/origindefi/'>1,000,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x760Fa0aB719c4067D3A8d4727Cf07E8f3Bf118db</td>
+                <td>arbiscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x8b1c1bfbdf347e5cdf5e5511d70211390ebebf08</td>
+                <td>ipor</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/ipor/'>100,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x8B71140AD2e5d1E7018d2a7f8a288BD3CD38916F</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x20f2a7a3c941e13083b36f2b765213dec9ee9073</td>
+                <td>etherfi</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/etherfi/'>200,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xA88594D404727625A9437C3f886C7643872296AE</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0xbe08a91ade130ad61193be2321ea06c4c39e124a</td>
+                <td>moonwell</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/moonwell/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x734AbBCe07679C9A6B4Fe3bC16325e028fA6DbB7</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0xef68c8f8bdeef8e938f519ee818dec80e320ce6b</td>
+                <td>moonwell</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/moonwell/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xe0278B32c627FF6fFbbe7de6A18Ade145603e949</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x98e708bbce1f158c1bde25f206afa7562fd0157f</td>
+                <td>moonwell</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/moonwell/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x65A633E8E379F9358C389c75ff1D913a92ab95B8</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x3343b3efebb99b543da30d272d6363d672372af1</td>
+                <td>moonwell</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/moonwell/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xe66e3a37c3274ac24fe8590f7d84a2427194dc17</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x4439640c018e541ec6b29a5828bc876327cf556c</td>
+                <td>moonwell</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/moonwell/'>250,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x66aDcF8A434a22b825074E67486A138A30b3478b</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x75d68afd9b36c4b6e05b3900494ef777064285e8</td>
+                <td>teahousefinance</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/teahousefinance/'>15,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xB38e48B8Bc33CD65551BdaC8d954801D56625eeC</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x75d68afd9b36c4b6e05b3900494ef777064285e8</td>
+                <td>teahousefinance</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/teahousefinance/'>15,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xB0412D2baB1c5d396d9a52F1A2aCDB58C82a14f0</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x75d68afd9b36c4b6e05b3900494ef777064285e8</td>
+                <td>teahousefinance</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/teahousefinance/'>15,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x9cD73d12dF1DB78EcffD1519c240a5512A498ff3</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x75d68afd9b36c4b6e05b3900494ef777064285e8</td>
+                <td>teahousefinance</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/teahousefinance/'>15,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x18DAc71c228D1C32c99489B7323d441E1175e443</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x1b5cc028a4276597c607907f24e1ac05d3852cfc</td>
+                <td>optimism</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/optimism/'>2,000,042</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFC1759E75180aeE982DC08D0d6D365ebFA0296a7</td>
+                <td>etherscan.io</td>
+                <td>2024-09-24</td>
+                <td>0x1b20c6b5b620b62ff27f7eee31cf7b20962f0d99</td>
+                <td>xterio</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/xterio/'>80,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFC1759E75180aeE982DC08D0d6D365ebFA0296a7</td>
+                <td>polygonscan.com</td>
+                <td>2024-09-24</td>
+                <td>0x1b20c6b5b620b62ff27f7eee31cf7b20962f0d99</td>
+                <td>xterio</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/xterio/'>80,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0xFC1759E75180aeE982DC08D0d6D365ebFA0296a7</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0x9cbf164420286357b268674f6bf0fa29800d59ae</td>
+                <td>xterio</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/xterio/'>80,000</a></td>
+                <td>0 - </td>
+            </tr>
+            <tr data-patches=''>
+                <td><input type='checkbox' class='proxyRow' onchange='generateScript()'></td>
+                <td>0x7127f0FEaEF8143241A5FaC62aC5b7be02Ef26A9</td>
+                <td>basescan.org</td>
+                <td>2024-09-24</td>
+                <td>0xf0232b1fac7de145c458c26a2a8a9c00f1d58535</td>
+                <td>xterio</td>
+                <td></td>
+                <td></td>
+                <td>impl_proxy</td>
+                <td><a target='_blank' href='https://immunefi.com/bounty/xterio/'>80,000</a></td>
+                <td>0 - </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Generated Shell Script</h2>
+    <input type='text' id='output_dir' value='source_code' onkeyup="generateScript()" />
+    <textarea id="shellScript" readonly></textarea>
+    <script>
+        function generateScript() {
+            var scriptLines = [];
+            var selectedContractsDetail = [];
+            var selectedProxiesDetail = [];
+            var chain = ""; // last selected chain
+            var version = ""; // last selected version
+            var liveContractsSelection = document.getElementById('liveContractsSelection').value;
+            var proxiesSelection = document.getElementById('proxiesSelection').value;
+            var output_dir = document.querySelector('#output_dir').value
+            var output_dir_param = output_dir ? `-f ${output_dir}` : ""
+            var complexScriptPrefix = `
+cp ~/Desktop/slither-custom-tooling/tools/solidity/_downloadLiveContracts.py .
+`
+            var complexScriptTemplatePostfix = `
+cd ${output_dir}
+cpslither
+init_web3_fuzz
+code .
+        `
+            // contracts
+            document.querySelectorAll('.contactRow:checked').forEach(function (cb) {
+                var row = cb.closest('tr');
+                let patches = row.getAttribute('data-patches') ? JSON.parse(atob(row.getAttribute(
+                    'data-patches'))) : []
+                chain = row.cells[2].textContent
+                version = row.cells[3].textContent
+                let date = row.cells[5].textContent
+                var columnIndex = liveContractsSelection === 'address' ? 1 :
+                6; // Adjust index based on selection and CSV structure
+                var domain = row.cells[2].textContent;
+                var value = row.cells[columnIndex].textContent;
+                scriptLines.push(`python3 _downloadLiveContracts.py ${domain} ${value} ${output_dir_param}`);
+                let contractName = row.cells[4].textContent
+                let address = row.cells[1].textContent
+                selectedContractsDetail.push(`${contractName} = ${address} # ${contractName} ${date}`)
+                for (let patch of patches) {
+                    selectedContractsDetail.push(
+                        `	python3 _downloadLiveContracts.py ${patch.chain} ${patch.address} -f diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`
+                        );
+                    selectedContractsDetail.push(
+                        `	meld ${output_dir} diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`);
+                    selectedContractsDetail.push("")
+                }
+            });
+            // proxies
+            document.querySelectorAll('.proxyRow:checked').forEach(function (cb) {
+                var row = cb.closest('tr');
+                let patches = row.getAttribute('data-patches') ? JSON.parse(atob(row.getAttribute(
+                    'data-patches'))) : []
+                chain = row.cells[2].textContent
+                version = row.cells[6].textContent
+                let date = row.cells[3].textContent
+                var columnIndex = proxiesSelection === 'address' ? 1 :
+                4; // Adjust index based on selection and CSV structure
+                var domain = row.cells[2].textContent;
+                var value = row.cells[columnIndex].textContent;
+                scriptLines.push(`python3 _downloadLiveContracts.py ${domain} ${value} ${output_dir_param}`);
+                let contractName = row.cells[7].textContent
+                let address = row.cells[4].textContent
+                let proxy_addr = row.cells[1].textContent
+                selectedProxiesDetail.push(
+                    `${contractName} = ${address} (proxy: ${proxy_addr}) # ${contractName} ${date}`)
+                for (let patch of patches) {
+                    selectedProxiesDetail.push(
+                        `	python3 _downloadLiveContracts.py ${patch.chain} ${patch.impl_address} -f diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`
+                        );
+                    selectedProxiesDetail.push(
+                        `	meld ${output_dir} diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`
+                        );
+                    selectedProxiesDetail.push("")
+                }
+            });
+            version = version.split('+')[0].replace('v', '')
+            var complexScript = complexScriptPrefix +
+                `\nsolc-select install ${version}\n` +
+                `solc-select use ${version}\n\n` +
+                scriptLines.join('\n') +
+                complexScriptTemplatePostfix +
+                `\ncat << EOF > _contract_info.txt\n${chain}\n\n` + selectedContractsDetail.join('\n') +
+                selectedProxiesDetail.join('\n') + '\nEOF\n'
+            document.getElementById('shellScript').value = complexScript;
+        }
+    </script>
+</body>
+</html>
