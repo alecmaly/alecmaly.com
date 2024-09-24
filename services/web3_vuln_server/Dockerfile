@@ -10,12 +10,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq li
 
 
 # downloading hardcoded version as there is currently an issue installing ps on debian 12
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell_7.4.5-1.deb_amd64.deb && \
-    dpkg -i powershell_7.4.5-1.deb_amd64.deb && \
-    apt-get install -f && \
-    rm powershell_7.4.5-1.deb_amd64.deb
+# RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell_7.4.5-1.deb_amd64.deb && \
+#     dpkg -i powershell_7.4.5-1.deb_amd64.deb && \
+#     apt-get install -f && \
+#     rm powershell_7.4.5-1.deb_amd64.deb
 
 
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
+    mkdir powershell && \
+    tar -xvf powershell-7.4.5-linux-arm64.tar.gz -C powershell && \
+    cd powershell && \
+    chmod +x pwsh
+
+ENV PATH="/app/powershell:${PATH}"
 
 
 RUN adduser --disabled-password --gecos '' myuser
