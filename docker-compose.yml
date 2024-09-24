@@ -21,14 +21,22 @@ services:
       - ./services/oss_vuln_server:/opt/app
     expose: 
       - 3000
+      
+  web3-vuln-server:
+    restart: unless-stopped
+    build: ./services/web3_vuln_server
+    volumes:
+      - ./services/oss_vuln_server:/app
+    env_file:
+      - .env
+    expose:
+      - 3000
 
   riskfactor-server:
     restart: unless-stopped
     build: ./services/riskfactor_server
     # command: python run.py run
     command: python server.py
-    env_file:
-      - .env
     expose: 
       - 8000
 
@@ -37,8 +45,6 @@ services:
     build: ./services/blog_search_service
     # command: python run.py run
     command: bash run.sh
-    env_file:
-      - .env
     volumes:
       - /var/www/html/blog:/var/www/html/blog
       - ./services/blog_search_service:/opt/app
