@@ -23,6 +23,8 @@ RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoe
 
 
 RUN chown -R myuser:myuser /app
+RUN mkdir -p /app/public
+RUN chown -R myuser:myuser /app/public
 USER myuser
 
 

@@ -11,3 +11,5 @@ python3 "8_updateContractsList.py"
 
 pwsh -noprofile "11_generateHTMLReview.ps1"
 
+cp web3contractreport.html public
+cp web3repoupdates.html public
