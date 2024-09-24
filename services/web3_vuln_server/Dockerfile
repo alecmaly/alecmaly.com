@@ -36,7 +36,7 @@ ENV PATH="/app/powershell:${PATH}"
 
 
 # Update cronjob to run the python script every day as myuser
-RUN echo "0 0 * * * cd /app && ./0_runAll.sh" > /tmp/refresh_oss_vulns
+RUN echo "0 0 * * * cd /app && /bin/bash ./0_runAll.sh" > /tmp/refresh_oss_vulns
 RUN crontab /tmp/refresh_oss_vulns
 
 
@@ -59,7 +59,6 @@ COPY 9_addPatchDiffDetails.ps1 .
 COPY 10_review.ps1 .
 COPY 11_generateHTMLReview.ps1 .
 
-RUN chmod +x 0_runAll.sh
 
 # import old data
 COPY contract_monitoring contract_monitoring 
