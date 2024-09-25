@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./services/web3_vuln_server/public:/app/public
+      - ./services/web3_vuln_server/app/public:/app/public
     expose:
       - 3000
 
