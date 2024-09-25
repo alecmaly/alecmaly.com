@@ -28,7 +28,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./services/web3_vuln_server/app/public:/app/public
+      - ./services/web3_vuln_server/public:/app/public
+      - ./services/web3_vuln_server/contract_monitoring:/app/contract_monitoring
     expose:
       - 3000
 
