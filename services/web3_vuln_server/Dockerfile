@@ -22,10 +22,6 @@ RUN adduser --disabled-password --gecos '' myuser
 RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
 
 
-RUN chown -R myuser:myuser /app
-RUN mkdir -p /app/public
-RUN chown -R myuser:myuser /app/public
-USER myuser
 
 
 RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
@@ -35,11 +31,6 @@ RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/power
     chmod +x pwsh
 
 ENV PATH="/app/powershell:${PATH}"
-
-
-# Update cronjob to run the python script every day as myuser
-RUN echo "0 0 * * * cd /app && /bin/bash ./0_runAll.sh" > /tmp/refresh_oss_vulns
-RUN crontab /tmp/refresh_oss_vulns
 
 
 
@@ -65,8 +56,16 @@ COPY 11_generateHTMLReview.ps1 .
 # import old data
 COPY contract_monitoring contract_monitoring 
 
-COPY web3contractreport.html public/web3contractreport.html
-COPY web3repoupdates.html public/web3repoupdates.html
-
 COPY run_server.py .
-CMD ["/bin/bash", "-c", "sudo service cron start & /usr/local/bin/python run_server.py"]
+
+RUN mkdir -p /app/public
+RUN chown -R myuser:myuser /app
+USER myuser
+
+# Update cronjob to run the python script every day as myuser
+RUN echo "0 0 * * * cd /app && /bin/bash ./0_runAll.sh" > /tmp/refresh_oss_vulns
+RUN crontab /tmp/refresh_oss_vulns
+
+VOLUME /app/public
+
+CMD ["/bin/bash", "-c", "sudo service cron start && /usr/local/bin/python run_server.py"]
