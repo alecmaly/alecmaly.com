@@ -68,4 +68,4 @@ RUN crontab /tmp/refresh_oss_vulns
 
 VOLUME /app/public
 
-CMD ["/bin/bash", "-c", "sudo service cron start && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "sudo /usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
