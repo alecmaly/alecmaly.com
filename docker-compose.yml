@@ -25,10 +25,10 @@ services:
   web3-vuln-server:
     restart: unless-stopped
     build: ./services/web3_vuln_server
-    volumes:
-      - ./services/oss_vuln_server:/app
     env_file:
       - .env
+    volumes:
+      - ./services/web3_vuln_server/public:/app/public
     expose:
       - 3000
 
