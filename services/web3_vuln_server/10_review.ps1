@@ -1,4 +1,4 @@
-$contracts = import-csv .\contract_monitoring\live_contacts.csv
+$contracts = import-csv .\contract_monitoring\live_contracts.csv
 $proxies = import-csv .\contract_monitoring\live_contract_proxies.csv
 $repos = import-csv .\immunefi_github_repos.csv
 

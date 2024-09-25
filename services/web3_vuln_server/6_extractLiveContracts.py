@@ -17,7 +17,7 @@ def read_csv(filepath):
     except:
         return []
     
-output_filepath = "./contract_monitoring/live_contacts.csv"
+output_filepath = "./contract_monitoring/live_contracts.csv"
 seen_live_contracts = read_csv(output_filepath)
 
 seen_contracts_map = {}

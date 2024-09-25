@@ -110,7 +110,7 @@ def read_csv(filepath):
     
 
 
-output_filepath = "./contract_monitoring/live_contacts.csv"
+output_filepath = "./contract_monitoring/live_contracts.csv"
 live_contracts = read_csv(output_filepath)
 
 i = 0

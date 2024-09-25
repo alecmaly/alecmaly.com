@@ -1,4 +1,4 @@
-$contracts_filepath = "./contract_monitoring/live_contacts.csv"
+$contracts_filepath = "./contract_monitoring/live_contracts.csv"
 $proxies_filepath = "./contract_monitoring/live_contract_proxies.csv"
 
 $contracts = import-csv $contracts_filepath
