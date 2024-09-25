@@ -45,7 +45,11 @@ def process_program(program):
         github_urls = []
         contract_urls = []
         for row in scope_table_rows:
-            text = row.find('td').text.strip()
+            link_ele = row.find('a')
+            if link_ele is None:
+                continue
+            
+            text = row.find('a').attrs['href']
             text = text.split("?")[0].split("#")[0]  # strip hashes + params from urls
 
             # clean up text in cell
@@ -58,7 +62,7 @@ def process_program(program):
 
             # process GitHub
 
-            if "github.com" in text and text != "github.com/immunefi-team/Web3-Security-Library":
+            if "github.com" in text and 'github.com/immunefi-team/Web3-Security-Library' not in text:
                 if text not in github_urls:
                     github_urls.append(text)
 
