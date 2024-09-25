@@ -60,11 +60,8 @@ COPY 10_review.ps1 .
 COPY 11_generateHTMLReview.ps1 .
 
 
-# import old data
-COPY contract_monitoring contract_monitoring 
-
-COPY web3contractreport.html public/web3contractreport.html
-COPY web3repoupdates.html public/web3repoupdates.html
+VOLUME /app/contract_monitoring
+VOLUME /app/public
 
 COPY run_server.py .
 CMD ["/bin/bash", "-c", "sudo /usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
