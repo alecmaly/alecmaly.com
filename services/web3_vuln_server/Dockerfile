@@ -17,12 +17,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq li
 
 
 
-RUN adduser --disabled-password --gecos '' myuser
-# Give 'myuser' permission to run 'service cron start' without a password
-RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
-
-
-
 
 RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
     mkdir powershell && \
@@ -40,32 +34,15 @@ COPY requirements.txt .
 # # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# # Copy additional scripts and entrypoint
-COPY 0_runAll.sh .
-COPY 1_collect-scopes.py .
-COPY 3_getGithubRepoCommitDetails.ps1 .
-COPY 4_converToHTML.ps1 .
-COPY 6_extractLiveContracts.py .
-COPY 7_lookupProxies.py .
-COPY 8_updateContractsList.py .
-COPY 9_addPatchDiffDetails.ps1 .
-COPY 10_review.ps1 .
-COPY 11_generateHTMLReview.ps1 .
 
-
-# import old data
-COPY contract_monitoring contract_monitoring 
-
-COPY run_server.py .
-
-RUN mkdir -p /app/public
-RUN chown -R myuser:myuser /app
-USER myuser
-
-# Update cronjob to run the python script every day as myuser
-RUN echo "0 0 * * * cd /app && /bin/bash ./0_runAll.sh" > /tmp/refresh_oss_vulns
-RUN crontab /tmp/refresh_oss_vulns
+# update cronjob to run python script every day, should be run out of /opt/app
+RUN echo "* */6 * * * root cd /app && /bin/bash ./0_runAll.sh" > /etc/cron.d/refresh_web3_vulns
+RUN chmod 0644 /etc/cron.d/refresh_web3_vulns
+RUN crontab /etc/cron.d/refresh_web3_vulns
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+# RUN cron && tail -f /var/log/cron.log
 
 VOLUME /app/public
 
-CMD ["/bin/bash", "-c", "sudo /usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "cron && /usr/local/bin/python run_server.py"]
