@@ -5,7 +5,7 @@ function converToBase64($string) {
 }
 
 # Define file paths
-$liveContactsPath = "./contract_monitoring/live_contacts.csv"
+$liveContactsPath = "./contract_monitoring/live_contracts.csv"
 $liveContactProxiesPath = "./contract_monitoring/live_contract_proxies.csv"
 
 $programs = Import-Csv "./immunefi_data.csv"

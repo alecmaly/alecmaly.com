@@ -148,7 +148,7 @@ def read_csv(filepath):
 
 
 output_filepath = "./contract_monitoring/live_contract_proxies.csv"
-live_contracts_filepath = "./contract_monitoring/live_contacts.csv"
+live_contracts_filepath = "./contract_monitoring/live_contracts.csv"
 seen_live_contract_proxies = read_csv(output_filepath)
 
 seen_contract_proxies_map = {}
