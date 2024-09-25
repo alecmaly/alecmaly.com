@@ -17,14 +17,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq li
 
 
 
-RUN adduser --disabled-password --gecos '' myuser
-# Give 'myuser' permission to run 'service cron start' without a password
-RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
-
-
-RUN chown -R myuser:myuser /app
-USER myuser
-
 
 RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/powershell-7.4.5-linux-arm64.tar.gz && \
     mkdir powershell && \
@@ -35,9 +27,13 @@ RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.5/power
 ENV PATH="/app/powershell:${PATH}"
 
 
-# Update cronjob to run the python script every day as myuser
-RUN echo "0 0 * * * cd /app && /bin/bash ./0_runAll.sh" > /tmp/refresh_oss_vulns
-RUN crontab /tmp/refresh_oss_vulns
+# update cronjob to run python script every day, should be run out of /opt/app
+RUN echo "0 0 * * * root cd /app && /bin/bash ./0_runAll.sh" > /etc/cron.d/refresh_web3_vulns
+RUN chmod 0644 /etc/cron.d/refresh_web3_vulns
+RUN crontab /etc/cron.d/refresh_web3_vulns
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+# RUN cron && tail -f /var/log/cron.log
 
 
 
@@ -64,4 +60,4 @@ VOLUME /app/contract_monitoring
 VOLUME /app/public
 
 COPY run_server.py .
-CMD ["/bin/bash", "-c", "sudo /usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "/usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
