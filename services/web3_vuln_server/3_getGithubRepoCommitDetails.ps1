@@ -103,7 +103,7 @@ $scriptblock = {
 
     function Get-ReadmeSlitherText($github_project) {
         $resp = Invoke-RestMethod -Method Get "https://raw.githubusercontent.com/$($github_project)/master/README.md" # -Proxy http://localhost:8080
-        $slither_comments = $resp | findstr /i "slither" 2>$null
+        $slither_comments = ($resp | Select-String -Pattern ".*slither.*" -CaseSensitive:$false -All).matches.Value -join "`n" 
         return $slither_comments
     }
 
