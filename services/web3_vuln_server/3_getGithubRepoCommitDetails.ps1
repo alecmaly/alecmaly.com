@@ -15,7 +15,7 @@
 # $resp = Invoke-RestMethod -Headers $headers -Uri "https://api.github.com/rate_limit" -Proxy "http://localhost:8080"
 
 # load .env file
-Get-Content .env | foreach {
+Get-Content .env -ErrorAction SilentlyContinue | foreach {
     $name, $value = $_.split('=')
     if ([string]::IsNullOrWhiteSpace($name) -or $name.Contains('#')) {
         return
