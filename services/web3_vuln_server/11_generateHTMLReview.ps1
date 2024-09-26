@@ -56,25 +56,32 @@ $liveContactProxiesTable = ConvertTo-HtmlTableWithCheckboxes $liveContactProxies
 # Define the CSS for the HTML file
 $css = @"
 <style>
-body {
-    font-family: Arial, sans-serif;
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
-}
-textarea {
-    width: 100%;
-    height: 400px;
-}
+    body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    textarea {
+        width: 100%;
+        height: 400px;
+    }
+    h2 {
+        top: 0;
+        position: sticky;
+        background-color: aliceblue;
+        z-index: 1;
+        padding: 8px;
+    }
 </style>
 "@
 
