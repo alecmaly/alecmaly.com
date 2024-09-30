@@ -33,7 +33,6 @@ FORMATTED_DATE = CURRENT_DATE.strftime("%Y-%m-%d")
 
 def showDataInChunks(result_bytes):
     chunk_size = 32
-
     # Iterate over the byte string in chunks
     for i in range(0, len(result_bytes), chunk_size):
         chunk = result_bytes[i:i + chunk_size]
@@ -44,7 +43,6 @@ def showDataInChunks(result_bytes):
 
 def getProxyAddress(conn_url, contract_address):
     contract_address = Web3.to_checksum_address(contract_address)
-
     # also try looking at facets() function?
     try:
         web3 = Web3(Web3.HTTPProvider(conn_url))  # need different for each network
@@ -54,9 +52,7 @@ def getProxyAddress(conn_url, contract_address):
                 "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
             )
         )
-
         # TODO: make recursive?
-
         impl_contract_unpadded = "0x" + impl_contract.lstrip("0x").lstrip("0")
         return impl_contract_unpadded
     except:
@@ -65,7 +61,6 @@ def getProxyAddress(conn_url, contract_address):
 
 def getDiamondFacetAddresses(conn_url, contract_address):
     contract_address = Web3.to_checksum_address(contract_address)
-
     try:
         # from Diamond standard
         contract_abi = [
@@ -88,18 +83,13 @@ def getDiamondFacetAddresses(conn_url, contract_address):
                 "type": "function"
             }
         ]
-
         web3 = Web3(Web3.HTTPProvider(conn_url)) 
-
         # Load the contract ABI
-
         # Create a contract instance
         contract = web3.eth.contract(address=contract_address, abi=contract_abi)
-
         # Call a contract function (e.g., facets())
         facets = contract.functions.facets().call()
         facet_addresses = [facet[0] for facet in facets]  # extract addresses
-
         return facet_addresses
     except:
         return []
@@ -138,7 +128,6 @@ def read_csv(filepath):
     try:
         # Read the CSV file directly into a DataFrame
         df = pd.read_csv(filepath)
-
         # Convert the DataFrame to a list of dictionaries
         # Each dictionary represents a row, with column names as keys
         return df.to_dict(orient='records')
@@ -162,7 +151,6 @@ def processImplAddress(impl_addr, s_type):
     # skip logging zero address
     if impl_addr == "0x" or impl_addr == "0x0000000000000000000000000000000000000000000000000000000000000000":
         return
-
     impl_addr_id = f"{row['chain']}-{row['address']}-{impl_addr}"
     if impl_addr and not seen_contract_proxies_map.get(impl_addr_id, None):
         # add
@@ -187,13 +175,11 @@ for row in live_contracts:
     try:
         impl_addr = getProxyAddress(conn_url=BLOCKCHAIN_INFURA_AUTH_MAP[row['chain']], contract_address=row['address'])
         processImplAddress(impl_addr, 'impl_proxy')
-
         impl_addresses = getDiamondFacetAddresses(conn_url=BLOCKCHAIN_INFURA_AUTH_MAP[row['chain']], contract_address=row['address'])
         for impl_addr in impl_addresses:
             processImplAddress(impl_addr, 'diamond_facet')
     except Exception as e:
         print("Err", e)
-
     i += 1
     if (i % 50 == 0):
         print(f"Completed: {i} / {len(live_contracts)}")
