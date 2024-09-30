@@ -76,7 +76,8 @@ $scriptblock = {
         'test', 'mock'
         'dev/',  'interfaces/', 'lib/', 'libraries/', 'cache/', 'script/', 'scripts/', 'misc/', 'deployments/', 'artifacts/', 
         '.t.sol', '.s.sol',
-        '.pdf', '.md', '.lock', '.png', '.ts', '.js', '.tsx', '.json', '.sql', '.svg'
+        '.pdf', '.md', '.lock', '.png', '.svg'
+        # '.pdf', '.md', '.lock', '.png', '.ts', '.js', '.tsx', '.json', '.sql', '.svg'
         )
 
     function Invoke-GitHubAPIGETRequest($headers, $uri) {
