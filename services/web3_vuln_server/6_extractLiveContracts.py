@@ -10,7 +10,6 @@ def read_csv(filepath):
     try:
         # Read the CSV file directly into a DataFrame
         df = pd.read_csv(filepath)
-
         # Convert the DataFrame to a list of dictionaries
         # Each dictionary represents a row, with column names as keys
         return df.to_dict(orient='records')
@@ -34,7 +33,6 @@ for row in data:
     if row['live_contract_urls'] and type(row['live_contract_urls']) != float:
         for live_contract_url in row['live_contract_urls'].split(';'):
             domain = live_contract_url.split("//")[1].split("/")[0]
-
             # Search for the Ethereum address in the URL
             # address = live_contract_url.split("/")[-1]
             try:
@@ -43,11 +41,9 @@ for row in data:
             except Exception as e:
                 print(f"failed to get address for url {live_contract_url}", e)
                 continue
-
             contract_key = f"{domain}-{address}"
             if seen_contracts_map.get(contract_key, None):
                 continue
-
             # append to list the newly found contracts
             seen_live_contracts.append({
                 'date': formatted_date,
