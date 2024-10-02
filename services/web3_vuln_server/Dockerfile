@@ -28,7 +28,7 @@ ENV PATH="/app/powershell:${PATH}"
 
 
 # update cronjob to run python script every day, should be run out of /opt/app
-RUN echo "0 0 * * * root cd /app && /bin/bash ./0_runAll.sh" > /etc/cron.d/refresh_web3_vulns
+RUN echo "0 0 * * * root cd /app && /bin/bash /app/0_runAll.sh" > /etc/cron.d/refresh_web3_vulns
 RUN chmod 0644 /etc/cron.d/refresh_web3_vulns
 RUN crontab /etc/cron.d/refresh_web3_vulns
 # Create the log file to be able to run tail
@@ -55,6 +55,7 @@ COPY 9_addPatchDiffDetails.ps1 .
 COPY 10_review.ps1 .
 COPY 11_generateHTMLReview.ps1 .
 
+RUN chmod +x /app/0_runAll.sh
 
 VOLUME /app/contract_monitoring
 VOLUME /app/public
