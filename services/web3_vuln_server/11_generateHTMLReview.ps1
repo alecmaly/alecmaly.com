@@ -28,17 +28,31 @@ function ConvertTo-HtmlTableWithCheckboxes {
 
     $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersionCount") }
     $table = "<table>`n<thead><tr><th>Select</th>"
+    
+    $chain_url_col_index = 0
+    $i = 1 # offset by 1 due to injected select (checkbox) field
     foreach ($column in $columns) {
+        if ($column -eq "chain") {
+            $chain_url_col_index = $i
+        }
         $table += "<th>$column</th>"
+        $i++
     }
     $table += "<th>max bounty</th>"
     $table += "<th>prevVersionCount</th>"
     $table += "</tr></thead>`n<tbody>"
 
+
     foreach ($row in $csvData) {
         $table += "<tr data-patches='$(converToBase64 -string $row.patches)'><td><input type='checkbox' class='$classCheckbox' onchange='generateScript()'></td>"
         foreach ($column in $columns) {
-            $table += "<td>$($row.$column)</td>"
+            if ($column -like "*address*" -or $column -eq "Implementation") {
+                $padded_addr = "0x" + $row.$column.replace("0x", "").PadLeft(40, '0')
+                $table += "<td><a target='_blank' href='https://$($row.chain)/address/$($padded_addr)'>$($padded_addr)</a></td>"
+            } else {
+                $table += "<td>$($row.$column)</td>"
+            }
+
         }
         $table += "<td><a target='_blank' href='https://immunefi.com/bounty/$($row.project)/'>$('{0:N0}' -f [int]$programs_map[$row.project])</a></td>" # max bounty
         $dates = $row.patches.date -join ', '
