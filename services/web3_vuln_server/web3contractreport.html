@@ -619,11 +619,20 @@ code .
             let contractName = row.cells[4].textContent
             let address = row.cells[1].textContent
             selectedContractsDetail.push(`${contractName} = ${address} # ${contractName} ${date}`)
-            for (let patch of patches) {
-                selectedContractsDetail.push(`	python3 _downloadLiveContracts.py ${patch.chain} ${patch.address} -f diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`);
-                selectedContractsDetail.push(`	meld ${output_dir} diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`);
+
+            if (patches.length > 0) {
+                for (let patch of patches) {
+                    selectedContractsDetail.push(`	python3 _downloadLiveContracts.py ${patch.chain} ${patch.address} -f diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`);
+                    selectedContractsDetail.push(`	meld ${output_dir} diff_${patch.ContractName}_${patch.date.replaceAll("/", "_")}`);
+                    selectedContractsDetail.push("")
+                }
+            } else {
+                // if no patches, show what commands could be run to diff
+                selectedContractsDetail.push(`	python3 _downloadLiveContracts.py ${chain} <prev_addr> -f diff_${contractName}_old`);
+                selectedContractsDetail.push(`	meld ${output_dir} diff_${contractName}_old`);
                 selectedContractsDetail.push("")
             }
+
         });
 
         // proxies
@@ -645,10 +654,18 @@ code .
             let proxy_addr = row.cells[1].textContent
 
             selectedProxiesDetail.push(`${contractName} = ${address} (proxy: ${proxy_addr}) # ${contractName} ${date}`)
-            for (let patch of patches) {
-                selectedProxiesDetail.push(`	python3 _downloadLiveContracts.py ${patch.chain} ${patch.impl_address} -f diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`);
-                selectedProxiesDetail.push(`	meld ${output_dir} diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`);
-                selectedProxiesDetail.push("")
+
+            if (patches.length > 0) {
+                for (let patch of patches) {
+                    selectedProxiesDetail.push(`	python3 _downloadLiveContracts.py ${patch.chain} ${patch.impl_address} -f diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`);
+                    selectedProxiesDetail.push(`	meld ${output_dir} diff_${patch.ProxyContractName}_${patch.date.replaceAll("/", "_")}`);
+                    selectedProxiesDetail.push("")
+                }
+            } else {
+                // if no patches, show what commands could be run to diff
+                selectedContractsDetail.push(`	python3 _downloadLiveContracts.py ${chain} <prev_addr> -f diff_${contractName}_old`);
+                selectedContractsDetail.push(`	meld ${output_dir} diff_${contractName}_old`);
+                selectedContractsDetail.push("")
             }
 
         });
