@@ -26,10 +26,10 @@ foreach ($line in $contracts) {
         $line | Add-Member NoteProperty -Name "patches" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
     }
 
-    If ($line.PSObject.Properties.Name.contains("prevVersionCount")) {
-        $line.prevVersionCount = ([Array]$previous_versions).Count
+    If ($line.PSObject.Properties.Name.contains("prevVersions")) {
+        $line.prevVersions = ([Array]$previous_versions).Count
     } else {
-        $line | Add-Member NoteProperty -Name "prevVersionCount" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
+        $line | Add-Member NoteProperty -Name "prevVersions" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
     }
 }
 
@@ -56,10 +56,10 @@ foreach ($line in $proxies) {
         $line | Add-Member NoteProperty -Name "patches" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
     }
 
-    If ($line.PSObject.Properties.Name.contains("prevVersionCount")) {
-        $line.prevVersionCount = ([Array]$previous_versions).Count
+    If ($line.PSObject.Properties.Name.contains("prevVersions")) {
+        $line.prevVersions = ([Array]$previous_versions).Count
     } else {
-        $line | Add-Member NoteProperty -Name "prevVersionCount" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
+        $line | Add-Member NoteProperty -Name "prevVersions" -Value $previous_versions -ErrorAction SilentlyContinue # don't need to do again in future as we already have the patches for previous verions
     }
 }
 

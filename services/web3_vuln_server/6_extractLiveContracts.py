@@ -15,15 +15,16 @@ def read_csv(filepath):
         return df.to_dict(orient='records')
     except:
         return []
-    
-output_filepath = "./contract_monitoring/live_contracts.csv"
-seen_live_contracts = read_csv(output_filepath)
 
 seen_contracts_map = {}
-for c in seen_live_contracts:
-    seen_contracts_map[f"{c['chain']}-{c['address']}"] = True    
+output_filepath = "./contract_monitoring/live_contracts.csv"
+seen_live_contracts = []
 
-# load 
+## Load previously seen live contracts, this may not be necessary as I only want contracts in scope 
+# seen_live_contracts = read_csv(output_filepath)
+# for c in seen_live_contracts:
+#     seen_contracts_map[f"{c['chain']}-{c['address']}"] = True    
+
 
 
 # Replace with your CSV file path
