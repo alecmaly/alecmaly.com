@@ -46,7 +46,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
     foreach ($row in $csvData) {
         $table += "<tr data-patches='$(converToBase64 -string $row.patches)'><td><input type='checkbox' class='$classCheckbox' onchange='generateScript()'></td>"
         foreach ($column in $columns) {
-            if ($column -like "*address*" -or $column -eq "Implementation" -and $row.$column.Length -gt 0) {
+            if ($column -like "*address*" -or $column -eq "impl_address" -and $row.$column.Length -gt 0) {
                 $padded_addr = "0x" + $row.$column.replace("0x", "").PadLeft(40, '0')
                 $table += "<td><a target='_blank' href='https://$($row.chain)/address/$($padded_addr)'>$($padded_addr)</a></td>"
             } else {
@@ -113,7 +113,7 @@ $htmlContent = @"
     <h2>Live Contracts</h2>
     <select id="liveContractsSelection" onchange="generateScript()">
         <option value="address">Address</option>
-        <option value="implementation">Implementation</option>
+        <option value="impl_address">Implementation Address</option>
     </select>
     $liveContactsTable
     <h2>Proxies</h2>

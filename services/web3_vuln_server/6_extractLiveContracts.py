@@ -18,17 +18,17 @@ def read_csv(filepath):
 
 seen_contracts_map = {}
 output_filepath = "./contract_monitoring/live_contracts.csv"
-seen_live_contracts = []
 
 ## Load previously seen live contracts, this may not be necessary as I only want contracts in scope 
-# seen_live_contracts = read_csv(output_filepath)
-# for c in seen_live_contracts:
-#     seen_contracts_map[f"{c['chain']}-{c['address']}"] = True    
+seen_live_contracts = read_csv(output_filepath)
+for c in seen_live_contracts:
+    seen_contracts_map[f"{c['chain']}-{c['address']}"] = True    
 
 
 
 # Replace with your CSV file path
 data = read_csv('immunefi_data.csv')
+addresses_in_scope = []
 for row in data:
     # why blanks get read as floats is confusing, probably a pandas thing. Ignore them.
     if row['live_contract_urls'] and type(row['live_contract_urls']) != float:
@@ -42,6 +42,7 @@ for row in data:
             except Exception as e:
                 print(f"failed to get address for url {live_contract_url}", e)
                 continue
+            addresses_in_scope.append(address)
             contract_key = f"{domain}-{address}"
             if seen_contracts_map.get(contract_key, None):
                 continue
@@ -54,6 +55,11 @@ for row in data:
             })
             seen_contracts_map[f"{domain}-{address}"] = True
 
+for c in seen_live_contracts:
+    if c['address'] in addresses_in_scope:
+        c['in_scope'] = True
+    else:
+        c['in_scope'] = False
 
 # output to file        
 df = pd.DataFrame(seen_live_contracts)

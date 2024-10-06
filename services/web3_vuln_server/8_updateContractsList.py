@@ -11,6 +11,10 @@ import json
 from dotenv import load_dotenv
 import os
 
+# load .env file
+load_dotenv()
+
+
 ## CONSTANTS
 INUFRA_KEY = os.getenv("INUFRA_KEY")
 
@@ -104,8 +108,18 @@ def read_csv(filepath):
 output_filepath = "./contract_monitoring/live_contracts.csv"
 live_contracts = read_csv(output_filepath)
 
+contracts_in_scope = []
 i = 0
 for row in live_contracts:
+    i += 1
+    if i % 20 == 0:
+        print(f"Completed {i} / {len(live_contracts)}")
+
+    if not row['in_scope']:
+        continue
+
+    contracts_in_scope.append(row['address'])
+
     token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
@@ -113,13 +127,10 @@ for row in live_contracts:
             # if not updated
             code = GetSourceCode(row['address'], row['chain'], token, download=False)
             row['ContractName'] = code[0]['ContractName']
-            row['Implementation'] = code[0]['Implementation']
+            row['impl_address'] = code[0]['impl_address']
             row['CompilerVersion'] = code[0]['CompilerVersion']
     except Exception as e:
         print(f"Failed on {row['chain']} for {row['address']}", e)
-    i += 1
-    if i % 20 == 0:
-        print(f"Completed {i} / {len(live_contracts)}")
 
 
 
@@ -139,6 +150,13 @@ live_contracts = read_csv(output_filepath)
 
 i = 0
 for row in live_contracts:
+    i += 1
+    if i % 20 == 0:
+        print(f"Completed {i} / {len(live_contracts)}")
+
+    if row['address'] not in contracts_in_scope:
+        continue
+
     token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
@@ -150,9 +168,6 @@ for row in live_contracts:
             row['ProxyCompilerVersion'] = code[0]['CompilerVersion']
     except Exception as e:
         print(f"Failed on {row['chain']} for {row['impl_address']}", e)
-    i += 1
-    if i % 20 == 0:
-        print(f"Completed {i} / {len(live_contracts)}")
 
 
 

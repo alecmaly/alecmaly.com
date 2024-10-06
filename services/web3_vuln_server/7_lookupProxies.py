@@ -171,6 +171,13 @@ i = 0
 # row = [r for r in live_contracts if r['project'] == 'beanstalk' and r['address'] == '0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5'][0]
 
 for row in live_contracts:
+    i += 1
+    if (i % 50 == 0):
+        print(f"Completed: {i} / {len(live_contracts)}")
+
+    if not row['in_scope']:
+        continue
+
     # why blanks get read as floats is confusing, probably a pandas thing. Ignore them.
     try:
         impl_addr = getProxyAddress(conn_url=BLOCKCHAIN_INFURA_AUTH_MAP[row['chain']], contract_address=row['address'])
@@ -180,9 +187,7 @@ for row in live_contracts:
             processImplAddress(impl_addr, 'diamond_facet')
     except Exception as e:
         print("Err", e)
-    i += 1
-    if (i % 50 == 0):
-        print(f"Completed: {i} / {len(live_contracts)}")
+
 
 
 # output to file        
