@@ -33,7 +33,7 @@ RUN touch /var/log/cron.log
 RUN adduser --disabled-password --gecos '' myuser
 # Give 'myuser' permission to run 'service cron start' without a password
 RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/sbin/service cron start" >> /etc/sudoers
-RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/local/bin/python /opt/app/download_osv_data.py" >> /etc/sudoers
+RUN echo "myuser ALL=(ALL) NOPASSWD: /usr/local/bin/python /opt/app/download_osv_data.py --force" >> /etc/sudoers
 
 
 USER myuser
@@ -43,4 +43,4 @@ EXPOSE 3001
 # CMD [ "python", "./download_osv_data.py"]
 # disable directory listing
 
-CMD ["/bin/bash", "-c", "sudo service cron start && sudo /usr/local/bin/python /opt/app/download_osv_data.py --force && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "sudo service cron start && sudo /usr/local/bin/python /opt/app/download_osv_data.py --force & /usr/local/bin/python run_server.py"]
