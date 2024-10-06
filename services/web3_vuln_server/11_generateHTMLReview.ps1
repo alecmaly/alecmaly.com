@@ -26,7 +26,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
         return ""
     }
 
-    $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersions") }
+    $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersions", "in_scope") }
     $table = "<table>`n<thead><tr><th>Select</th>"
     
     $chain_url_col_index = 0
