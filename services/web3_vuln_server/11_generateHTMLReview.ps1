@@ -26,7 +26,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
         return ""
     }
 
-    $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersionCount") }
+    $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersions") }
     $table = "<table>`n<thead><tr><th>Select</th>"
     
     $chain_url_col_index = 0
@@ -39,7 +39,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
         $i++
     }
     $table += "<th>max bounty</th>"
-    $table += "<th>prevVersionCount</th>"
+    $table += "<th>prevVersions</th>"
     $table += "</tr></thead>`n<tbody>"
 
 
@@ -56,7 +56,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
         }
         $table += "<td><a target='_blank' href='https://immunefi.com/bounty/$($row.project)/'>$('{0:N0}' -f [int]$programs_map[$row.project])</a></td>" # max bounty
         $dates = $row.patches.date -join ', '
-        $table += "<td>$($row.prevVersionCount) - $(($row.patches | convertfrom-json).date -join ', ')</td>" # prevVersionCount
+        $table += "<td>$($row.prevVersions) - $(($row.patches | convertfrom-json).date -join ', ')</td>" # prevVersions
         $table += "</tr>`n"
     }
     $table += "</tbody></table>"

@@ -168,7 +168,7 @@ def processImplAddress(impl_addr, s_type):
 live_contracts = read_csv(live_contracts_filepath)
 i = 0
 
-row = [r for r in live_contracts if r['project'] == 'beanstalk' and r['address'] == '0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5'][0]
+# row = [r for r in live_contracts if r['project'] == 'beanstalk' and r['address'] == '0xC1E088fC1323b20BCBee9bd1B9fC9546db5624C5'][0]
 
 for row in live_contracts:
     # why blanks get read as floats is confusing, probably a pandas thing. Ignore them.
