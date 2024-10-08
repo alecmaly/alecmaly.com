@@ -62,5 +62,4 @@ VOLUME /app/contract_monitoring
 VOLUME /app/public
 
 COPY run_server.py .
-# CMD ["/bin/bash", "-c", "/usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
-CMD ["/bin/bash", "-c", "/usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
+CMD ["/bin/bash", "-c", "printenv > /etc/environment && /usr/sbin/service cron start && /usr/local/bin/python run_server.py"]
