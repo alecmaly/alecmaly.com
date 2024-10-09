@@ -1,4 +1,4 @@
-from python:latest
+from python:3.10
 
 WORKDIR /opt/app
 
