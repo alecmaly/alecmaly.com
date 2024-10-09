@@ -142,27 +142,32 @@ seen_live_contract_proxies = read_csv(output_filepath)
 
 seen_contract_proxies_map = {}
 for c in seen_live_contract_proxies:
-    seen_contract_proxies_map[f"{c['chain']}-{c['address']}-{c['impl_address']}"] = True    
+    seen_contract_proxies_map[f"{c['chain']}-{c['address']}-{c['impl_address']}"] = True
+    c['in_scope'] = False    
+
 
 # load 
-
-
 def processImplAddress(impl_addr, s_type):
     # skip logging zero address
     if impl_addr == "0x" or impl_addr == "0x0000000000000000000000000000000000000000000000000000000000000000":
         return
     impl_addr_id = f"{row['chain']}-{row['address']}-{impl_addr}"
-    if impl_addr and not seen_contract_proxies_map.get(impl_addr_id, None):
-        # add
-        seen_live_contract_proxies.append({
-            'date': FORMATTED_DATE,
-            'project': row['project'],
-            'chain': row['chain'],
-            'address': row['address'],
-            'type': s_type,
-            'impl_address': impl_addr
-        })
-        seen_contract_proxies_map[impl_addr_id] = True
+    if impl_addr:
+        lookup_item = seen_contract_proxies_map.get(impl_addr_id, None)
+        if lookup_item:
+            lookup_item['in_scope'] = True
+        elif not lookup_item:
+            # add
+            seen_live_contract_proxies.append({
+                'date': FORMATTED_DATE,
+                'project': row['project'],
+                'chain': row['chain'],
+                'address': row['address'],
+                'type': s_type,
+                'impl_address': impl_addr,
+                'in_scope': True
+            })
+            seen_contract_proxies_map[impl_addr_id] = True
 
 # Replace with your CSV file path
 live_contracts = read_csv(live_contracts_filepath)

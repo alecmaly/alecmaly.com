@@ -14,10 +14,6 @@ foreach ($program in $programs) {
     $programs_map[$program.id] = $program.maximum_reward
 }
 
-# Read CSV files and filter by date
-$DAYS = 5
-$liveContacts = Import-Csv -Path $liveContactsPath | Where-Object { (Get-Date $_.date) -ge (Get-Date).AddDays(-$DAYS) }
-$liveContactProxies = Import-Csv -Path $liveContactProxiesPath | Where-Object { (Get-Date $_.date) -ge (Get-Date).AddDays(-$DAYS) }
 
 # Define a function to convert a CSV to an HTML table with checkboxes
 function ConvertTo-HtmlTableWithCheckboxes {
@@ -44,7 +40,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
 
 
     foreach ($row in $csvData) {
-        $table += "<tr data-patches='$(converToBase64 -string $row.patches)'><td><input type='checkbox' class='$classCheckbox' onchange='generateScript()'></td>"
+        $table += "<tr data-patches='$(converToBase64 -string $row.patches)' data-proxies='$($contract_proxies_map[$row.address] -join ';')'><td><input type='checkbox' class='$classCheckbox' onchange='generateScript()'></td>"
         foreach ($column in $columns) {
             if ($column -like "*address*" -or $column -eq "impl_address" -and $row.$column.Length -gt 0) {
                 $padded_addr = "0x" + $row.$column.replace("0x", "").PadLeft(40, '0')
@@ -63,9 +59,27 @@ function ConvertTo-HtmlTableWithCheckboxes {
     return $table
 }
 
+
+# Read CSV files and filter by date
+$DAYS = 5
+$in_scope_proxies = Import-Csv -Path $liveContactProxiesPath | Where-Object { $_.in_scope -eq $true }
+
+$contract_proxies_map = @{}
+foreach ($p in $in_scope_proxies) {
+    if ($contract_proxies_map[$p.address] -eq $null) {
+        $contract_proxies_map[$p.address] = @()
+    }
+    $contract_proxies_map[$p.address] += "$($p.impl_address)~$($p.ProxyContractName)"
+}
+
+$liveContacts = Import-Csv -Path $liveContactsPath | Where-Object { (Get-Date $_.date) -ge (Get-Date).AddDays(-$DAYS) }
+$liveContactProxies = Import-Csv -Path $liveContactProxiesPath | Where-Object { (Get-Date $_.date) -ge (Get-Date).AddDays(-$DAYS) }
+
+
+
 # Convert CSV files to HTML tables with checkboxes
-$liveContactsTable = ConvertTo-HtmlTableWithCheckboxes $liveContacts "contactRow"
-$liveContactProxiesTable = ConvertTo-HtmlTableWithCheckboxes $liveContactProxies "proxyRow"
+$liveContractsTable = ConvertTo-HtmlTableWithCheckboxes $liveContacts "contactRow"
+$liveContractProxiesTable = ConvertTo-HtmlTableWithCheckboxes $liveContactProxies "proxyRow"
 
 # Define the CSS for the HTML file
 $css = @"
@@ -115,13 +129,13 @@ $htmlContent = @"
         <option value="address">Address</option>
         <option value="impl_address">Implementation Address</option>
     </select>
-    $liveContactsTable
+    $liveContractsTable
     <h2>Proxies</h2>
     <select id="proxiesSelection" onchange="generateScript()">
         <option value="address">Address</option>
         <option value="impl_address" selected="selected">Implementation Address</option>
     </select>
-    $liveContactProxiesTable
+    $liveContractProxiesTable
     <h2>Generated Shell Script</h2>
     <input type='text' id='output_dir' value='source_code' onkeyup="generateScript()" />
     <textarea id="shellScript" readonly></textarea>
@@ -167,17 +181,23 @@ code .
             let address = row.cells[1].textContent
             selectedContractsDetail.push(```${contractName} = `${address} # `${contractName} `${date}``)
 
+            selectedContractsDetail.push(```tPatch diffs``)
             if (patches.length > 0) {
                 for (let patch of patches) {
                     selectedContractsDetail.push(```tpython3 _downloadLiveContracts.py `${patch.chain} `${patch.address} -f diff_`${patch.ContractName}_`${patch.date.replaceAll("/", "_")}``);
-                    selectedContractsDetail.push(```tmeld `${output_dir} diff_`${patch.ContractName}_`${patch.date.replaceAll("/", "_")}``);
-                    selectedContractsDetail.push("")
+                    selectedContractsDetail.push(```tmeld `${output_dir} diff_`${patch.ContractName}_`${patch.date.replaceAll("/", "_")}\n``);
                 }
             } else {
                 // if no patches, show what commands could be run to diff
                 selectedContractsDetail.push(```tpython3 _downloadLiveContracts.py `${chain} <prev_addr> -f diff_`${contractName}_old``);
-                selectedContractsDetail.push(```tmeld `${output_dir} diff_`${contractName}_old``);
-                selectedContractsDetail.push("")
+                selectedContractsDetail.push(```tmeld `${output_dir} diff_`${contractName}_old\n``);
+            }
+
+            
+            selectedContractsDetail.push(```tDownload Proxies``)
+            for (let p of row.getAttribute('data-proxies').split(";")) {
+                let p_addr, p_name = p.split("~")
+                selectedProxiesDetail.push(```tpp`${contractName} = `${p} # `${p_} `${date}``)
             }
 
         });
@@ -202,17 +222,22 @@ code .
 
             selectedProxiesDetail.push(```${contractName} = `${address} (proxy: `${proxy_addr}) # `${contractName} `${date}``)
 
+            selectedProxiesDetail.push(```tPatch diffs``)
             if (patches.length > 0) {
                 for (let patch of patches) {
                     selectedProxiesDetail.push(```tpython3 _downloadLiveContracts.py `${patch.chain} `${patch.impl_address} -f diff_`${patch.ProxyContractName}_`${patch.date.replaceAll("/", "_")}``);
-                    selectedProxiesDetail.push(```tmeld `${output_dir} diff_`${patch.ProxyContractName}_`${patch.date.replaceAll("/", "_")}``);
-                    selectedProxiesDetail.push("")
+                    selectedProxiesDetail.push(```tmeld `${output_dir} diff_`${patch.ProxyContractName}_`${patch.date.replaceAll("/", "_")}\n``);
                 }
             } else {
                 // if no patches, show what commands could be run to diff
                 selectedContractsDetail.push(```tpython3 _downloadLiveContracts.py `${chain} <prev_addr> -f diff_`${contractName}_old``);
-                selectedContractsDetail.push(```tmeld `${output_dir} diff_`${contractName}_old``);
-                selectedContractsDetail.push("")
+                selectedContractsDetail.push(```tmeld `${output_dir} diff_`${contractName}_old\n``);
+            }
+
+            selectedContractsDetail.push(```tDownload Proxies (in scope implementations)\n``)
+            for (let p of row.getAttribute('data-proxies').split(";")) {
+                let [p_addr, p_name] = p.split("~")
+                selectedProxiesDetail.push(```tpython3 _downloadLiveContracts.py `${domain} `${p_addr} `${output_dir_param} # `${p_name}``)
             }
 
         });
