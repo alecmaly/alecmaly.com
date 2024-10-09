@@ -146,13 +146,13 @@ df.to_csv(output_filepath, index=False)
 ###
 
 output_filepath = "./contract_monitoring/live_contract_proxies.csv"
-live_contracts = read_csv(output_filepath)
+live_contract_proxies = read_csv(output_filepath)
 
 i = 0
-for row in live_contracts:
+for row in live_contract_proxies:
     i += 1
     if i % 20 == 0:
-        print(f"Completed {i} / {len(live_contracts)}")
+        print(f"Completed {i} / {len(live_contract_proxies)}")
 
     if row['address'] not in contracts_in_scope:
         continue
@@ -172,6 +172,6 @@ for row in live_contracts:
 
 
 # output to file        
-df = pd.DataFrame(live_contracts)
+df = pd.DataFrame(live_contract_proxies)
 df.to_csv(output_filepath, index=False)
 
