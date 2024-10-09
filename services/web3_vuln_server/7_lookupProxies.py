@@ -141,9 +141,9 @@ live_contracts_filepath = "./contract_monitoring/live_contracts.csv"
 seen_live_contract_proxies = read_csv(output_filepath)
 
 seen_contract_proxies_map = {}
-for c in seen_live_contract_proxies:
-    seen_contract_proxies_map[f"{c['chain']}-{c['address']}-{c['impl_address']}"] = True
-    c['in_scope'] = False    
+for p in seen_live_contract_proxies:
+    seen_contract_proxies_map[f"{p['chain']}-{p['address']}-{p['impl_address']}"] = p
+    p['in_scope'] = False    
 
 
 # load 
