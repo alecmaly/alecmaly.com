@@ -7,7 +7,7 @@ mkdir -p contract_monitoring
 /usr/local/bin/python3 "6_extractLiveContracts.py"
 /usr/local/bin/python3 "7_lookupProxies.py"
 /usr/local/bin/python3 "8_updateContractsList.py"
-# pwsh -noprofile "9_addPatchDiffDetails.ps1"
+/app/powershell/pwsh -noprofile "9_addPatchDiffDetails.ps1"
 
 /app/powershell/pwsh -noprofile "11_generateHTMLReview.ps1"
 
