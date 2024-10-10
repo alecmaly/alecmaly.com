@@ -16,7 +16,7 @@ boosts = NEXT_DATA_BOOSTS['props']['pageProps']['bounties']
 
 # # Let's see if new projects were added or paused
 # cat ./projects.json | jq -r '.[].project' | sort >prev_projects_name.txt
-# live_contacts = open('./contract_monitoringlive_contracts.csv', 'r').readlines()
+# live_contracts = open('./contract_monitoringlive_contracts.csv', 'r').readlines()
 
 # echo "$projects" | jq -r '.[].project' | sort >current_projects_name.txt
 
@@ -79,7 +79,7 @@ def process_project(project):
         url = url.split("?")[0].split("#")[0]  # strip hashes + params from urls
         # Process contract addresses
         if any([blockchain_domain in url for blockchain_domain in blockchain_url_domains]):
-            contract_urls.append(url)
+            contract_urls.append(f"{asset['addedAt']}~{url}")
         # process GitHub
         if "github.com" in url and 'github.com/immunefi-team/Web3-Security-Library' not in url:
             if url not in github_urls:

@@ -240,6 +240,10 @@ code .
             }
 
             if (!seenProxyContracts.includes(proxy_addr)) {
+                if (allImplementationAddresses.length === 0) {
+                    allImplementationAddresses.push(``Related Implementation Contracts``)
+                }
+
                 allImplementationAddresses.push(```t~~ Download Implementations of proxy `${proxy_addr} (in scope implementations) ~~``)
                 for (let p of row.getAttribute('data-proxies').split(";")) {
                     let [p_addr, p_name] = p.split("~")
