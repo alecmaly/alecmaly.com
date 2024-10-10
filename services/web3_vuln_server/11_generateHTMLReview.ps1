@@ -146,6 +146,8 @@ $htmlContent = @"
         var scriptLines = [];
         var selectedContractsDetail = [];
         var selectedProxiesDetail = [];
+        var allImplementationAddresses = [];
+        var seenProxyContracts = []
         var chain = ""; // last selected chain
         var version = "";   // last selected version
         var liveContractsSelection = document.getElementById('liveContractsSelection').value;
@@ -194,12 +196,15 @@ code .
             }
 
             
-            selectedContractsDetail.push(```tDownload Proxies``)
-            for (let p of row.getAttribute('data-proxies').split(";")) {
-                let p_addr, p_name = p.split("~")
-                selectedProxiesDetail.push(```tpp`${contractName} = `${p} # `${p_} `${date}``)
+            if (!seenProxyContracts.includes(address)) {
+                allImplementationAddresses.push(```t~~ Download Implementations of proxy `${address} (in scope implementations) ~~``)
+                for (let p of row.getAttribute('data-proxies').split(";")) {
+                    let [p_addr, p_name] = p.split("~")
+                    allImplementationAddresses.push(```tpython3 _downloadLiveContracts.py `${domain} `${p_addr} `${output_dir_param} # `${p_name}``)
+                }
+                allImplementationAddresses.push("")
+                seenProxyContracts.push(address)
             }
-
         });
 
         // proxies
@@ -222,7 +227,7 @@ code .
 
             selectedProxiesDetail.push(```${contractName} = `${address} (proxy: `${proxy_addr}) # `${contractName} `${date}``)
 
-            selectedProxiesDetail.push(```tPatch diffs``)
+            selectedProxiesDetail.push(```t~~ Patch diffs ~~``)
             if (patches.length > 0) {
                 for (let patch of patches) {
                     selectedProxiesDetail.push(```tpython3 _downloadLiveContracts.py `${patch.chain} `${patch.impl_address} -f diff_`${patch.ProxyContractName}_`${patch.date.replaceAll("/", "_")}``);
@@ -230,16 +235,21 @@ code .
                 }
             } else {
                 // if no patches, show what commands could be run to diff
-                selectedContractsDetail.push(```tpython3 _downloadLiveContracts.py `${chain} <prev_addr> -f diff_`${contractName}_old``);
-                selectedContractsDetail.push(```tmeld `${output_dir} diff_`${contractName}_old\n``);
+                selectedProxiesDetail.push(```tpython3 _downloadLiveContracts.py `${chain} <prev_addr> -f diff_`${contractName}_old``);
+                selectedProxiesDetail.push(```tmeld `${output_dir} diff_`${contractName}_old\n``);
             }
 
-            selectedContractsDetail.push(```tDownload Proxies (in scope implementations)\n``)
-            for (let p of row.getAttribute('data-proxies').split(";")) {
-                let [p_addr, p_name] = p.split("~")
-                selectedProxiesDetail.push(```tpython3 _downloadLiveContracts.py `${domain} `${p_addr} `${output_dir_param} # `${p_name}``)
+            if (!seenProxyContracts.includes(proxy_addr)) {
+                allImplementationAddresses.push(```t~~ Download Implementations of proxy `${proxy_addr} (in scope implementations) ~~``)
+                for (let p of row.getAttribute('data-proxies').split(";")) {
+                    let [p_addr, p_name] = p.split("~")
+                    allImplementationAddresses.push(```tpython3 _downloadLiveContracts.py `${domain} `${p_addr} `${output_dir_param} # `${p_name}``)
+                }
+                allImplementationAddresses.push("")
+                seenProxyContracts.push(proxy_addr)
             }
 
+            selectedProxiesDetail.push("")
         });
         version = version.split('+')[0].replace('v', '')
 
@@ -248,7 +258,7 @@ code .
             + ``solc-select use `${version}\n\n`` 
             + scriptLines.join('\n')
             + complexScriptTemplatePostfix
-            + ``\ncat << EOF > _contract_info.txt\n`${chain}\n\n`` + selectedContractsDetail.join('\n') + selectedProxiesDetail.join('\n') + '\nEOF\n'
+            + ``\ncat << EOF > _contract_info.txt\n`${chain}\n\n`` + selectedContractsDetail.join('\n') + selectedProxiesDetail.join('\n') + allImplementationAddresses.join('\n') + '\nEOF\n'
 
         document.getElementById('shellScript').value = complexScript;
     }
