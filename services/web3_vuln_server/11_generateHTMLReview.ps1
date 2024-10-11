@@ -23,7 +23,9 @@ function ConvertTo-HtmlTableWithCheckboxes {
     }
 
     $columns = $csvData | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name |? { $_ -notin @("patches", "prevVersions", "in_scope") }
-    $table = "<table>`n<thead><tr><th>Select</th>"
+    $table = "
+    <div class='container' style='width: 98.5vw; overflow-x: auto'>
+    <table>`n<thead><tr><th>Select</th>"
     
     $chain_url_col_index = 0
     $i = 1 # offset by 1 due to injected select (checkbox) field
@@ -55,7 +57,7 @@ function ConvertTo-HtmlTableWithCheckboxes {
         $table += "<td>$($row.prevVersions) - $(($row.patches | convertfrom-json).date -join ', ')</td>" # prevVersions
         $table += "</tr>`n"
     }
-    $table += "</tbody></table>"
+    $table += "</tbody></table></div>"
     return $table
 }
 
@@ -126,8 +128,8 @@ $htmlContent = @"
 <body>
     <h2>Live Contracts</h2>
     <select id="liveContractsSelection" onchange="generateScript()">
-        <option value="address">Address</option>
-        <option value="impl_address">Implementation Address</option>
+    <option value="address">Address</option>
+    <option value="impl_address">Implementation Address</option>
     </select>
     $liveContractsTable
     <h2>Proxies</h2>
@@ -136,10 +138,11 @@ $htmlContent = @"
         <option value="impl_address" selected="selected">Implementation Address</option>
     </select>
     $liveContractProxiesTable
+    
     <h2>Generated Shell Script</h2>
     <input type='text' id='output_dir' value='source_code' onkeyup="generateScript()" />
     <textarea id="shellScript" readonly></textarea>
-
+    
     <script>
 
     function generateScript() {
