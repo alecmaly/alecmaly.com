@@ -137,8 +137,7 @@ $htmlContent = @"
         <option value="address">Address</option>
         <option value="impl_address" selected="selected">Implementation Address</option>
     </select>
-    $liveContractProxiesTable
-    
+    $liveContractProxiesTable    
     <h2>Generated Shell Script</h2>
     <input type='text' id='output_dir' value='source_code' onkeyup="generateScript()" />
     <textarea id="shellScript" readonly></textarea>
