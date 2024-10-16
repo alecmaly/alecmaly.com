@@ -46,7 +46,7 @@
 "12/12/2023","lidoonpolygon","etherscan.io","0x60a91E2B7A1568f0848f3D43353C453730082E46","impl_proxy","0x41912d95d040ecc7d715e5115173d37e4e7cb24e","PoLidoNFT","v0.8.7+commit.e28d00a7",,"0","True"
 "12/12/2023","lidoonpolygon","etherscan.io","0x9ee91F9f426fA633d227f7a9b000E28b9dfd8599","impl_proxy","0x6c25aebd494a9984a3d7c8cf395c8713e0c74d98","StMATIC","v0.8.7+commit.e28d00a7",,"0","True"
 "12/12/2023","lidoonpolygon","etherscan.io","0x216B8b78e0632138dc38907dd089aAB601ED6EDC","impl_proxy","0xdafa0332e904d5d1f2f1cdc2a3cad636a120f72d","NodeOperatorRegistry","v0.8.7+commit.e28d00a7",,"0","True"
-"12/12/2023","spool","etherscan.io","0xc3160C5cc63B6116DD182faA8393d3AD9313e213","impl_proxy","0xbbf8d63c3cfa38ff2c36b58e380bce2f158991c8","SpoolStaking","v0.8.13+commit.abaa5c0e",,"0","True"
+"12/12/2023","spool","etherscan.io","0xc3160C5cc63B6116DD182faA8393d3AD9313e213","impl_proxy","0xbbf8d63c3cfa38ff2c36b58e380bce2f158991c8","SpoolStaking","v0.8.13+commit.abaa5c0e",,"0","False"
 "12/12/2023","spool","etherscan.io","0xB8d5Fc11F8E1Af30578dB9F77174A1DC171a7D28","impl_proxy","0x79b91c72d13c47afbb8167f5c2f490313a8924cd","VoSpoolRewards","v0.8.13+commit.abaa5c0e",,"0","True"
 "12/12/2023","spool","etherscan.io","0x4c6ee6eD4127a0067B9eb3b425DfCea95ac80cAe","impl_proxy","0xa21035da64b1d157c35ad187afeb8d217c3ba108","ActionManager","v0.8.17+commit.8df45f5f",,"0","True"
 "12/12/2023","spool","etherscan.io","0xB8d7B179bfa7AEBCFBE4174AA3ec11E47264b334","impl_proxy","0x1e1f7be107feadc60b9fa415199391e3ffa509c2","AllowlistGuard","v0.8.17+commit.8df45f5f",,"0","True"
@@ -4654,7 +4654,7 @@
     ""prevVersions"": ""0.0"",
     ""in_scope"": ""False""
   }
-]","1","True"
+]","1","False"
 "3/29/2024","nayms","etherscan.io","0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5","diamond_facet","0x84684659910385544784A787c90e566626f471aE","AdminFacet","v0.8.20+commit.a1b79de6","[
   {
     ""date"": ""12/14/2023"",
@@ -6639,8 +6639,8 @@
     ""in_scope"": ""False""
   }
 ]","1","True"
-"5/22/2024","yieldnest","etherscan.io","0x09db87A538BD693E9d08544577d5cCfAA6373A48","impl_proxy","0x14dc3d915107dca9ed39e29e14fbdfe4358a1346","ynETH","v0.8.24+commit.e11b9ed9",,"0","True"
-"5/22/2024","yieldnest","etherscan.io","0x8C33A1d6d062dB7b51f79702355771d44359cD7d","impl_proxy","0xabd3a755e4eef24f862c268d21fd5235904cc811","StakingNodesManager","v0.8.24+commit.e11b9ed9",,"0","True"
+"5/22/2024","yieldnest","etherscan.io","0x09db87A538BD693E9d08544577d5cCfAA6373A48","impl_proxy","0x14dc3d915107dca9ed39e29e14fbdfe4358a1346","ynETH","v0.8.24+commit.e11b9ed9",,"0","False"
+"5/22/2024","yieldnest","etherscan.io","0x8C33A1d6d062dB7b51f79702355771d44359cD7d","impl_proxy","0xabd3a755e4eef24f862c268d21fd5235904cc811","StakingNodesManager","v0.8.24+commit.e11b9ed9",,"0","False"
 "5/22/2024","yieldnest","etherscan.io","0x40d5FF3E218f54f4982661a0464a298Cf6652351","impl_proxy","0x306ebed66642867b94b29752be37b8f20feb5f72","RewardsDistributor","v0.8.24+commit.e11b9ed9",,"0","True"
 "5/22/2024","yieldnest","etherscan.io","0x1D6b2a11FFEa5F9a8Ed85A02581910b3d695C12b","impl_proxy","0x863ba8f64b1528de6c8a7239d80d4f2b7cff159b","RewardsReceiver","v0.8.24+commit.e11b9ed9",,"0","True"
 "5/22/2024","yieldnest","etherscan.io","0xE439fe4563F7666FCd7405BEC24aE7B0d226536e","impl_proxy","0xa98e8652daf2407839b18f4e215d86d88eb91582","RewardsReceiver","v0.8.24+commit.e11b9ed9",,"0","True"
@@ -10880,7 +10880,7 @@
     ""in_scope"": ""False""
   }
 ]","1","True"
-"2024-09-25","lifi","etherscan.io","0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae","diamond_facet","0x8810F64f9802292aB71FCfd0E2aB8B3E3335F6c4","AcrossFacetPackedV3","v0.8.17+commit.8df45f5f",,"0","True"
+"2024-09-25","lifi","etherscan.io","0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae","diamond_facet","0x8810F64f9802292aB71FCfd0E2aB8B3E3335F6c4","AcrossFacetPackedV3","v0.8.17+commit.8df45f5f",,"0","False"
 "2024-09-25","lifi","etherscan.io","0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae","diamond_facet","0x00990C0FfBB7eAB014351652aFB65AaE00db43A4","AcrossFacetV3","v0.8.17+commit.8df45f5f",,"0","True"
 "2024-09-25","scroll","etherscan.io","0x0d7E906BD9cAFa154b048cFa766Cc1E54E39AF9B","impl_proxy","0x137cc585f607edebbc3ca6360affcfeab507b374","L1MessageQueueWithGasPriceOracle","v0.8.24+commit.e11b9ed9","[
   {
@@ -12316,7 +12316,7 @@
     ""prevVersions"": ""0.0"",
     ""in_scope"": ""False""
   }
-]","1","True"
+]","1","False"
 "2024-09-25","benddao","etherscan.io","0x7941D082D46a9A8c3E8c2106187A24B74cc1bdD3","impl_proxy","0xfc31c8eb86867c1258d1dc8240a5828e7f2c685c","LockupBendV2","v0.8.4+commit.c7e474f2","[
   {
     ""date"": ""12/12/2023"",
@@ -12683,7 +12683,7 @@
     ""impl_address"": ""0x75d68afd9b36c4b6e05b3900494ef777064285e8"",
     ""ProxyContractName"": ""TeaVaultV3Pair"",
     ""ProxyCompilerVersion"": ""v0.8.25+commit.b61c2a91"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""0.0"",
     ""in_scope"": ""True""
   }
 ]","1","True"
@@ -13044,7 +13044,7 @@
     ""impl_address"": ""0xac1d13f58967deca7938f4d701a46ce351b8e0b1"",
     ""ProxyContractName"": ""OperatorDelegator"",
     ""ProxyCompilerVersion"": ""v0.8.19+commit.7dd6d404"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""6.0"",
     ""in_scope"": ""False""
   }
 ]","7","True"
@@ -13149,7 +13149,7 @@
   }
 ]","1","True"
 "2024-10-07","velvet-capital-v2","basescan.org","0xf93659fb357899e092813bc3a2959ceDb3282a7f","impl_proxy","0x850fffff0941dcd6aca6425d43df0c35f51710ca","","",,"0","True"
-"2024-10-07","velvet-capital-v2","basescan.org","0x0490A477e4fc96392bDf1e2846E3230A1263a5D2","impl_proxy","0xfc0c1eecf60d8dee2c56a1686798e7df4161f3a6","","",,"0","True"
+"2024-10-07","velvet-capital-v2","basescan.org","0x0490A477e4fc96392bDf1e2846E3230A1263a5D2","impl_proxy","0xfc0c1eecf60d8dee2c56a1686798e7df4161f3a6","ProtocolConfig","v0.8.17+commit.8df45f5f",,"0","True"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","impl_proxy","0x3bda8ff6df3e8a2121203f5ed080aaf063111064","GNSMultiCollatDiamond","v0.8.23+commit.f704f362","[
   {
     ""date"": ""2/2/2024"",
@@ -13210,10 +13210,10 @@
     ""impl_address"": ""0x2c3d9CE6b090CB46865e97a891F776e5EDeaD001"",
     ""ProxyContractName"": ""GNSPairsStorage"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xC9D6E6598C58532F989bFe33E582ac3d218843e2","GNSReferrals","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13239,7 +13239,7 @@
     ""prevVersions"": ""1.0"",
     ""in_scope"": ""False""
   }
-]","2","True"
+]","2","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x2eA605d8540f1ac87C5E12565810065C6278c7D6","GNSFeeTiers","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13262,10 +13262,10 @@
     ""impl_address"": ""0xF83A2d873fAB404fa12c0830F5997EB85a3e2802"",
     ""ProxyContractName"": ""GNSFeeTiers"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""1.0"",
     ""in_scope"": ""False""
   }
-]","2","True"
+]","2","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x7Cc3662BD5Ffaf6cb5B252A5B31524E2583Fb219","GNSPriceImpact","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13300,10 +13300,10 @@
     ""impl_address"": ""0xfC467E0156d7A6e8886aC3cB172a9A06846A31A9"",
     ""ProxyContractName"": ""GNSPriceImpact"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x49CA0eE06a88078B67Fb66e12471D88Ea7e6DF23","GNSTradingStorage","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13338,10 +13338,10 @@
     ""impl_address"": ""0xa2545e9B23224150e11CD62180e8429e3E3b10DD"",
     ""ProxyContractName"": ""GNSTradingStorage"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x09D981AeF6556B92ffb0521BcB3552b0d0073f37","GNSTriggerRewards","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13390,10 +13390,10 @@
     ""impl_address"": ""0xE2097353397f143c92A2d20e8c48879Ec4F2Bf06"",
     ""ProxyContractName"": ""GNSTradingInteractions"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x24BB2654A9Dcf95D1130c751f07dd1DB4D4F81C8","GNSTradingCallbacks","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13440,10 +13440,10 @@
     ""impl_address"": ""0x53D2127954Dd01f9bEFc2acF110ADCF3200fd868"",
     ""ProxyContractName"": ""GNSTradingCallbacks"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""3.0"",
     ""in_scope"": ""False""
   }
-]","4","True"
+]","4","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x498DF399927E08B63ECC8Ada1FeE1f301f43D1E3","GNSBorrowingFees","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13478,10 +13478,10 @@
     ""impl_address"": ""0x6b59f17142DA542dD3a152153993Ce47f76e58BB"",
     ""ProxyContractName"": ""GNSBorrowingFees"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x73D93D9dBBa62038D68998CdA1475B6503E66A62","GNSPriceAggregator","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13528,10 +13528,10 @@
     ""impl_address"": ""0x2E954D6064035db849F8665a2129829b9962a3E4"",
     ""ProxyContractName"": ""GNSPriceAggregator"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""3.0"",
     ""in_scope"": ""False""
   }
-]","4","True"
+]","4","False"
 "2024-10-08","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x9838637Ba53CA1A31571d215B8ae48c976196e17","GNSOtc","v0.8.23+commit.f704f362","[
   {
     ""date"": ""2024-07-12"",
@@ -13606,10 +13606,10 @@
     ""impl_address"": ""0x7e01c3f7dcB8bc5FD0be6bd6d86675fea1Edf356"",
     ""ProxyContractName"": ""GNSPairsStorage"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x3bE1C3DF8C8A2bc73E0c4b09CB80d5486cb3219a","GNSReferrals","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13635,7 +13635,7 @@
     ""prevVersions"": ""1.0"",
     ""in_scope"": ""False""
   }
-]","2","True"
+]","2","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0xb8198E5412D0e42b2a9d4a31C29d8d7B7BfEC9aF","GNSFeeTiers","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13658,10 +13658,10 @@
     ""impl_address"": ""0x052a1C48cFFf2548Ccd94902ECC76faE43072021"",
     ""ProxyContractName"": ""GNSFeeTiers"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""1.0"",
     ""in_scope"": ""False""
   }
-]","2","True"
+]","2","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x46bC1D7AB1a7253428d4B679Ab2ef0C6DBef213d","GNSPriceImpact","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13696,10 +13696,10 @@
     ""impl_address"": ""0x22a31bFfCCd5FA5C45Dfae100E2b6f567Cbf1d12"",
     ""ProxyContractName"": ""GNSPriceImpact"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x37217c937aF9Cc20196fE9cf6D179a13B819779c","GNSTradingStorage","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13734,10 +13734,10 @@
     ""impl_address"": ""0x3E0Ba164b5B32C7A2f1cC61e8D579cDBC00d7F3E"",
     ""ProxyContractName"": ""GNSTradingStorage"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x7250319145F3749057c85d1706eCAEa7f4dE1BBc","GNSTriggerRewards","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13786,10 +13786,10 @@
     ""impl_address"": ""0xd06fc0A992147fc620c47fce01C3f77441e78843"",
     ""ProxyContractName"": ""GNSTradingInteractions"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0xEed25b77A1d51F217797E8257AaCb62B9c1c7D85","GNSTradingCallbacks","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13836,10 +13836,10 @@
     ""impl_address"": ""0x33333838325C25b0f8Ea5ea51cb747d64a625B48"",
     ""ProxyContractName"": ""GNSTradingCallbacks"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""3.0"",
     ""in_scope"": ""False""
   }
-]","4","True"
+]","4","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x8531D6AE09Fd6177d0859972427DF013d0a6D923","GNSBorrowingFees","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13874,10 +13874,10 @@
     ""impl_address"": ""0xF380f230672a85eBec2E4c7417060979d16DD7C8"",
     ""ProxyContractName"": ""GNSBorrowingFees"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x10034ee67C09E3fc3735b29AeCE890321E9bC0De","GNSPriceAggregator","v0.8.23+commit.f704f362","[
   {
     ""date"": ""5/17/2024"",
@@ -13924,10 +13924,10 @@
     ""impl_address"": ""0x058DD4f5415eE2EfdD5C90eDEF15a5610Ce5ec4B"",
     ""ProxyContractName"": ""GNSPriceAggregator"",
     ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
-    ""prevVersions"": """",
+    ""prevVersions"": ""3.0"",
     ""in_scope"": ""False""
   }
-]","4","True"
+]","4","False"
 "2024-10-08","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x1094e3683f85dd5a24E0489329fFF45DE81cCfDC","GNSOtc","v0.8.23+commit.f704f362","[
   {
     ""date"": ""2024-07-12"",
@@ -14063,7 +14063,7 @@
     ""ProxyContractName"": ""TokenizedVaultFacet"",
     ""ProxyCompilerVersion"": ""v0.8.20+commit.a1b79de6"",
     ""prevVersions"": ""1.0"",
-    ""in_scope"": ""True""
+    ""in_scope"": ""False""
   }
 ]","2","True"
 "2024-10-09","nayms","etherscan.io","0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5","diamond_facet","0x4152322499f94956a3C3320B7555F861116E6Cb0","AdminFacet","v0.8.20+commit.a1b79de6","[
@@ -14226,7 +14226,7 @@
     ""in_scope"": ""False""
   }
 ]","1","True"
-"2024-10-09","nayms","etherscan.io","0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5","diamond_facet","0x7a0f9321DB17ed7b893CdfC45CaD3054C1A51434","StakingFacet","v0.8.20+commit.a1b79de6",,"0","True"
+"2024-10-09","nayms","etherscan.io","0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5","diamond_facet","0x7a0f9321DB17ed7b893CdfC45CaD3054C1A51434","StakingFacet","v0.8.20+commit.a1b79de6",,"0","False"
 "2024-10-10","elixirprotocol","arbiscan.io","0x052Ab3fd33cADF9D9f227254252da3f996431f75","impl_proxy","0xb31389aa282b01ac501a4f0e817f3e10f0988123","VertexManager","v0.8.18+commit.87f61d96","[
   {
     ""date"": ""12/12/2023"",
@@ -14301,3 +14301,1006 @@
     ""in_scope"": ""False""
   }
 ]","6","True"
+"2024-10-11","lifi","etherscan.io","0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae","diamond_facet","0x20F3FFf5A89e988c4109A6e496a839480B1B558f","AcrossFacetPackedV3","v0.8.17+commit.8df45f5f","[
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""lifi"",
+    ""chain"": ""etherscan.io"",
+    ""address"": ""0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x8810F64f9802292aB71FCfd0E2aB8B3E3335F6c4"",
+    ""ProxyContractName"": ""AcrossFacetPackedV3"",
+    ""ProxyCompilerVersion"": ""v0.8.17+commit.8df45f5f"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  }
+]","1","True"
+"2024-10-11","lifi","etherscan.io","0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae","diamond_facet","0x6e00e0a7685Ca22c288d56D9E7924746B5043Ee7","AcrossFacetV3","v0.8.17+commit.8df45f5f","[
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""lifi"",
+    ""chain"": ""etherscan.io"",
+    ""address"": ""0x1231deb6f5749ef6ce6943a275a1d3e7486f4eae"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x00990C0FfBB7eAB014351652aFB65AaE00db43A4"",
+    ""ProxyContractName"": ""AcrossFacetV3"",
+    ""ProxyCompilerVersion"": ""v0.8.17+commit.8df45f5f"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""True""
+  }
+]","1","False"
+"2024-10-11","nayms","etherscan.io","0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5","diamond_facet","0x65175E5ACBa632Fb0e24641eb7a25643Df3fc20E","StakingFacet","v0.8.20+commit.a1b79de6","[
+  {
+    ""date"": ""2024-10-09"",
+    ""project"": ""nayms"",
+    ""chain"": ""etherscan.io"",
+    ""address"": ""0x39e2f550fef9ee15b459d16bD4B243b04b1f60e5"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x7a0f9321DB17ed7b893CdfC45CaD3054C1A51434"",
+    ""ProxyContractName"": ""StakingFacet"",
+    ""ProxyCompilerVersion"": ""v0.8.20+commit.a1b79de6"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  }
+]","1","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xa5Fd270099aec36E837d01d4914f581D493c4EC0","GNSPairsStorage","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x4E4B9A78DA2e39578883C0cFA52bCe4d9d0e7798"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x28Af2a36F09388C5d085e95B6F1f63c5AbDb89E6"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x2c3d9CE6b090CB46865e97a891F776e5EDeaD001"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xCAa9531b31feE14fb9CA94026259e9Efb2F61562"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xB064aD39Eec4c9d52c18C0e3815Ba55d496608aa","GNSReferrals","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x6EA3e14B02921e723B91a00cDD1448A962c74667"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x7054b5Efe17564429f1162ae63C0f1D5DCD67e5f"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xC9D6E6598C58532F989bFe33E582ac3d218843e2"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  }
+]","3","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x270aCd121142bEa9155D0f679ee8664C62C442A8","GNSFeeTiers","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x0CF42339B537234213435e1D2ef19D0AC73C0557"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xF83A2d873fAB404fa12c0830F5997EB85a3e2802"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x2eA605d8540f1ac87C5E12565810065C6278c7D6"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  }
+]","3","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xe3bc5Eeb81525A749Be1D336Ea649731355Cd324","GNSPriceImpact","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xAC59A739209cfD8027Fa42697FC9eD12e5836B47"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x3Fd5F55fA503D4B7f0cA90960Ebd6F82D6f0DBF6"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xfC467E0156d7A6e8886aC3cB172a9A06846A31A9"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x7Cc3662BD5Ffaf6cb5B252A5B31524E2583Fb219"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x308A7515A068f20A8B25372f6e2c9efcf978b0Aa","GNSTradingStorage","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x38926d0fC79AD2aB58B2d942f1a68b9A6BF72745"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xa99357Bfb31803B763D5c0Be661457E007abaF2F"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xa2545e9B23224150e11CD62180e8429e3E3b10DD"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x49CA0eE06a88078B67Fb66e12471D88Ea7e6DF23"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xB724023C64B4085aB2232Ae9b245006571095a43","GNSTradingInteractions","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xe1a59918C76F442C7d43A6e7DE2fbbA2536B4304"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xe514d06a4780991eaCA23171BF2DB86e1DB6E406"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xE2097353397f143c92A2d20e8c48879Ec4F2Bf06"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xe9fD12Cc419C6C4B8e2c48c48c7564F98Fe49df1"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0xC25EA65EbC3aD1406ad47D5aF00c8efdD87fCf4C","GNSTradingCallbacks","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xE6C0dE1Ea9dEd39799a1464b2EEaCF0fa9Ac71e7"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x969FF6Fe6535614959189a41404243dC8bfdf19f"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-12"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xEdb593c603C1b0150d427B31D8F82D8FA72394fE"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x53D2127954Dd01f9bEFc2acF110ADCF3200fd868"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x24BB2654A9Dcf95D1130c751f07dd1DB4D4F81C8"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""4.0"",
+    ""in_scope"": ""False""
+  }
+]","5","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x089fAe86766A600954dac172F49B4827b05c895D","GNSBorrowingFees","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xBD6fbF49f102d95D7cE1b098B3F30e831F89B5aF"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xa1D0Ec20e946b9043fd6cDA3cBd496915E9430f0"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x6b59f17142DA542dD3a152153993Ce47f76e58BB"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x498DF399927E08B63ECC8Ada1FeE1f301f43D1E3"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","polygonscan.com","0x209A9A01980377916851af2cA075C2b170452018","diamond_facet","0x04d9D3466e55F1a350e0421aeA4fe98A644Ddc99","GNSPriceAggregator","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x9FfAFAE58fB835E53080900D9536FC1fb36C233B"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-06-24"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x9F8785BbbEcFC1Ba8D473fE9686803f12840DC44"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x5E588919ccB7Eb8D20C35575B2de18a4339Ca5D8"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x2E954D6064035db849F8665a2129829b9962a3E4"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""polygonscan.com"",
+    ""address"": ""0x209A9A01980377916851af2cA075C2b170452018"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x73D93D9dBBa62038D68998CdA1475B6503E66A62"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""4.0"",
+    ""in_scope"": ""False""
+  }
+]","5","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x261EAbE08Ae506F87F362305E18d881BDe39DDE5","GNSPairsStorage","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xe371bc21D31380F9dC757D41eb3Ce0359988b01F"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x686D9d4dC0e539539BA72bbC3810774fA7eAdf22"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x7e01c3f7dcB8bc5FD0be6bd6d86675fea1Edf356"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x5715e4115d134EDb2FB9B75a06B0a5F90135309a"",
+    ""ProxyContractName"": ""GNSPairsStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x32c90338F333c6808ed315fbd8c90aD8C3A57f27","GNSReferrals","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x40fDBFFC7260bE26bcF7F87Df9891Fd859FCD8B7"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x5Ee4EA1a44b12FeA7C92A1b7C822FB59869bf063"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x3bE1C3DF8C8A2bc73E0c4b09CB80d5486cb3219a"",
+    ""ProxyContractName"": ""GNSReferrals"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  }
+]","3","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x53E5aD5f0125F76C852C8636DeEE5C87907a8a88","GNSFeeTiers","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x964FB741AC49533Ed5FCa468bA840115c78Ff91A"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x052a1C48cFFf2548Ccd94902ECC76faE43072021"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xb8198E5412D0e42b2a9d4a31C29d8d7B7BfEC9aF"",
+    ""ProxyContractName"": ""GNSFeeTiers"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  }
+]","3","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x2c029C578287F99E02bA6281B7ce5aEE29FA49e8","GNSPriceImpact","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xeB0Eb64575507D38587f0C9c23fDFb03208656B4"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xA91D04Fd4834E200B89465DaB0669aa6251f50b6"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x22a31bFfCCd5FA5C45Dfae100E2b6f567Cbf1d12"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x46bC1D7AB1a7253428d4B679Ab2ef0C6DBef213d"",
+    ""ProxyContractName"": ""GNSPriceImpact"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x7c338C4d096D79dFe702b3F4cB13790c25D3AD8e","GNSTradingStorage","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xe1C452430B52d6B57B2D9BcCEB4B50d8794cdD18"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x9f70f1cC1d838DC4eAFD4A1D486301A7d4d01c51"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x3E0Ba164b5B32C7A2f1cC61e8D579cDBC00d7F3E"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x37217c937aF9Cc20196fE9cf6D179a13B819779c"",
+    ""ProxyContractName"": ""GNSTradingStorage"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x8DEc667c047aE0A6c58c3748bE008F6F119e347F","GNSTradingInteractions","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x3a2A82b6E323669e21016f94D6b06Ae224b7DdF2"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xb6992923CE1f171d7C46f5C4a4642d4533a7e53B"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xd06fc0A992147fc620c47fce01C3f77441e78843"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x9D2aCD33a12ebb7F0dE3DCa8aF2127E1Be3E2aAe"",
+    ""ProxyContractName"": ""GNSTradingInteractions"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x493c28Ec353E578E5B6Fcc6Da9437BAfe1ccf809","GNSTradingCallbacks","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xc14aBb12857eD8878d73B6160E5a1689AA790538"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x6951ab47B5DC4dE3Bf83dAE6B2BEA419fe4459a5"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-12"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xA0d60b58346882F271DE654F6608B37C8eB1F2B2"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x33333838325C25b0f8Ea5ea51cb747d64a625B48"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xEed25b77A1d51F217797E8257AaCb62B9c1c7D85"",
+    ""ProxyContractName"": ""GNSTradingCallbacks"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""4.0"",
+    ""in_scope"": ""False""
+  }
+]","5","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0x4412D8466749DF49f2F7381Cd300Bb647d9BC826","GNSBorrowingFees","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xbEa5a3C1A87e74E8809C17a13B909E0D77a5D50C"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x4971536aEB12D3760d2eE1B8933871CBE29F7E5A"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xF380f230672a85eBec2E4c7417060979d16DD7C8"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x8531D6AE09Fd6177d0859972427DF013d0a6D923"",
+    ""ProxyContractName"": ""GNSBorrowingFees"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  }
+]","4","True"
+"2024-10-11","gainsnetwork","arbiscan.io","0xFF162c694eAA571f685030649814282eA457f169","diamond_facet","0xB6712bd5718D249f0c081944bceBFAAf7916040F","GNSPriceAggregator","v0.8.23+commit.f704f362","[
+  {
+    ""date"": ""5/17/2024"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0xB264196997B92b0dcefAf79C893A30eACBC1a9fF"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-06-24"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x66f231a4d9887a784971A3c8352619037E4A0C83"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""1.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-07-10"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x9a468877baA5423E99e60E13884B579cFef4720A"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""2.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-09-25"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x058DD4f5415eE2EfdD5C90eDEF15a5610Ce5ec4B"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""3.0"",
+    ""in_scope"": ""False""
+  },
+  {
+    ""date"": ""2024-10-08"",
+    ""project"": ""gainsnetwork"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xFF162c694eAA571f685030649814282eA457f169"",
+    ""type"": ""diamond_facet"",
+    ""impl_address"": ""0x10034ee67C09E3fc3735b29AeCE890321E9bC0De"",
+    ""ProxyContractName"": ""GNSPriceAggregator"",
+    ""ProxyCompilerVersion"": ""v0.8.23+commit.f704f362"",
+    ""prevVersions"": ""4.0"",
+    ""in_scope"": ""False""
+  }
+]","5","True"
+"2024-10-14","yieldnest","etherscan.io","0x09db87A538BD693E9d08544577d5cCfAA6373A48","impl_proxy","0x87e2a51d3b88fc2f5917a7ab793ea595b243710a","ynETH","v0.8.24+commit.e11b9ed9","[
+  {
+    ""date"": ""5/22/2024"",
+    ""project"": ""yieldnest"",
+    ""chain"": ""etherscan.io"",
+    ""address"": ""0x09db87A538BD693E9d08544577d5cCfAA6373A48"",
+    ""type"": ""impl_proxy"",
+    ""impl_address"": ""0x14dc3d915107dca9ed39e29e14fbdfe4358a1346"",
+    ""ProxyContractName"": ""ynETH"",
+    ""ProxyCompilerVersion"": ""v0.8.24+commit.e11b9ed9"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  }
+]","1","True"
+"2024-10-14","yieldnest","etherscan.io","0x8C33A1d6d062dB7b51f79702355771d44359cD7d","impl_proxy","0x33ffb713c73cdf668b11296bb9b1c9a0c3100626","StakingNodesManager","v0.8.24+commit.e11b9ed9","[
+  {
+    ""date"": ""5/22/2024"",
+    ""project"": ""yieldnest"",
+    ""chain"": ""etherscan.io"",
+    ""address"": ""0x8C33A1d6d062dB7b51f79702355771d44359cD7d"",
+    ""type"": ""impl_proxy"",
+    ""impl_address"": ""0xabd3a755e4eef24f862c268d21fd5235904cc811"",
+    ""ProxyContractName"": ""StakingNodesManager"",
+    ""ProxyCompilerVersion"": ""v0.8.24+commit.e11b9ed9"",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  }
+]","1","True"
+"2024-10-15","spool","etherscan.io","0xc3160C5cc63B6116DD182faA8393d3AD9313e213","impl_proxy","0xd3ec339de3651dbf390b411ec80ab67c17430e76","SpoolStakingMigration","v0.8.13+commit.abaa5c0e",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7B08f0efC94626D373c99fd39353217a371F90c0","DiamondCutFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x82aF8BC912284F916dBe7208074F3B16ea27BB40","DiamondLoupeFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x2cb2D140c42b79F602535e2447E7Afa980034464","OwnershipFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x64504c8b23350FEEebd5BB978633C0CfFfb9D536","SeasonFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xdB9882aaAC47Fc1D62942951311704FDDf531ebd","SeasonGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x2e804f24134baCF12036757D1dcdcCbBBb3e2f31","GaugeGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xbcF3bA03bf792F9f8B5dbd460eAa446529020778","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x19AC2dc9A0BFda04Dde8EA7437945872DB95B13E","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5678345D444918a38ad9dC7CA1b0C208E1927094","SiloFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x76eF6b03775A4cDE7666C96f3Ca21feb736afeBC","ClaimFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xb4F9d59f787642F64c73346A747Bf1984A52D4Ea","SiloGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7f855852a7191635c845c4183a6335ecb0B7aFAb","WhitelistFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5579358403eD126dB6ed6A213B5129696161Bad6","ApprovalFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x4da6AAed2a2C3605f7c098037014003697Cb0426","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x48Fa359664820A12ad6Ae8769ccB4365053da580","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcE333Cc99C477A7d96FDe73905e0B3576e86b321","ConvertFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x6eF9cC52Eb37e0dE9592960c0c894a1000ac7dDf","ConvertGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xA047EAD9719dE8B030a10dd3d152518db7cf0099","PipelineConvertFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5794fDb0cfE2AbFCB3D22103F5d8c6B4C2cCD1d9","MetadataFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcA03AbaBA37566d89B707878495D9EB8Ea48C3c5","MarketplaceFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xa80A1F63bb8d5cece044E4e12480dB3930E9885C","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x107F33211935bb72B721675c7e95a2d4cC0c96cc","DepotFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x24103B8141F97D9D8794fE2EE0eD96F577EeC05F","FarmFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xf8B5Fa117f492608b8f16AAE84C69175ead6A38d","TokenFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x17AC9d59f4637a16F47C8a77A1c4EE7c7a159A95","TokenSupportFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcb84F1a368f303798DB6d9cE7B4084Aaf316479b","TractorFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7B2BDA06CE2cD8287e169b241d68d1Bb6568e342","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x87F1FB2CF1CDC19103739F7cdb0068b203184354","UnripeFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x3AF703FACA14A0201E5aa98D91cA1Dbb10a8f110","EnrootFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x926CFCe66aa8A0CC29470dA28095D88CF24ABE16","PauseFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xE53e217254672ab00fC7A7Ddd00f27091AF9AE29","L1ReceiverFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xFEFEFECA5375630d6950F40e564A27f6074845B5","impl_proxy","0xfefefe2cfb089aef0b0578573ef3cfabc15f1490","Fertilizer","v0.8.25+commit.b61c2a91",,"0","True"

@@ -126,9 +126,9 @@ for row in live_contracts:
         if type(row.get('ContractName', None)) in [float, type(None)] and token:
             # if not updated
             code = GetSourceCode(row['address'], row['chain'], token, download=False)
-            row['ContractName'] = code[0]['ContractName']
-            row['impl_address'] = code[0]['impl_address']
-            row['CompilerVersion'] = code[0]['CompilerVersion']
+            row['ContractName'] = code[0].get('ContractName', '<error>')
+            row['impl_address'] = code[0].get('impl_address', '')
+            row['CompilerVersion'] = code[0].get('CompilerVersion', '<error>')
     except Exception as e:
         print(f"Failed on {row['chain']} for {row['address']}", e)
 
@@ -164,8 +164,8 @@ for row in live_contract_proxies:
             # if not updated
             code = GetSourceCode(row['impl_address'], row['chain'], token, download=False)
 
-            row['ProxyContractName'] = code[0]['ContractName']
-            row['ProxyCompilerVersion'] = code[0]['CompilerVersion']
+            row['ProxyContractName'] = code[0].get('ContractName', '<error>')
+            row['ProxyCompilerVersion'] = code[0].get('CompilerVersion', '<error>')
     except Exception as e:
         print(f"Failed on {row['chain']} for {row['impl_address']}", e)
 
