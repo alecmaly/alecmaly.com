@@ -123,7 +123,8 @@ for row in live_contracts:
     token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
-        if type(row.get('ContractName', None)) in [float, type(None)] and token:
+        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ContractName', 'CompilerVersion']]) and token:
+        # if type(row.get('ContractName', None)) in [float, type(None)] and token:
             # if not updated
             code = GetSourceCode(row['address'], row['chain'], token, download=False)
             row['ContractName'] = code[0].get('ContractName', '<error>')
@@ -160,7 +161,8 @@ for row in live_contract_proxies:
     token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
-        if type(row.get('ProxyContractName', None)) in [float, type(None)] and token:
+        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ProxyContractName', 'ProxyCompilerVersion']]) and token:
+        # if type(row.get('ProxyContractName', None)) in [float, type(None)] and token:
             # if not updated
             code = GetSourceCode(row['impl_address'], row['chain'], token, download=False)
 
