@@ -35,7 +35,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 
 # update cronjob to run python script every day, should be run out of /opt/app
-RUN echo "0 0 * * * root cd /app && /bin/bash /app/0_runAll.sh" > /etc/cron.d/refresh_web3_vulns
+RUN echo "0 0 * * * root cd /app && /bin/bash /app/0_runAll.sh > /app/cron_log.txt" > /etc/cron.d/refresh_web3_vulns
 RUN chmod 0644 /etc/cron.d/refresh_web3_vulns
 # RUN crontab /etc/cron.d/refresh_web3_vulns   # ends up with duplicated job
 # Create the log file to be able to run tail
