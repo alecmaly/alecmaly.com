@@ -21,8 +21,8 @@ BLOCKCHAIN_INFURA_AUTH_MAP['cronoscan.com'] = f""
 BLOCKCHAIN_INFURA_AUTH_MAP['moonbean.moonscan.io'] = f""
 BLOCKCHAIN_INFURA_AUTH_MAP['arbiscan.io'] = f"https://arbitrum-mainnet.infura.io/v3/{INUFRA_KEY}"
 BLOCKCHAIN_INFURA_AUTH_MAP['aurorascan.dev'] = f"https://aurora-mainnet.infura.io/v3/{INUFRA_KEY}"
-BLOCKCHAIN_INFURA_AUTH_MAP['www.bscscan.com'] = f"https://bnbsmartchain-mainnet.infura.io/v3/{INUFRA_KEY}"
-BLOCKCHAIN_INFURA_AUTH_MAP['bscscan.com'] = f"https://bnbsmartchain-mainnet.infura.io/v3/{INUFRA_KEY}"
+BLOCKCHAIN_INFURA_AUTH_MAP['www.bscscan.com'] = f"https://bsc-mainnet.infura.io/v3/{INUFRA_KEY}"
+BLOCKCHAIN_INFURA_AUTH_MAP['bscscan.com'] = f"https://bsc-mainnet.infura.io/v3/{INUFRA_KEY}"
 BLOCKCHAIN_INFURA_AUTH_MAP['evm.confluxscan.io'] = f""
 BLOCKCHAIN_INFURA_AUTH_MAP['ftmscan.com'] = f""
 
@@ -204,3 +204,4 @@ df.to_csv(output_filepath, index=False)
 
 # # Display the first 5 rows of the DataFrame
 # print(df.head())
+

@@ -12446,7 +12446,7 @@
     ""prevVersions"": ""2.0"",
     ""in_scope"": ""False""
   }
-]","3","True"
+]","3","False"
 "2024-09-25","radiant","arbiscan.io","0x76ba3eC5f5adBf1C58c91e86502232317EeA72dE","impl_proxy","0xea541f8a21ae817177269503f78cafb50d3a88a8","MultiFeeDistribution","v0.8.12+commit.f00d7308","[
   {
     ""date"": ""12/12/2023"",
@@ -15278,29 +15278,44 @@
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x64504c8b23350FEEebd5BB978633C0CfFfb9D536","SeasonFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xdB9882aaAC47Fc1D62942951311704FDDf531ebd","SeasonGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x2e804f24134baCF12036757D1dcdcCbBBb3e2f31","GaugeGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xbcF3bA03bf792F9f8B5dbd460eAa446529020778","","",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x19AC2dc9A0BFda04Dde8EA7437945872DB95B13E","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xbcF3bA03bf792F9f8B5dbd460eAa446529020778","GaugePointFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x19AC2dc9A0BFda04Dde8EA7437945872DB95B13E","LiquidityWeightFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5678345D444918a38ad9dC7CA1b0C208E1927094","SiloFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x76eF6b03775A4cDE7666C96f3Ca21feb736afeBC","ClaimFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xb4F9d59f787642F64c73346A747Bf1984A52D4Ea","SiloGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7f855852a7191635c845c4183a6335ecb0B7aFAb","WhitelistFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5579358403eD126dB6ed6A213B5129696161Bad6","ApprovalFacet","v0.8.25+commit.b61c2a91",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x4da6AAed2a2C3605f7c098037014003697Cb0426","","",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x48Fa359664820A12ad6Ae8769ccB4365053da580","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x4da6AAed2a2C3605f7c098037014003697Cb0426","BDVFacet","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x48Fa359664820A12ad6Ae8769ccB4365053da580","OracleFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcE333Cc99C477A7d96FDe73905e0B3576e86b321","ConvertFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x6eF9cC52Eb37e0dE9592960c0c894a1000ac7dDf","ConvertGettersFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xA047EAD9719dE8B030a10dd3d152518db7cf0099","PipelineConvertFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x5794fDb0cfE2AbFCB3D22103F5d8c6B4C2cCD1d9","MetadataFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcA03AbaBA37566d89B707878495D9EB8Ea48C3c5","MarketplaceFacet","v0.8.25+commit.b61c2a91",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xa80A1F63bb8d5cece044E4e12480dB3930E9885C","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xa80A1F63bb8d5cece044E4e12480dB3930E9885C","FieldFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x107F33211935bb72B721675c7e95a2d4cC0c96cc","DepotFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x24103B8141F97D9D8794fE2EE0eD96F577EeC05F","FarmFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xf8B5Fa117f492608b8f16AAE84C69175ead6A38d","TokenFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x17AC9d59f4637a16F47C8a77A1c4EE7c7a159A95","TokenSupportFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xcb84F1a368f303798DB6d9cE7B4084Aaf316479b","TractorFacet","v0.8.25+commit.b61c2a91",,"0","True"
-"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7B2BDA06CE2cD8287e169b241d68d1Bb6568e342","","",,"0","True"
+"2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x7B2BDA06CE2cD8287e169b241d68d1Bb6568e342","FertilizerFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x87F1FB2CF1CDC19103739F7cdb0068b203184354","UnripeFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x3AF703FACA14A0201E5aa98D91cA1Dbb10a8f110","EnrootFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0x926CFCe66aa8A0CC29470dA28095D88CF24ABE16","PauseFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xD1A0060ba708BC4BCD3DA6C37EFa8deDF015FB70","diamond_facet","0xE53e217254672ab00fC7A7Ddd00f27091AF9AE29","L1ReceiverFacet","v0.8.25+commit.b61c2a91",,"0","True"
 "2024-10-16","beanstalk","arbiscan.io","0xFEFEFECA5375630d6950F40e564A27f6074845B5","impl_proxy","0xfefefe2cfb089aef0b0578573ef3cfabc15f1490","Fertilizer","v0.8.25+commit.b61c2a91",,"0","True"
+"2024-10-17","radiant","arbiscan.io","0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1","impl_proxy","0xf0c0a1a19886791c2dd6af71307496b1e16aa232","","",,"0","False"
+"2024-10-18","radiant","arbiscan.io","0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1","impl_proxy","0x3d4c56cdb97355807157f5c7d4f54957f0e9af44","","","[
+  {
+    ""date"": ""2024-10-17"",
+    ""project"": ""radiant"",
+    ""chain"": ""arbiscan.io"",
+    ""address"": ""0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1"",
+    ""type"": ""impl_proxy"",
+    ""impl_address"": ""0xf0c0a1a19886791c2dd6af71307496b1e16aa232"",
+    ""ProxyContractName"": """",
+    ""ProxyCompilerVersion"": """",
+    ""prevVersions"": ""0.0"",
+    ""in_scope"": ""False""
+  }
+]","1","True"
