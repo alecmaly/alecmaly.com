@@ -26,10 +26,8 @@ function resetFilters() {
 /// common searches
 var commonSearches = [
     "<common search regex>",
-    "rce|remote.code.execution",
-    "commmand.injection",
+    "remote.code.execution",
     "xss|cross.site.scripting",
-    "sqli|sql.injection",
     "xxe|xml.external.entity",
     "idor|insecure.direct.object.reference",
     "csrf|cross.site.request.forgery",
@@ -41,6 +39,9 @@ var commonSearches = [
     "dos|denial.of.service",
     "cors|cross.origin.resource.sharing",
     "directory.traversal|path.traversal",
+    "sqli|sql.injection",
+    "nosql.injection",
+    "graphql",
     "host.header",
     "request.smuggling",
     "web.?socket",
@@ -53,13 +54,12 @@ var commonSearches = [
 
     "broken.access.control",
     "clickjacking",
-    "graphql",
     "injection",
     
-    "oauth",
+    "oauth2",
     "saml",
     "openid",
-    "sso|single.sign.on",
+    "single.sign.on",
 
     "cve|common.vulnerabilities.exposures",
     "information.disclosure"
