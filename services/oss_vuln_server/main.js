@@ -23,8 +23,69 @@ function resetFilters() {
 }
 
 
+/// common searches
+var commonSearches = [
+    "<common search regex>",
+    "rce|remote.code.execution",
+    "commmand.injection",
+    "xss|cross.site.scripting",
+    "sqli|sql.injection",
+    "xxe|xml.external.entity",
+    "idor|insecure.direct.object.reference",
+    "csrf|cross.site.request.forgery",
+    "ssrf|server.side.request.forgery",
+    "ssti|server.side.template.injection",
+    "csti|client.side.template.injection",
+    "lfi|local.file.inclusion",
+    "serialization|insecure.deserialization",
+    "dos|denial.of.service",
+    "cors|cross.origin.resource.sharing",
+    "directory.traversal|path.traversal",
+    "host.header",
+    "request.smuggling",
+    "web.?socket",
+    "prototype.pollution",
+    "cache.poisoning",
+    "cache.deception",
+    "open.redirect",
+    "llm|large.language.model",
+    "jwt|json.web.token",
+
+    "broken.access.control",
+    "clickjacking",
+    "graphql",
+    "injection",
+    
+    "oauth",
+    "saml",
+    "openid",
+    "sso|single.sign.on",
+
+    "cve|common.vulnerabilities.exposures",
+    "information.disclosure"
+];
+
+var commonSearch = document.getElementById('common-search');
+for (var i = 0; i < commonSearches.length; i++) {
+    var option = document.createElement('option');
+    option.value = commonSearches[i];
+    option.text = commonSearches[i];
+    commonSearch.appendChild(option);
+}
+
+function searchCommon() {
+    var search = document.getElementById('common-search').value;
+    document.getElementById('search').value = search;
+    buildTable();
+    document.getElementById('common-search').value = '<common search regex>';
+}
 
 
+
+
+
+
+/// build table
 let currentPage = 0;
 const itemsPerPage = 100;
 let filtered_data = [];
