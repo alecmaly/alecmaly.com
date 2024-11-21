@@ -97,7 +97,7 @@ services:
     env_file:
       - ./services/freshrss/.env
     expose:
-      - 8080
+      - 80
 
 volumes:
   nginx_secrets:
