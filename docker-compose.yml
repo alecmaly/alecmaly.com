@@ -88,8 +88,8 @@ services:
       options:
         max-size: 10m
     volumes:
-      - data:/var/www/FreshRSS/data
-      - extensions:/var/www/FreshRSS/extensions
+      - ./services/freshrss/data:/var/www/FreshRSS/data
+      - ./services/freshrss/extensions:/var/www/FreshRSS/extensions
     environment:
       TZ: America/New_York
       CRON_MIN: '3,33'
@@ -102,6 +102,3 @@ services:
 volumes:
   nginx_secrets:
   
-  # freshrss
-  data:
-  extensions:
