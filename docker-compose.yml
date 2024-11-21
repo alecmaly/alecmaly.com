@@ -80,7 +80,7 @@ services:
     build:
       # Pick #latest (stable release) or #edge (rolling release) or a specific release like #1.21.0
       context: https://github.com/FreshRSS/FreshRSS.git#latest
-      dockerfile: Docker/Dockerfile-Alpine
+      dockerfile: Docker/Dockerfile
     container_name: freshrss
     hostname: freshrss
     restart: unless-stopped
