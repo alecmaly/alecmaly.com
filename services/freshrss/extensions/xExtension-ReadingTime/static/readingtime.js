@@ -21,7 +21,7 @@
 
 				reading_time.words_count = reading_time.flux_words_count(flux_list[i]); // count the words
 				// change this number (in words) to your preferred reading speed:
-				reading_time.reading_time = reading_time.calc_read_time(reading_time.words_count, 300);
+				reading_time.reading_time = reading_time.calc_read_time(reading_time.words_count, 175);  // 175 words per minute, slow reading due to processing required for technical content
 
 				flux_list[i].dataset.readingTime = reading_time.reading_time;
 
