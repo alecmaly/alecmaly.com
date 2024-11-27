@@ -99,6 +99,15 @@ services:
     expose:
       - 80
 
+
+  github-history-rss-server:
+    restart: unless-stopped
+    build: ./services/github_history_rss
+    command: node server.js
+    expose: 
+      - 80
+
+
 volumes:
   nginx_secrets:
   
