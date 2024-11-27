@@ -100,9 +100,9 @@ services:
       - 80
 
 
-  github-history-rss-server:
+  github-rss-server:
     restart: unless-stopped
-    build: ./services/github_history_rss
+    build: ./services/github_rss
     command: node server.js
     expose: 
       - 80
