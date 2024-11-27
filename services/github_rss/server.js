@@ -23,8 +23,8 @@ async function generateGithubHistoryRSS(res, url) {
         `
 
 
-        for (let timeline of root.querySelectorAll('.TimelineItem')) {
-            let date = timeline.querySelector('h2').text.replace('Commits on', '')
+        for (let timeline of root.querySelectorAll("[class^='Timeline__TimelineBody-']")) {
+            let date = timeline.querySelector('h3').text.replace('Commits on', '')
             date = (new Date(date.trim()).toUTCString())
             let title  = timeline.querySelector('a').text
             title = encode(title, {mode: 'nonAsciiPrintable', level: 'xml'})
