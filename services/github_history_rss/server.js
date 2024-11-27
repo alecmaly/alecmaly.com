@@ -54,8 +54,6 @@ async function generateGithubHistoryRSS(res, url) {
 
 // generate github rss endpoint
 app.get('/generate_github_history_rss', (req, res) => {
-    console.log(req.url)
-    console.log(req.query.url)
     if (req.query.url && req.query.url.startsWith('https://github.com/')) {
         generateGithubHistoryRSS(res, req.query.url)
         return
@@ -66,7 +64,7 @@ app.get('/generate_github_history_rss', (req, res) => {
 // Default message
 app.get('*', (req, res) => {
     console.log(req.url)
-    res.send('Please enter a valid url.')
+    res.send('Not a valid endpoint.')
 })
 
 
