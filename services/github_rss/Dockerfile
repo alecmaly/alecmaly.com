@@ -2,10 +2,9 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY . .
-
-# run apt update
 RUN apt-get update && apt-get install -y 
+
+COPY . .
 RUN npm install
 
 EXPOSE 80
