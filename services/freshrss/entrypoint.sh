@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Your custom commands
-chmod user:user ./p
+chmod www-data:www-data ./p
 
-# Delegate to the original entrypoint script
+# Delegate to the original entrypoint script.
 exec ./Docker/entrypoint.sh "$@"
