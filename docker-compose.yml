@@ -100,6 +100,7 @@ services:
       - 80
 
 
+  # to translate github commits to rss feed
   github-rss-server:
     restart: unless-stopped
     build: ./services/github_rss
@@ -107,6 +108,14 @@ services:
     expose: 
       - 80
 
+  # to solve cloudflare captcha
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    restart: always
+    environment:
+      - LOG_LEVEL=info
+    expose:
+      - 8191
 
 volumes:
   nginx_secrets:
