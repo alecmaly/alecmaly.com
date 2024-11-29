@@ -94,8 +94,8 @@ services:
       TZ: America/New_York
       CRON_MIN: '3,33'
       TRUSTED_PROXY: 172.16.0.1/12 192.168.0.1/16
-      PUID: 33
-      PGID: 33
+      PUID: 1000
+      PGID: 1000
     env_file:
       - ./services/freshrss/.env
     expose:
