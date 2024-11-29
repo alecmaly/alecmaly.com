@@ -31,6 +31,7 @@ async function generateGithubHistoryRSS(res, url) {
             // let item_url = 'https://github.com' +  timeline.querySelector('a').getAttribute('href')
             rss += `
                     <item>
+                        <guid>${url}-${date}-${title}</guid>
                         <title>${title}</title>
                         <pubDate>${date}</pubDate>
                         <link>${url}</link>
