@@ -90,6 +90,7 @@ services:
     volumes:
       - ./services/freshrss/data:/var/www/FreshRSS/data
       - ./services/freshrss/extensions:/var/www/FreshRSS/extensions
+      - ./services/freshrss/custom-entrypoint.sh:/custom-entrypoint.sh
     environment:
       TZ: America/New_York
       CRON_MIN: '3,33'
@@ -100,6 +101,7 @@ services:
       - ./services/freshrss/.env
     expose:
       - 80
+    entrypoint: ["/custom-entrypoint.sh"]
 
 
   # to translate github commits to rss feed
