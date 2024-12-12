@@ -65,9 +65,11 @@ def process_project(project):
     
     rewards = ""
     for row in scope_data['bounty']['rewards']:
-        all_amounts = re.findall(r'[0-9,]+', row['payout'])
-        max_amount = max(all_amounts, key=lambda x: int(x.replace(',', '')))
-        data = f"{row['level']} - {max_amount}\n"
+        max_amount = row.get('maxReward', row.get('fixedReward', None))
+        if not max_amount:
+            all_amounts = re.findall(r'[0-9,]+', row['payout'])
+            max_amount = max(all_amounts, key=lambda x: int(x.replace(',', '')))
+        data = f"{row.get('level', row.get('severity', ''))} - {max_amount}\n"
         if data not in rewards:
             rewards += data
 
