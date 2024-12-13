@@ -118,6 +118,13 @@ services:
     expose:
       - 8191
 
+  interactsh-web:
+    image: projectdiscovery/interactsh-web
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+
 volumes:
   nginx_secrets:
   
