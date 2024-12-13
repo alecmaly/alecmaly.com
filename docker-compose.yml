@@ -110,13 +110,13 @@ services:
       - 80
 
   # to solve cloudflare captcha
-  flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:latest
-    restart: always
-    environment:
-      - LOG_LEVEL=info
-    expose:
-      - 8191
+  # flaresolverr:
+  #   image: ghcr.io/flaresolverr/flaresolverr:latest
+  #   restart: always
+  #   environment:
+  #     - LOG_LEVEL=info
+  #   expose:
+  #     - 8191
 
   interactsh-web:
     image: projectdiscovery/interactsh-web
