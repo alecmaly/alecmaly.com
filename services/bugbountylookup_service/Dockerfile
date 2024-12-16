@@ -1,5 +1,9 @@
 FROM python:latest
 
+# Create user
+RUN useradd -ms /bin/bash app
+USER app
+
 WORKDIR /app
 
 COPY requirements.txt .
