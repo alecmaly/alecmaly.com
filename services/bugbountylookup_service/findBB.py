@@ -228,6 +228,6 @@ if __name__ == "__main__":
     elif args.web:
         if not os.path.exists("uploads"):
             os.makedirs("uploads")
-        app.run(host="127.0.0.1", port=5000, debug=False)
+        app.run(host="0.0.0.0", port=5000, debug=False)
     else:
         parser.print_help()
