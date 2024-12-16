@@ -41,6 +41,15 @@ services:
     expose: 
       - 8000
 
+
+  bugbountylookup-server:
+    restart: unless-stopped
+    build: ./services/bugbountylookup_service
+    # command: python run.py run
+    command: python findBB.py -web
+    expose: 
+      - 5000
+
   blog-search-server:
     restart: unless-stopped
     build: ./services/blog_search_service
