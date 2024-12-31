@@ -254,11 +254,8 @@ def main():
     </div>
     """
 
-
-
     def sanitize_xss(s):
         return s.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;").replace('"', "&quot;").replace("'", "&#x27;").replace("/", "&#x2F;")
-
 
     output = sorted(output, key=lambda x: x['published'], reverse=True)
 
@@ -308,6 +305,44 @@ def main():
     global all_references
     with open('all_references.txt', 'w', encoding='utf-8') as file:
         file.write("\n".join(all_references))
+
+
+
+    # build rss feed
+    def build_rss_xml():
+        xml = """<?xml version="1.0" encoding="UTF-8" ?>
+        <rss version="2.0">
+            <channel>   
+                <title>Open Source Vulnerabilities</title>
+                <link>https://oss-vulns.alecmaly.com</link>
+                <description>Filtered list of //osv.dev for enhanced searching</description>
+        """
+
+        for row in html_output[:500]:
+            xml += f"""
+                <item>
+                    <title>{row['id']}</title>
+                    <link>https://osv.dev/vulnerability/{row['id']}</link>
+                    <description>
+                        <![CDATA[
+                            <b>Published:</b> {row['published']}<br>
+                            <b>Severity:</b> {row['severity']}<br>
+                            <b>Langs:</b> {row['langs']}<br>
+                            <b>References:</b> {row['references']}<br>
+                            <b>Details:</b> {row['details']}
+                        ]]>
+                    </description>
+                </item>
+            """
+
+        xml += """
+            </channel>
+        </rss>
+        """
+
+        with open('rss.xml', 'w', encoding='utf-8') as file:
+            file.write(xml)
+    build_rss_xml()
 
     print("[+] Done.")
 
