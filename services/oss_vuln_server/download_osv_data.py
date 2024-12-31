@@ -319,10 +319,12 @@ def main():
         """
 
         for row in html_output[:500]:
+            id_ = row['id'].split(">")[1].split("<")[0]
+            title = row['details'].split("<br>")[0]
             xml += f"""
                 <item>
-                    <title>{row['id']}</title>
-                    <link>https://osv.dev/vulnerability/{row['id']}</link>
+                    <title>{id_}: {str(row['severity'])} | {title}</title>
+                    <link>https://osv.dev/vulnerability/{id_}</link>
                     <pubDate>{row['published']}</pubDate>
                     <description>
                         <![CDATA[
