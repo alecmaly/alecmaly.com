@@ -323,6 +323,7 @@ def main():
                 <item>
                     <title>{row['id']}</title>
                     <link>https://osv.dev/vulnerability/{row['id']}</link>
+                    <pubDate>{row['published']}</pubDate>
                     <description>
                         <![CDATA[
                             <b>Published:</b> {row['published']}<br>
