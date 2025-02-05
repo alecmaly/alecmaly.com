@@ -74,15 +74,12 @@ app.get('/generate_github_history_rss', (req, res) => {
         generateGithubHistoryRSS(res, req.query.url)
         return
     }
-    if (req.query.url && req.query.url == 'https://code4rena.com/reports') {
-        getCode4RenaReports(res, req.query.url)
-        return
-    }
     res.send('Please enter a valid url.')
 })
 
 app.get('/fetch_code4rena_reports', (req, res) => {
-    getCode4RenaReports(res)
+    // getCode4RenaReports(res)
+    res.send("TEST")
 })
 
 
