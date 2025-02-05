@@ -11,7 +11,7 @@ async function getCode4RenaReports(res) {
     try {
         const url = "https://code4rena.com/reports"
         const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/chromium-browser',
+            executablePath: '/usr/bin/chromium',
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         const page = await browser.newPage();
