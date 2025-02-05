@@ -10,14 +10,17 @@ const port = 80
 async function getCode4RenaReports(res) {
     try {
         const url = "https://code4rena.com/reports"
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/chromium-browser',
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
         const page = await browser.newPage();
         await page.goto(url);
         const html = await page.content();
         await browser.close();
         res.send(html)
     } catch (e){
-        res.send('Failed to fetch code4rena reports: ', e)
+        res.send('Failed to fetch code4rena reports: ' + e)
     }
 }
 
@@ -78,8 +81,7 @@ app.get('/generate_github_history_rss', (req, res) => {
 })
 
 app.get('/fetch_code4rena_reports', (req, res) => {
-    // getCode4RenaReports(res)
-    res.send("TEST")
+    getCode4RenaReports(res)
 })
 
 
