@@ -2,9 +2,22 @@ import express from 'express'
 import fetch from 'node-fetch'              // https://www.npmjs.com/package/node-fetch
 import { parse } from 'node-html-parser'    // https://www.npmjs.com/package/node-html-parser
 import { encode } from 'html-entities'
+import puppeteer from 'puppeteer';
 const app = express()
 const port = 80
 
+
+async function getCode4RenaReports(res) {
+    try {
+        const url = "https://code4rena.com/reports"
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(url);
+        const html = await page.content();
+        await browser.close();
+        res.send(html)
+    } catch {}
+}
 
 async function generateGithubHistoryRSS(res, url) {
     try {
@@ -59,8 +72,17 @@ app.get('/generate_github_history_rss', (req, res) => {
         generateGithubHistoryRSS(res, req.query.url)
         return
     }
+    if (req.query.url && req.query.url == 'https://code4rena.com/reports') {
+        getCode4RenaReports(res, req.query.url)
+        return
+    }
     res.send('Please enter a valid url.')
 })
+
+app.get('/fetch_code4rena_reports', (req, res) => {
+    getCode4RenaReports(res)
+})
+
 
 // Default message
 app.get('*', (req, res) => {

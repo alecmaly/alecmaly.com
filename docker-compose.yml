@@ -113,7 +113,7 @@ services:
   # to translate github commits to rss feed
   github-rss-server:
     restart: unless-stopped
-    build: ./services/github_rss
+    build: ./services/custom_rss_translations
     command: node server.js
     expose: 
       - 80
