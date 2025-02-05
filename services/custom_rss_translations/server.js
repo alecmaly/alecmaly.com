@@ -16,7 +16,9 @@ async function getCode4RenaReports(res) {
         const html = await page.content();
         await browser.close();
         res.send(html)
-    } catch {}
+    } catch (e){
+        res.send('Failed to fetch code4rena reports: ', e)
+    }
 }
 
 async function generateGithubHistoryRSS(res, url) {
