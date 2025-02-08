@@ -270,7 +270,7 @@ def main():
 
         obj = {
             'ecosystem': sanitize_xss(row['ecosystem']),
-            'id': f"<a href='https://osv.dev/vulnerability/{row['id']}' target='_blank'>{row['id']}</a>",
+            'id': row['id'],
             'details': (f"<b>{sanitize_xss(row['summary'])}</b><br>" if 'summary' in row and row['summary'] != row['details'] else "") + sanitize_xss(row['details']),
             'published': row['published'],
             'severity': str(row['severity']),
@@ -320,15 +320,15 @@ def main():
         """
 
         for row in html_output[:500]:
-            id_ = row['id'].split(">")[1].split("<")[0]
             title = row['details'].split("<br>")[0]
             xml += f"""
                 <item>
-                    <title>{id_}: {str(row['severity'])} | {title}</title>
-                    <link>https://osv.dev/vulnerability/{id_}</link>
+                    <title>{row['id']}: {str(row['severity'])} | {title}</title>
+                    <link>https://oss-vulns.alecmaly.com/report.html#{row['id']}</link>
                     <pubDate>{row['published']}</pubDate>
                     <description>
                         <![CDATA[
+                            Source: <a href='https://osv.dev/vulnerability/{row['id']}'>https://osv.dev/vulnerability/{row['id']}</a><br>
                             <b>Published:</b> {row['published']}<br>
                             <b>Severity:</b> {row['severity']}<br>
                             <b>Langs:</b> {row['langs']}<br>
