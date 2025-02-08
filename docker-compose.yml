@@ -109,6 +109,9 @@ services:
       - ./services/freshrss/.env
     expose:
       - 80
+    post_start:
+      - command: apt update && apt install curl && curl https://gist.githubusercontent.com/alecmaly/91e699ee8aacaabd308c41f0b09f4ab6/raw/da5c4ec3fa85e1e53ac350a502b3ddb6dad8d129/patch-freshrss.sh | bash
+
 
   # to translate github commits to rss feed
   custom-rss-translations:
@@ -117,9 +120,6 @@ services:
     command: node server.js
     expose: 
       - 80
-    post_start:
-      - command: apt update && apt install curl && curl https://gist.githubusercontent.com/alecmaly/91e699ee8aacaabd308c41f0b09f4ab6/raw/da5c4ec3fa85e1e53ac350a502b3ddb6dad8d129/patch-freshrss.sh | bash
-
 
   # to solve cloudflare captcha
   # flaresolverr:
