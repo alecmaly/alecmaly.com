@@ -8,6 +8,14 @@ Blog is built in the ./blog directory, output goes to /var/www/html/blog
 
 - docker / docker-machine
 
+```bash
+# apt install docker ??
+
+# install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-aarch64" -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+```
+
 # Run it
 
 ```powershell
