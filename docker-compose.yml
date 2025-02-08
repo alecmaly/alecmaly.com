@@ -110,7 +110,7 @@ services:
     expose:
       - 80
     post_start:
-      - command: apt update && apt install curl && curl https://gist.githubusercontent.com/alecmaly/91e699ee8aacaabd308c41f0b09f4ab6/raw/da5c4ec3fa85e1e53ac350a502b3ddb6dad8d129/patch-freshrss.sh | bash
+      - command: apt update && apt install curl && curl https://gist.githubusercontent.com/alecmaly/91e699ee8aacaabd308c41f0b09f4ab6/raw/68275848d7c4ee79948bcb35e3478f4049b9cddc/patch-freshrss.sh | bash
 
 
   # to translate github commits to rss feed
