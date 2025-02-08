@@ -149,6 +149,7 @@ function loadMoreData() {
     for (let i = startIndex; i < endIndex; i++) {
         let row = filtered_data[i];
         let row_ele = document.createElement("tr");
+        row_ele.id = row.id
         row_ele.innerHTML = `
             <td>${row.ecosystem}</td>
             <td><a href="https://osv.dev/vulnerability/${row.id}" target="_blank">${row.id}</a></td>
@@ -308,7 +309,39 @@ function topFunction() {
 }
 
 
+function scrollToEle() {
+    let selector = window.location.hash
+
+    if (selector && !data.find((row) => { return row.id === selector.slice(1)})
+    ) {
+        alert('unknown id, cannot scroll')
+        return
+    }
+
+    if (selector) {
+        // scroll, pause .5sec, then highlight, keep scrolling until element is found
+        let element = document.querySelector(selector)
+        if (element) {
+            element.scrollIntoView()
+            element.style.border = "7px solid yellow"
+        } else {
+            let interval = setInterval(() => {
+                element = document.querySelector(selector)
+                if (element) {
+                    clearInterval(interval)
+                    element.scrollIntoView()
+                    setTimeout(() => {
+                        element.style.border = '7px solid yellow'
+                    }, 500)
+                } else {
+                    window.scrollTo(0, document.body.scrollHeight)
+                }
+            }, 250)
+        }
+    }
+}
 
 
 buildDropdowns(data);
 buildTable();
+scrollToEle();
