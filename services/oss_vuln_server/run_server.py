@@ -7,7 +7,7 @@ class NoListingHTTPRequestHandler(SimpleHTTPRequestHandler):
         return None
 
 # Define the server address and port
-server_address = ('', 8080)  # '' means all available interfaces, 3000 is the port
+server_address = ('', 3000)  # '' means all available interfaces, 3000 is the port
 
 # Create the HTTP server with the custom request handler
 httpd = HTTPServer(server_address, NoListingHTTPRequestHandler)
