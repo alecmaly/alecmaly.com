@@ -39,6 +39,62 @@ CURRENT_YEAR = datetime.datetime.now().year
 TIME_THRESHOLD_YEARS = 99  # only keep vulnerabilities published in the last 3 years
 
 
+def is_good_link(url):
+    # has a link that does not match any in links_to_exclude
+    
+    # has_good_ref = any([url for url in ref_urls_lowercase if 
+    #                     ("github.com" in url and "#l" in url) or
+    #                     "hackerone.com" in url or
+    #                     "huntr.dev" in url or
+    #                     "huntr.com" in url or
+    #                     "notion.site" in url or
+    #                     "medium.com" in url or
+    #                     "report" in url or
+    #                     "writeup" in url or 
+    #                     ("nodejs.org" not in url and "blog" in url) or
+    #                     ".pdf" in url or
+    #                     ".md" in url or
+
+    #                     # "/commit/" in url or
+    #                     ("github.com" and "/security/advisories/" in url) or
+    #                     ("github.com" and "/issues/" in url)
+    #                 ])
+    
+    
+    links_to_exclude = [
+        "mattermost.com",
+        "nodejs.org",
+        "npmjs.com",
+        "nvd.nist.gov",
+        "wpscan.com",
+        "github.com",
+        "grafana.com",
+        "bugzilla.redhat.com",
+        "apache.org",
+        "debian.org",
+        "openwall.com",
+        "thewatch.centreon.com",
+        "openstack.org"
+        "cve.org",
+        "crates.io",
+        "pkg.go.dev",
+        "ycombinator.com"
+        # github regex, github without /issues/ or /security/advisories/
+        
+    ]
+    url = url.lower()
+    is_good_ref = not any(exclude in url for exclude in links_to_exclude)
+
+    if not is_good_ref:
+        # github exceptions that are good refs
+        is_good_ref = (
+            ("github.com" in url and "#l" in url) or 
+            # "/commit/" in url or
+            ("github.com" and "/security/advisories/" in url) or
+            ("github.com" and "/issues/" in url)
+        )
+    return is_good_ref
+
 
 
 # Function to process each ecosystem
@@ -92,26 +148,14 @@ def process_ecosystem(args, ecosystem):
                                 severity = c.base_score
                             else:
                                 raise Exception("CVSS version not supported")
-
-                        ref_urls_lowercase = [r['url'].lower() for r in refs]
-                        has_good_ref = any([url for url in ref_urls_lowercase if 
-                                            ("github.com" in url and "#l" in url) or
-                                            "hackerone.com" in url or
-                                            "huntr.dev" in url or
-                                            "huntr.com" in url or
-                                            "notion.site" in url or
-                                            "medium.com" in url or
-                                            "report" in url or
-                                            "writeup" in url or 
-                                            ("nodejs.org" not in url and "blog" in url) or
-                                            ".pdf" in url or
-                                            ".md" in url or
-
-                                            # "/commit/" in url or
-                                            ("github.com" and "/security/advisories/" in url) or
-                                            ("github.com" and "/issues/" in url)
-                                        ])
-
+                        
+                        has_good_ref = any(r for r in refs if is_good_link(r['url']))
+                        if not has_good_ref:
+                            continue
+                        
+                        bad_ref_urls = [r['url'] for r in refs if not is_good_link(r['url'])]
+                        
+                        
                         langs = ""
                         refs_w_line_num = [r for r in refs if "github" in r['url'] and "#L" in r['url']]
                         if len(refs_w_line_num) > 0:
@@ -122,20 +166,20 @@ def process_ecosystem(args, ecosystem):
                                 if l not in unique_langs:
                                     unique_langs.append(l)
 
-                        if has_good_ref:
-                            o = {
-                                'ecosystem': ecosystem,
-                                'id': data['id'],
-                                'langs': langs,
-                                'summary': data.get('summary', ""),
-                                'details': data['details'],
-                                'published': data['published'],
-                                'has_good_ref': has_good_ref,
-                                'references': refs,
-                                'severity': severity,
-                                'data': data
-                            }
-                            output.append(o)
+                        o = {
+                            'ecosystem': ecosystem,
+                            'id': data['id'],
+                            'langs': langs,
+                            'summary': data.get('summary', ""),
+                            'details': data['details'],
+                            'published': data['published'],
+                            'has_good_ref': has_good_ref,
+                            'references': refs,
+                            'bad_ref_urls': bad_ref_urls,
+                            'severity': severity,
+                            'data': data
+                        }
+                        output.append(o)
         print(f"[+] Done w/ ecosystem: {ecosystem}")
     except zipfile.BadZipFile:
         print(f"Error: Bad zip file for {ecosystem}")
@@ -265,7 +309,10 @@ def main():
 
         refs_html = "<ul>"
         for ref in row['references']:
-            refs_html += f"<li>- <a target='_blank' href='{ref['url']}'>{ref['url']}</a></li>"
+            ref_html = f"<li>- <a target='_blank' href='{ref['url']}'>{ref['url']}</a></li>"
+            if ref['url'] in row['bad_ref_urls']:
+                ref_html = f"<s style='color:red'>{ref_html}</s>"
+            refs_html += ref_html
         refs_html += "</ul>"
 
         obj = {
