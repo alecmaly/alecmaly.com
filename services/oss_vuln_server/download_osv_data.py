@@ -78,7 +78,8 @@ def is_good_link(url):
         "cve.org",
         "crates.io",
         "pkg.go.dev",
-        "ycombinator.com"
+        "ycombinator.com",
+        "typo3.org"
         # github regex, github without /issues/ or /security/advisories/
         
     ]
