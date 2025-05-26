@@ -88,10 +88,10 @@ def is_good_link(url):
     if not is_good_ref:
         # github exceptions that are good refs
         is_good_ref = (
-            ("github.com" in url and "#l" in url) or 
-            # "/commit/" in url or
-            ("github.com" and "/security/advisories/" in url) or
-            ("github.com" and "/issues/" in url)
+            ("github.com" in url and "#" in url) or 
+            ("github.com" in url and "/security/advisories/" in url) or
+            ("github.com" in url and "/issues/" in url) or
+            ("github.com" in url and "/commit/" in url) # maybe remove?
         )
     return is_good_ref
 
