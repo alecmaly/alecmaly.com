@@ -6,7 +6,7 @@ WORKDIR /app
 
 
 # Update package lists and install necessary packages
-RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq libicu72 cron sudo
+RUN apt-get update && apt-get install -y --no-install-recommends wget curl jq libicu-dev cron sudo
 
 
 # downloading hardcoded version as there is currently an issue installing ps on debian 12
