@@ -24,32 +24,28 @@ def requestWithRatelimit(url, rateLimit):
 
 
 
-TOKENS = {}
-TOKENS["etherscan.io"] = os.getenv("ETHERSCAN_TOKEN")
-TOKENS["bscscan.com"] = os.getenv("BSSCAN_TOKEN")
-TOKENS["optimistic.etherscan.io"] = os.getenv("OPTIMISTIC_ETHERSCAN_TOKEN")
-TOKENS["polygonscan.com"] = os.getenv("POLYSCAN_TOKEN")
-TOKENS["basescan.org"] = os.getenv("BASESCAN_TOKEN")
-TOKENS["arbiscan.io"] = os.getenv("ARBISCAN_TOKEN")
-TOKENS["ftmscan.com"] = os.getenv("FTMSCAN_TOKEN")
-TOKENS["cronoscan.com"] = os.getenv("CRONOSCAN_TOKEN")
+TOKEN = os.getenv("ETHERSCAN_TOKEN")
 
-
-DOMAIN_HOST_MAP = {}
-DOMAIN_HOST_MAP["optimistic.etherscan.io"] = "api-optimistic.etherscan.io"
-
-
+CHAIN_ID_MAP = {}
+CHAIN_ID_MAP["etherscan.io"] = 1
+CHAIN_ID_MAP["bscscan.com"] = 56
+CHAIN_ID_MAP["optimistic.etherscan.io"] = 10
+CHAIN_ID_MAP["polygonscan.com"] = 137
+CHAIN_ID_MAP["basescan.org"] = 8453
+CHAIN_ID_MAP["arbiscan.io"] = 42161
+CHAIN_ID_MAP["ftmscan.com"] = 250
+CHAIN_ID_MAP["cronoscan.com"] = 25
 
 
 def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=None):
     if not download_root_folder:
         download_root_folder = address 
-    HOST = DOMAIN_HOST_MAP.get(DOMAIN, f"api.{DOMAIN}")
+    HOST = "api.etherscan.io"
     # pad address w/ zero's
     hex_part = address.replace("0x", "")
     address = "0x" + hex_part.zfill(40)
     action = "getsourcecode"
-    uri = f"https://{HOST}/api?module=contract&action={action}&address={address}&apikey={token}"
+    uri = f"https://{HOST}/v2/api?chainid={CHAIN_ID_MAP[DOMAIN]}&module=contract&action={action}&address={address}&apikey={token}"
     resp = requests.get(uri)  # NEET TO FIX HERE
     source_files = {}
     try:
@@ -79,8 +75,8 @@ def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=N
 
 
 def GetLastTransactionTime(address, DOMAIN, token):
-    HOST = DOMAIN_HOST_MAP.get(DOMAIN, f"api.{DOMAIN}")
-    uri = f"https://{HOST}/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey={token}"
+    HOST = "api.etherscan.io"
+    uri = f"https://{HOST}/v2/api?chainid={CHAIN_ID_MAP[DOMAIN]}&module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey={token}"
     resp = requests.get(uri)
     data = resp.json()
     timestamp = int(data['result'][0]['timeStamp'])
@@ -120,13 +116,12 @@ for row in live_contracts:
 
     contracts_in_scope.append(row['address'])
 
-    token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
-        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ContractName', 'CompilerVersion']]) and token:
+        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ContractName', 'CompilerVersion']]) and TOKEN:
         # if type(row.get('ContractName', None)) in [float, type(None)] and token:
             # if not updated
-            code = GetSourceCode(row['address'], row['chain'], token, download=False)
+            code = GetSourceCode(row['address'], row['chain'], TOKEN, download=False)
             row['ContractName'] = code[0].get('ContractName', '<error>')
             row['impl_address'] = code[0].get('impl_address', '')
             row['CompilerVersion'] = code[0].get('CompilerVersion', '<error>')
@@ -158,13 +153,12 @@ for row in live_contract_proxies:
     if row['address'] not in contracts_in_scope:
         continue
 
-    token = TOKENS.get(row['chain'], None)
     try: 
         # check if ContractName is defined, if not - needs a lookup
-        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ProxyContractName', 'ProxyCompilerVersion']]) and token:
+        if any([type(row.get(p, None)) in [float, type(None)] for p in ['ProxyContractName', 'ProxyCompilerVersion']]) and TOKEN:
         # if type(row.get('ProxyContractName', None)) in [float, type(None)] and token:
             # if not updated
-            code = GetSourceCode(row['impl_address'], row['chain'], token, download=False)
+            code = GetSourceCode(row['impl_address'], row['chain'], TOKEN, download=False)
 
             row['ProxyContractName'] = code[0].get('ContractName', '<error>')
             row['ProxyCompilerVersion'] = code[0].get('CompilerVersion', '<error>')
