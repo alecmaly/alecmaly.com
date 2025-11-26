@@ -24,11 +24,11 @@ services:
     volumes:
       - ./services/oss_vuln_server:/opt/app
     expose: 
-      - 3000
-    cpus: 0.3
-    mem_limit: 512m
-    memswap_limit: 512m
-    
+      - 3000    
+    cpus: 0.5
+    mem_limit: 1g
+    memswap_limit: 1g
+
   web3-vuln-server:
     restart: unless-stopped
     build: ./services/web3_vuln_server
