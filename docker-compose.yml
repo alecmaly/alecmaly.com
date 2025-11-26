@@ -5,6 +5,10 @@ services:
     command: npm start
     expose: 
       - 3000
+    cpus: 0.3
+    mem_limit: 512m
+    memswap_limit: 512m
+    
 
   # https://github.com/alecmaly/random-info-website
   random-info-website:
@@ -21,7 +25,10 @@ services:
       - ./services/oss_vuln_server:/opt/app
     expose: 
       - 3000
-      
+    cpus: 0.3
+    mem_limit: 512m
+    memswap_limit: 512m
+    
   web3-vuln-server:
     restart: unless-stopped
     build: ./services/web3_vuln_server
@@ -32,6 +39,9 @@ services:
       - ./services/web3_vuln_server/contract_monitoring:/app/contract_monitoring
     expose:
       - 3000
+    cpus: 0.5
+    mem_limit: 1g
+    memswap_limit: 1g
 
   riskfactor-server:
     restart: unless-stopped
@@ -136,7 +146,10 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
-
+    cpus: 0.5
+    mem_limit: 2g  # 2g needed as "node --max-old-space-size=2048" is running in container
+    memswap_limit: 2g 
+    
 
 volumes:
   nginx_secrets:
