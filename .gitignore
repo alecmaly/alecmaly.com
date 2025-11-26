@@ -4,3 +4,4 @@ venv/
 */oss_vuln_server/data/
 *.seg
 */oss_vuln_server/report.html
+*/oss_vuln_server/data.html
