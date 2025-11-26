@@ -3,3 +3,4 @@ blog/
 venv/
 */oss_vuln_server/data/
 *.seg
+*/oss_vuln_server/report.html
