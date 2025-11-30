@@ -67,7 +67,7 @@ def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=N
                 os.makedirs(f"./{download_root_folder}/{'/'.join(filepath.split('/')[:-1])}", 777, exist_ok=True)
                 open(f"./{download_root_folder}/{filepath}", "w", encoding="utf-8").write(source_code)
     except Exception as e:
-        print("failed to get source files / download", e)
+        print(f"failed to get source files / download for {address} on {DOMAIN}: ", e)
     return resp.json()['result']
 
 # download files

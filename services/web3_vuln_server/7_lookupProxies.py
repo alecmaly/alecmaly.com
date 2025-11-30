@@ -190,7 +190,7 @@ for row in live_contracts:
         for impl_addr in impl_addresses:
             processImplAddress(impl_addr, 'diamond_facet')
     except Exception as e:
-        print("Err", e)
+        print("Err getting impl address for ", row['address'], e)
 
 
 
