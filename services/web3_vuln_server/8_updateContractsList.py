@@ -10,6 +10,18 @@ import json
 
 from dotenv import load_dotenv
 import os
+import time
+
+
+def MakeEtherscanRequest(urI):
+    while True:
+        resp = requests.get(urI)
+        data = resp.json()
+        if data['status'] == "0" and "rate limit" in data['result']:
+            print("Etherscan rate limit hit, sleeping 3 seconds")
+            time.sleep(3)
+        else:
+            return resp
 
 # load .env file
 load_dotenv()
@@ -46,7 +58,7 @@ def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=N
     address = "0x" + hex_part.zfill(40)
     action = "getsourcecode"
     uri = f"https://{HOST}/v2/api?chainid={CHAIN_ID_MAP[DOMAIN]}&module=contract&action={action}&address={address}&apikey={token}"
-    resp = requests.get(uri)  # NEET TO FIX HERE
+    resp = MakeEtherscanRequest(uri)  # NEET TO FIX HERE
     source_files = {}
     try:
         for ele in resp.json()['result']:
@@ -67,7 +79,7 @@ def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=N
                 os.makedirs(f"./{download_root_folder}/{'/'.join(filepath.split('/')[:-1])}", 777, exist_ok=True)
                 open(f"./{download_root_folder}/{filepath}", "w", encoding="utf-8").write(source_code)
     except Exception as e:
-        print(f"failed to get source files / download for {address} on {DOMAIN}: ", e)
+        print("failed to get source files / download", e)
     return resp.json()['result']
 
 # download files
@@ -77,7 +89,7 @@ def GetSourceCode(address, DOMAIN, token, download=False, download_root_folder=N
 def GetLastTransactionTime(address, DOMAIN, token):
     HOST = "api.etherscan.io"
     uri = f"https://{HOST}/v2/api?chainid={CHAIN_ID_MAP[DOMAIN]}&module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey={token}"
-    resp = requests.get(uri)
+    resp = MakeEtherscanRequest(uri)
     data = resp.json()
     timestamp = int(data['result'][0]['timeStamp'])
     date_time = datetime.fromtimestamp(timestamp)
