@@ -84,14 +84,20 @@ services:
       - 80:80
       - 443:443
     volumes:
+      - ./services/nginx/local_ca:/etc/local_ca
       - nginx_secrets:/etc/letsencrypt
       - ./services/nginx/user_conf.d:/etc/nginx/user_conf.d
       - /var/www/html/blog:/var/www/html/blog
     depends_on:
-      - riskfactor-server
-      - random-info-website
       - sharepoint-json-helper
+      - random-info-website
+      - web3-vuln-server
       - oss-vuln-server
+      - riskfactor-server
+      - blog-search-server
+      - freshrss-server
+      - interactsh-web
+      - bugbountylookup-server
 
   freshrss-server:
     image: freshrss/freshrss:latest

@@ -29,3 +29,5 @@ echo "Running 11_generateHTMLReview.ps1"
 
 cp web3contractreport.html public
 cp web3repoupdates.html public
+cp ./public/live_contracts.csv ./contract_monitoring/live_contracts.csv
+cp ./public/live_contract_proxies.csv ./contract_monitoring/live_contract_proxies.csv

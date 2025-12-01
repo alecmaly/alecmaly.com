@@ -1,27 +1,50 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import os
+from urllib.parse import unquote
+
+def fully_unquote(path):
+    prev = None
+    while prev != path:
+        prev = path
+        path = unquote(path)
+    return path
 
 class PublicDirectoryHTTPRequestHandler(SimpleHTTPRequestHandler):
     def translate_path(self, path):
-        # Define the public directory as the only accessible directory
-        root_directory = os.path.join(os.getcwd(), 'public')  # Root is the /public directory
+        # 1. Fully decode double-encoded paths
+        path = fully_unquote(path)
 
-        # Check if the requested path starts with '/public'
-        if not path.startswith('/public'):
-            # Redirect to /public if the path is not inside /public
-            self.send_response(302)
-            self.send_header('Location', '/public')
-            self.end_headers()
-            return None
+        public_dir = os.path.realpath(os.path.join(os.getcwd(), "public"))
 
-        # Translate the path as normal, ensuring it's inside /public
-        return os.path.join(root_directory, path.lstrip('/public'))
+        # 2. Reject explicit ".." anywhere
+        if ".." in path:
+            return os.path.join(public_dir, "index.html")
 
-# Define the server address and port
-server_address = ('', 3000)  # '' means all available interfaces, 3000 is the port
+        # 3. Force everything to be under /public
+        if not path.startswith("/public"):
+            # Always serve index.html by default
+            return os.path.join(public_dir, "index.html")
 
-# Create the HTTP server with the custom request handler
+        # 4. Strip prefix only (/public)
+        relative = path[len("/public"):]
+        if relative.startswith("/"):
+            relative = relative[1:]
+
+        # 5. Build final path
+        final = os.path.realpath(os.path.join(public_dir, relative))
+
+        # 6. Prevent escaping public/ directory
+        if not final.startswith(public_dir + os.sep):
+            return os.path.join(public_dir, "index.html")
+
+        # 7. If the file does not exist → return index.html
+        if not os.path.exists(final):
+            return os.path.join(public_dir, "index.html")
+
+        return final
+
+
+server_address = ("", 3000)
 httpd = HTTPServer(server_address, PublicDirectoryHTTPRequestHandler)
-
-print("Serving on port 3000, redirecting all requests to /public...")
+print("Serving public/ on :3000 ...")
 httpd.serve_forever()
