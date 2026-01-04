@@ -80,6 +80,10 @@ def process_ecosystem(args, ecosystem):
                 
                 # Read content
                 content = zip_ref.read(file_name)
+
+                if "Malicious code" in content:
+                    continue
+                
                 data = json.loads(content)
                 del content # Free memory immediately
 
