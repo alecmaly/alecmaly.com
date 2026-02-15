@@ -88,16 +88,6 @@ services:
       - nginx_secrets:/etc/letsencrypt
       - ./services/nginx/user_conf.d:/etc/nginx/user_conf.d
       - /var/www/html/blog:/var/www/html/blog
-    depends_on:
-      - sharepoint-json-helper
-      - random-info-website
-      - web3-vuln-server
-      - oss-vuln-server
-      - riskfactor-server
-      - blog-search-server
-      - freshrss-server
-      - interactsh-web
-      - bugbountylookup-server
 
   freshrss-server:
     image: freshrss/freshrss:latest
