@@ -51,7 +51,7 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     # Clean and clone as ubuntu user
     sudo -u ubuntu rm -rf /opt/blog
     sudo -u ubuntu mkdir -p /opt/blog
-    sudo -u ubuntu git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
+    sudo -u ubuntu GITHUB_USER=$GITHUB_USER GITHUB_TOKEN=$GITHUB_TOKEN git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
     # Build as ubuntu user
     sudo -u ubuntu bash -c "cd /opt/blog && npm ci && npm run build"
