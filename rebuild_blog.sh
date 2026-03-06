@@ -50,13 +50,15 @@ need_to_pull=$(sudo -u ubuntu bash -c "cd /opt/blog && git fetch && git status 2
 if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     echo "Need to pull"
 
-    # Clean and clone as ubuntu user
+    # Clean
+    sudo cd /opt
     sudo rm -rf /opt/blog
     sudo mkdir -p /opt/blog
 
     # grant permissions to user `ubuntu`
     sudo chown -R ubuntu:ubuntu /opt/blog
 
+    # clone as ubuntu user
     sudo -u ubuntu GITHUB_USER=$GITHUB_USER GITHUB_TOKEN=$GITHUB_TOKEN git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
     # Build as ubuntu user
