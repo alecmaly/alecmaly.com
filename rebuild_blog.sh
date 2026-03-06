@@ -33,6 +33,7 @@ if [ "$1" = "--force" ]; then
     echo "Force rebuild requested"
 fi
 
+source /etc/secure_env
 
 # create /opt/blog as sudo
 sudo mkdir -p /opt/blog
@@ -50,7 +51,7 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     echo "Need to pull"
 
     # Clean and clone as ubuntu user
-    sudo -u ubuntu rm -rf /opt/blog
+    sudo -u ubuntu rm -rf /opt/blog/*
     sudo -u ubuntu mkdir -p /opt/blog
     sudo -u ubuntu GITHUB_USER=$GITHUB_USER GITHUB_TOKEN=$GITHUB_TOKEN git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
