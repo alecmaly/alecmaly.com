@@ -22,7 +22,7 @@
 #   ./rebuild_blog.sh --force # Force rebuild regardless of git status
 
 GITHUB_USER="alecmaly"
-GITHUB_TOKEN="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" # read to contents of blog. not super sensitive, fine with hardcoded credentials
+GITHUB_TOKEN="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" # read to contents of blog. not super sensitive, fine with hardcoded credentials
 
 
 # Check for --force flag
