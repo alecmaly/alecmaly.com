@@ -60,16 +60,16 @@ services:
     expose: 
       - 5000
 
-  blog-search-server:
-    restart: unless-stopped
-    build: ./services/blog_search_service
-    # command: python run.py run
-    command: bash run.sh
-    volumes:
-      - /var/www/html/blog:/var/www/html/blog
-      - ./services/blog_search_service:/opt/app
-    expose: 
-      - 5000
+  # blog-search-server:
+  #   restart: unless-stopped
+  #   build: ./services/blog_search_service
+  #   # command: python run.py run
+  #   command: bash run.sh
+  #   volumes:
+  #     - /var/www/html/blog:/var/www/html/blog
+  #     - ./services/blog_search_service:/opt/app
+  #   expose: 
+  #     - 5000
     
 
   nginx:
