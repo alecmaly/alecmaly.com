@@ -51,7 +51,7 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     echo "Need to pull"
 
     # Clean
-    sudo cd /opt
+    cd /opt
     sudo rm -rf /opt/blog
     sudo mkdir -p /opt/blog
 
