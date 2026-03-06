@@ -51,7 +51,7 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     echo "Need to pull"
 
     # Clean and clone as ubuntu user
-    sudo -u ubuntu rm -rf /opt/blog/*
+    sudo -u ubuntu rm -rf /opt/blog
     sudo -u ubuntu mkdir -p /opt/blog
     sudo -u ubuntu GITHUB_USER=$GITHUB_USER GITHUB_TOKEN=$GITHUB_TOKEN git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
