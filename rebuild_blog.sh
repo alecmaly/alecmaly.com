@@ -42,29 +42,28 @@ sudo chown -R ubuntu:ubuntu /opt/blog
 # grant permissions to user `ubuntu`
 sudo chmod -R 755 /opt/blog
 
-# drop into user ubuntu shell for rest of commands
-sudo -u ubuntu -i
-
-pushd /opt/blog
-git fetch
-need_to_pull=$(git status 2>&1 | grep -iE "(Your branch is behind|not a git repository)")
-popd
+# Check git status as ubuntu user
+need_to_pull=$(sudo -u ubuntu bash -c "cd /opt/blog && git fetch && git status 2>&1" | grep -iE "(Your branch is behind|not a git repository)")
 
 if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     echo "Need to pull"
 
-    rm -rf /opt/blog
-    mkdir -p /opt/blog
-    # git clone --branch=main git@github.com:alecmaly/blog.git /opt/blog
-    git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
+    # Clean and clone as ubuntu user
+    sudo -u ubuntu rm -rf /opt/blog
+    sudo -u ubuntu mkdir -p /opt/blog
+    sudo -u ubuntu git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
-    cd /opt/blog
-    npm ci
-    npm run build
+    # Build as ubuntu user
+    sudo -u ubuntu bash -c "cd /opt/blog && npm ci && npm run build"
 
+    # Copy built files as root (since /var/www/html needs root permissions)
     rm -rf /var/www/html/blog/*
     mkdir -p /var/www/html/blog
-    cp -r dist/* /var/www/html/blog/
+    cp -r /opt/blog/dist/* /var/www/html/blog/
+    
+    # Ensure nginx can read the files
+    chown -R nginx:nginx /var/www/html/blog
+    chmod -R 755 /var/www/html/blog
 else
     echo "No action necessary"
 fi
