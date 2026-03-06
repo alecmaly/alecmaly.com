@@ -62,8 +62,8 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     mkdir -p /var/www/html/blog
     cp -r /opt/blog/dist/* /var/www/html/blog/
     
-    # Ensure nginx can read the files
-    chown -R nginx:nginx /var/www/html/blog
+    # Ensure ubuntu can read the files
+    chown -R ubuntu:ubuntu /var/www/html/blog
     chmod -R 755 /var/www/html/blog
 else
     echo "No action necessary"
