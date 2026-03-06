@@ -55,7 +55,7 @@ if [ ! -z "$need_to_pull" ] || [ "$FORCE_REBUILD" = true ]; then
     sudo -u ubuntu GITHUB_USER=$GITHUB_USER GITHUB_TOKEN=$GITHUB_TOKEN git clone --branch main "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/alecmaly/blog.git" /opt/blog
 
     # Build as ubuntu user
-    sudo -u ubuntu bash -c "cd /opt/blog && npm ci && npm run build"
+    sudo -u ubuntu bash -c "source ~/.nvm/nvm.sh && cd /opt/blog && npm ci && npm run build"
 
     # Copy built files as root (since /var/www/html needs root permissions)
     rm -rf /var/www/html/blog/*
