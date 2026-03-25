@@ -138,7 +138,7 @@ services:
   #     - 8191
 
   interactsh-web:
-    image: projectdiscovery/interactsh-web
+    build: /opt/interactsh-web
     ports:
       - "3000:3000"
     restart: unless-stopped

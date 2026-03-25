@@ -14,6 +14,9 @@ Blog is built in the ./blog directory, output goes to /var/www/html/blog
 # install docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-aarch64" -o /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
+
+# install interactsh in /opt (their docker container is out of date)
+git clone https://github.com/projectdiscovery/interactsh-web.git /opt/interactsh-web
 ```
 
 # Run it
