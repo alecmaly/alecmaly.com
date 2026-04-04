@@ -1,6 +1,6 @@
 services:
   sharepoint-json-helper:
-    restart: unless-stopped
+    restart: always
     image: alecmaly/sharepoint-json-helper
     command: npm start
     expose: 
@@ -12,14 +12,14 @@ services:
 
   # https://github.com/alecmaly/random-info-website
   random-info-website:
-    restart: unless-stopped
+    restart: always
     image: alecmaly/random-info-website
     command: npm run start
     expose: 
       - 3000
 
   oss-vuln-server:
-    restart: unless-stopped
+    restart: always
     build: ./services/oss_vuln_server
     volumes:
       - ./services/oss_vuln_server:/opt/app
@@ -30,7 +30,7 @@ services:
     memswap_limit: 1g
 
   web3-vuln-server:
-    restart: unless-stopped
+    restart: always
     build: ./services/web3_vuln_server
     env_file:
       - .env
@@ -44,7 +44,7 @@ services:
     memswap_limit: 2g
 
   riskfactor-server:
-    restart: unless-stopped
+    restart: always
     build: ./services/riskfactor_server
     # command: python run.py run
     command: python server.py
@@ -53,7 +53,7 @@ services:
 
 
   bugbountylookup-server:
-    restart: unless-stopped
+    restart: always
     build: ./services/bugbountylookup_service
     # command: python run.py run
     command: python findBB.py -web
@@ -61,7 +61,7 @@ services:
       - 5000
 
   # blog-search-server:
-  #   restart: unless-stopped
+  #   restart: always
   #   build: ./services/blog_search_service
   #   # command: python run.py run
   #   command: bash run.sh
@@ -73,7 +73,7 @@ services:
     
 
   nginx:
-    restart: unless-stopped
+    restart: always
     # image: jonasal/nginx-certbot:latest
     build: ./services/nginx
     # environment:
