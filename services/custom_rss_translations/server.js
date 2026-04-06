@@ -6,23 +6,25 @@ import puppeteer from 'puppeteer';
 const app = express()
 const port = 80
 
-
 async function getCode4RenaReports(res) {
+    let browser;
     try {
         const url = "https://code4rena.com/reports"
-        const browser = await puppeteer.launch({
+        browser = await puppeteer.launch({
             executablePath: '/usr/bin/chromium',
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         const page = await browser.newPage();
-        await page.goto(url, {waitUntil: 'networkidle2'});
+        await page.goto(url, {waitUntil: 'networkidle2', timeout: 30000});
         const html = await page.content();
-        await browser.close();
         res.send(html)
     } catch (e){
         res.send('Failed to fetch code4rena reports: ' + e)
+    } finally {
+        if (browser) await browser.close().catch(() => {});
     }
 }
+
 
 async function generateGithubHistoryRSS(res, url) {
     try {
