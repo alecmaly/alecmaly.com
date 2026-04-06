@@ -6,6 +6,7 @@ import puppeteer from 'puppeteer';
 const app = express()
 const port = 80
 
+
 async function getCode4RenaReports(res) {
     let browser;
     try {
@@ -15,7 +16,8 @@ async function getCode4RenaReports(res) {
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         const page = await browser.newPage();
-        await page.goto(url, {waitUntil: 'networkidle2', timeout: 30000});
+        await page.goto(url, {waitUntil: 'domcontentloaded', timeout: 30000});
+        await new Promise(r => setTimeout(r, 5000));
         const html = await page.content();
         res.send(html)
     } catch (e){
