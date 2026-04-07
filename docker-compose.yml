@@ -124,6 +124,7 @@ services:
   custom-rss-translations:
     restart: unless-stopped
     build: ./services/custom_rss_translations
+    init: true
     command: node server.js
     expose: 
       - 80
