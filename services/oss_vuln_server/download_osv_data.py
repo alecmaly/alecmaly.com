@@ -180,8 +180,11 @@ def main():
 
     final_output_list = []
 
-    # Reduce workers if still OOM, but 2 is usually safe
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    # max_workers=1: two parallel workers each hold a full decompressed
+    # ecosystem zip (npm/GSD/Linux are large) in memory at once, which is
+    # what was pushing the 1GB container limit and triggering OOM kills
+    # every ~6h. Serializing keeps peak memory to one ecosystem at a time.
+    with ThreadPoolExecutor(max_workers=1) as executor:
         future_to_eco = {executor.submit(process_ecosystem, args, eco): eco for eco in ecosystems}
         
         for future in as_completed(future_to_eco):
@@ -269,41 +272,44 @@ def main():
         </div>
         """)
 
-        # Process data for JS and write JS file separately
+        # Process data for JS and stream it straight to data.js.
+        # Previously this built a second full in-memory copy
+        # (js_data_list) of nearly the same data already held in
+        # final_output_list before dumping it all at once - that
+        # doubling was a major contributor to the OOM kills. Writing
+        # each object as it's built keeps only one row in memory at a time.
         print("[+] Generating data.js...")
-        js_data_list = []
-        for row in final_output_list:
-            # Build references HTML
-            refs_html_parts = ["<ul>"]
-            for ref in row['references']:
-                style = "style='color:red'" if ref['url'] in row['bad_ref_urls'] else ""
-                tag = "s" if ref['url'] in row['bad_ref_urls'] else "span"
-                # Check for XSS in URLs just in case
-                safe_url = sanitize_xss(ref['url'])
-                refs_html_parts.append(f"<li>- <{tag} {style}><a target='_blank' href='{safe_url}'>{safe_url}</a></{tag}></li>")
-            refs_html_parts.append("</ul>")
-            
-            # Combine details
-            summary_part = f"<b>{sanitize_xss(row['summary'])}</b><br>" if row['summary'] and row['summary'] != row['details'] else ""
-            full_details = summary_part + sanitize_xss(row['details'])
-
-            obj = {
-                'ecosystem': sanitize_xss(row['ecosystem']),
-                'id': row['id'],
-                'details': full_details,
-                'published': row['published'],
-                'severity': str(row['severity']),
-                'langs': "\n".join(row['langs']),
-                'references': "".join(refs_html_parts),
-            }
-            js_data_list.append(obj)
-
-        # Write data.js directly using json.dump
         with open('data.js', 'w') as jf:
-            jf.write("var data = ")
-            json.dump(js_data_list, jf)
-            jf.write(";")
-        
+            jf.write("var data = [")
+            for i, row in enumerate(final_output_list):
+                # Build references HTML
+                refs_html_parts = ["<ul>"]
+                for ref in row['references']:
+                    style = "style='color:red'" if ref['url'] in row['bad_ref_urls'] else ""
+                    tag = "s" if ref['url'] in row['bad_ref_urls'] else "span"
+                    # Check for XSS in URLs just in case
+                    safe_url = sanitize_xss(ref['url'])
+                    refs_html_parts.append(f"<li>- <{tag} {style}><a target='_blank' href='{safe_url}'>{safe_url}</a></{tag}></li>")
+                refs_html_parts.append("</ul>")
+
+                # Combine details
+                summary_part = f"<b>{sanitize_xss(row['summary'])}</b><br>" if row['summary'] and row['summary'] != row['details'] else ""
+                full_details = summary_part + sanitize_xss(row['details'])
+
+                obj = {
+                    'ecosystem': sanitize_xss(row['ecosystem']),
+                    'id': row['id'],
+                    'details': full_details,
+                    'published': row['published'],
+                    'severity': str(row['severity']),
+                    'langs': "\n".join(row['langs']),
+                    'references': "".join(refs_html_parts),
+                }
+                if i > 0:
+                    jf.write(",")
+                json.dump(obj, jf)
+            jf.write("];")
+
         # Free memory of the JS list
         del js_data_list
         gc.collect()

@@ -1,7 +1,17 @@
 .env
+.env.bak
+*.env
+!*/nginx/nginx-certbot.env
 blog/
 venv/
 */oss_vuln_server/data/
 *.seg
 */oss_vuln_server/report.html
 */oss_vuln_server/data.html
+*/oss_vuln_server/data.js
+*/oss_vuln_server/all_references.txt
+*/oss_vuln_server/rss.xml
+*/web3_vuln_server/public/web3contractreport.html
+*/web3_vuln_server/public/web3repoupdates.html
+*/nginx/local_ca/
+*/blog_search_service/_search_index/
