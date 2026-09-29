@@ -22,18 +22,18 @@ TIME_THRESHOLD_YEARS = 3  # Kept your comment's logic (3 years)
 def download_ecosystem(ecosystem):
     filename = ecosystem + ".zip"
     zip_filepath = os.path.join('data', filename)
-    
+
     # mkdir if does not exist
     if not os.path.exists('data'):
         os.makedirs('data')
-        
+
     url = "https://storage.googleapis.com/osv-vulnerabilities/" + ecosystem + "/all.zip"
-    
+
     print(f"[+] Downloading {ecosystem}...")
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         with open(zip_filepath, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=8192): 
+            for chunk in r.iter_content(chunk_size=8192):
                 f.write(chunk)
 
 def is_good_link(url):
@@ -44,9 +44,9 @@ def is_good_link(url):
         "openstack.org", "cve.org", "crates.io", "pkg.go.dev",
         "ycombinator.com", "typo3.org"
     ]
-    
+
     url_lower = url.lower()
-    
+
     # 1. Check exclusions
     if any(exclude in url_lower for exclude in links_to_exclude):
         # 2. Check exceptions to the exclusions (Github specific)
@@ -54,13 +54,34 @@ def is_good_link(url):
             if any(x in url_lower for x in ["#", "/security/advisories/", "/issues/", "/commit/"]):
                 return True
         return False
-        
+
     return True
 
+def filtered_filepath(ecosystem):
+    # One JSONL file per ecosystem holding only the already-filtered
+    # records for that ecosystem. Used as the on-disk backing store so
+    # main() never has to hold every ecosystem's records in memory at
+    # once (see process_ecosystem's docstring below for why).
+    return os.path.join('data', ecosystem + '.filtered.jsonl')
+
 def process_ecosystem(args, ecosystem):
-    output = []
+    # Previously this returned a Python list of every filtered record
+    # for the ecosystem, which main() then concatenated across all 22
+    # ecosystems into one big in-memory list before sorting/writing.
+    # That aggregate list - not the raw zip parsing - was what pushed
+    # past the container's memory limit and caused the recurring OOM
+    # kills, since it held full 'details'/'summary'/'references' text
+    # for every matching vulnerability across every ecosystem at once,
+    # for the whole duration of the run.
+    #
+    # Instead, each matching record is written straight to a per-
+    # ecosystem JSONL file on disk as soon as it's built, and this
+    # function only returns a lightweight index (published date +
+    # byte offset) so main() can sort and stream the records back out
+    # later without ever holding more than one record in memory.
+    index_entries = []  # (published, ecosystem, byte_offset)
     zip_filepath = os.path.join('data', ecosystem + '.zip')
-    
+
     # Check download requirements
     now = datetime.datetime.now().timestamp()
     if args.force_download or not os.path.exists(zip_filepath) or os.path.getmtime(zip_filepath) < now - 86400:
@@ -69,27 +90,28 @@ def process_ecosystem(args, ecosystem):
         print(f"Skipping download for {ecosystem} (fresh enough)")
 
     print(f"[+] Processing {ecosystem}...")
-    
+
     local_refs = set() # Collect refs locally to avoid threading lock contention
     files_processed = 0
-    
+
     try:
-        with zipfile.ZipFile(zip_filepath, 'r') as zip_ref:
+        with zipfile.ZipFile(zip_filepath, 'r') as zip_ref, \
+             open(filtered_filepath(ecosystem), 'w', encoding='utf-8') as out_f:
             for file_name in zip_ref.namelist():
                 files_processed += 1
-                
+
                 # Read content
                 content = zip_ref.read(file_name)
                 data = json.loads(content)
                 del content # Free memory immediately
-                
+
                 if data.get('summary', "").startswith('Malicious code in '):
                     continue
 
                 if 'references' in data:
                     # Filter references
                     refs = [ref for ref in data['references'] if ref.get('type') not in ['ADVISORY', 'FIX'] and 'url' in ref]
-                    
+
                     # Store URLs for global list
                     for r in refs:
                         local_refs.add(r['url'])
@@ -118,7 +140,7 @@ def process_ecosystem(args, ecosystem):
                                 pass # formatting error or unsupported version
 
                         has_good_ref = any(is_good_link(r['url']) for r in refs)
-                        
+
                         if not has_good_ref:
                             continue
 
@@ -135,7 +157,7 @@ def process_ecosystem(args, ecosystem):
                                     langs.add(ext)
                             except:
                                 pass
-                        
+
                         # --- CRITICAL MEMORY OPTIMIZATION ---
                         # Do NOT store 'data': data. Only store what is needed.
                         o = {
@@ -149,8 +171,12 @@ def process_ecosystem(args, ecosystem):
                             'bad_ref_urls': bad_ref_urls,
                             'severity': severity
                         }
-                        output.append(o)
-                
+
+                        offset = out_f.tell()
+                        json.dump(o, out_f)
+                        out_f.write("\n")
+                        index_entries.append((o['published'], ecosystem, offset))
+
                 # Help GC inside loop
                 del data
 
@@ -161,11 +187,36 @@ def process_ecosystem(args, ecosystem):
 
     # Explicit GC after heavy processing
     gc.collect()
-    return output, local_refs, files_processed
+    return index_entries, local_refs, files_processed
 
 def sanitize_xss(s):
     if not s: return ""
     return s.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;").replace('"', "&quot;").replace("'", "&#x27;").replace("/", "&#x2F;")
+
+def build_data_obj(row):
+    # Build references HTML
+    refs_html_parts = ["<ul>"]
+    for ref in row['references']:
+        style = "style='color:red'" if ref['url'] in row['bad_ref_urls'] else ""
+        tag = "s" if ref['url'] in row['bad_ref_urls'] else "span"
+        # Check for XSS in URLs just in case
+        safe_url = sanitize_xss(ref['url'])
+        refs_html_parts.append(f"<li>- <{tag} {style}><a target='_blank' href='{safe_url}'>{safe_url}</a></{tag}></li>")
+    refs_html_parts.append("</ul>")
+
+    # Combine details
+    summary_part = f"<b>{sanitize_xss(row['summary'])}</b><br>" if row['summary'] and row['summary'] != row['details'] else ""
+    full_details = summary_part + sanitize_xss(row['details'])
+
+    return {
+        'ecosystem': sanitize_xss(row['ecosystem']),
+        'id': row['id'],
+        'details': full_details,
+        'published': row['published'],
+        'severity': str(row['severity']),
+        'langs': "\n".join(row['langs']),
+        'references': "".join(refs_html_parts),
+    }
 
 def main():
     parser = argparse.ArgumentParser(description='Download and process OSV data')
@@ -173,58 +224,60 @@ def main():
     args = parser.parse_args()
 
     total_files = 0
-    unique_langs_set = set()
     global all_references
-    
+
     ecosystems = ['GIT', 'OSS-Fuzz', 'npm', 'PyPI', 'NuGet', 'JavaScript', 'Linux', 'Go', 'GitHub Actions', 'GSD', 'Hex', 'Maven', 'DWF', 'Chainguard', 'CRAN', 'Bitnami', 'UVI', 'Wolfi', 'RubyGems', 'SwiftURL', 'Pub', 'Packagist']
 
-    final_output_list = []
+    if not os.path.exists('data'):
+        os.makedirs('data')
 
-    # max_workers=1: two parallel workers each hold a full decompressed
-    # ecosystem zip (npm/GSD/Linux are large) in memory at once, which is
-    # what was pushing the 1GB container limit and triggering OOM kills
-    # every ~6h. Serializing keeps peak memory to one ecosystem at a time.
+    # Only (published, ecosystem, byte_offset) tuples are held in memory
+    # across ecosystems - the actual record content stays on disk in each
+    # ecosystem's *.filtered.jsonl file until the streaming write phase below.
+    all_index = []
+
+    # max_workers=1: keeps at most one ecosystem's raw zip decompressed in
+    # memory at a time (npm/GSD/Linux are large). Combined with the
+    # disk-backed index above, this is what keeps peak memory bounded
+    # regardless of how many total records match across all 22 ecosystems -
+    # previously that aggregate was held in memory whole, which is what
+    # caused the recurring OOM kills.
     with ThreadPoolExecutor(max_workers=1) as executor:
         future_to_eco = {executor.submit(process_ecosystem, args, eco): eco for eco in ecosystems}
-        
+
         for future in as_completed(future_to_eco):
             eco = future_to_eco[future]
             try:
-                result_list, eco_refs, count = future.result()
-                
+                index_entries, eco_refs, count = future.result()
+
                 # Aggregate results
-                final_output_list.extend(result_list)
+                all_index.extend(index_entries)
                 all_references.update(eco_refs)
                 total_files += count
-                
-                # Update langs
-                for item in result_list:
-                    unique_langs_set.update(item['langs'])
-                    
-                print(f"[+] Finished {eco}. Total records so far: {len(final_output_list)}")
-                
-                # Clear memory of the result immediately
-                del result_list
+
+                print(f"[+] Finished {eco}. Total records so far: {len(all_index)}")
+
+                del index_entries
                 del eco_refs
                 gc.collect()
-                
+
             except Exception as exc:
                 print(f"Error processing {eco}: {exc}")
 
     print(f"Total files processed: {total_files}")
-    print(f"Filtered vulnerabilities count: {len(final_output_list)}")
+    print(f"Filtered vulnerabilities count: {len(all_index)}")
 
     # Sort by published date (Newest first) - Replacing the double sort
     # (Sorting by severity first then date overwrites the severity sort effectively, usually you want one primary)
     # I will stick to your final logic: Published Date
     print("[+] Sorting data...")
-    final_output_list.sort(key=lambda x: x['published'], reverse=True)
+    all_index.sort(key=lambda x: x[0], reverse=True)
 
     print("[+] Generating HTML...")
-    
+
     # STREAM WRITING HTML TO DISK
     # We do NOT build a huge string 'html = ...' in memory.
-    
+
     with open('report.html', 'w', encoding='utf-8') as f:
         # Header
         f.write("""
@@ -268,51 +321,40 @@ def main():
             </p>
             <p>
                 Note: This list to filter for only vulns that have a github link to source code (//github.com/path/to/file#Lline_num) or potential writeup.<br>
-            </p>            
+            </p>
         </div>
         """)
 
-        # Process data for JS and stream it straight to data.js.
-        # Previously this built a second full in-memory copy
-        # (js_data_list) of nearly the same data already held in
-        # final_output_list before dumping it all at once - that
-        # doubling was a major contributor to the OOM kills. Writing
-        # each object as it's built keeps only one row in memory at a time.
+        # Stream data.js and collect the RSS top-500 in the same pass, by
+        # seeking into each ecosystem's on-disk JSONL file using the
+        # sorted index built above. One record is ever in memory at a
+        # time; the per-ecosystem file handles are opened lazily and
+        # reused across the pass instead of reopening per record.
         print("[+] Generating data.js...")
-        with open('data.js', 'w') as jf:
-            jf.write("var data = [")
-            for i, row in enumerate(final_output_list):
-                # Build references HTML
-                refs_html_parts = ["<ul>"]
-                for ref in row['references']:
-                    style = "style='color:red'" if ref['url'] in row['bad_ref_urls'] else ""
-                    tag = "s" if ref['url'] in row['bad_ref_urls'] else "span"
-                    # Check for XSS in URLs just in case
-                    safe_url = sanitize_xss(ref['url'])
-                    refs_html_parts.append(f"<li>- <{tag} {style}><a target='_blank' href='{safe_url}'>{safe_url}</a></{tag}></li>")
-                refs_html_parts.append("</ul>")
+        rss_rows = []
+        open_files = {}
+        try:
+            with open('data.js', 'w') as jf:
+                jf.write("var data = [")
+                for i, (published, ecosystem, offset) in enumerate(all_index):
+                    ef = open_files.get(ecosystem)
+                    if ef is None:
+                        ef = open(filtered_filepath(ecosystem), 'r', encoding='utf-8')
+                        open_files[ecosystem] = ef
+                    ef.seek(offset)
+                    row = json.loads(ef.readline())
 
-                # Combine details
-                summary_part = f"<b>{sanitize_xss(row['summary'])}</b><br>" if row['summary'] and row['summary'] != row['details'] else ""
-                full_details = summary_part + sanitize_xss(row['details'])
+                    if i < 500:
+                        rss_rows.append(row)
 
-                obj = {
-                    'ecosystem': sanitize_xss(row['ecosystem']),
-                    'id': row['id'],
-                    'details': full_details,
-                    'published': row['published'],
-                    'severity': str(row['severity']),
-                    'langs': "\n".join(row['langs']),
-                    'references': "".join(refs_html_parts),
-                }
-                if i > 0:
-                    jf.write(",")
-                json.dump(obj, jf)
-            jf.write("];")
-
-        # Free memory of the JS list
-        del js_data_list
-        gc.collect()
+                    obj = build_data_obj(row)
+                    if i > 0:
+                        jf.write(",")
+                    json.dump(obj, jf)
+                jf.write("];")
+        finally:
+            for ef in open_files.values():
+                ef.close()
 
         # Finish HTML
         f.write("""
@@ -334,18 +376,18 @@ def main():
     with open('rss.xml', 'w', encoding='utf-8') as f:
         f.write("""<?xml version="1.0" encoding="UTF-8" ?>
         <rss version="2.0">
-            <channel>   
+            <channel>
                 <title>Open Source Vulnerabilities</title>
                 <link>https://oss-vulns.alecmaly.com</link>
                 <description>Filtered list of //osv.dev for enhanced searching</description>
         """)
-        
-        # Take top 500
-        for row in final_output_list[:500]:
+
+        # Take top 500 (already collected in sorted order above)
+        for row in rss_rows:
             # Simple sanitization for XML
             title = sanitize_xss(row['details'].split("<br>")[0] if row['details'] else row['id'])
             # Ensure we don't break XML with special chars in title
-            
+
             # Build description CDATA content
             desc_content = f"""
                     Source: <a href='https://osv.dev/vulnerability/{row['id']}'>https://osv.dev/vulnerability/{row['id']}</a><br>
@@ -354,7 +396,7 @@ def main():
                     <b>Langs:</b> {", ".join(row['langs'])}<br>
                     <b>Details:</b> {sanitize_xss(row['details'])}
             """
-            
+
             f.write(f"""
                 <item>
                     <title>{row['id']}: {row['severity']} | {title}</title>
@@ -363,7 +405,7 @@ def main():
                     <description><![CDATA[{desc_content}]]></description>
                 </item>
             """)
-            
+
         f.write("""
             </channel>
         </rss>
