@@ -226,7 +226,11 @@ def main():
     total_files = 0
     global all_references
 
-    ecosystems = ['GIT', 'OSS-Fuzz', 'npm', 'PyPI', 'NuGet', 'JavaScript', 'Linux', 'Go', 'GitHub Actions', 'GSD', 'Hex', 'Maven', 'DWF', 'Chainguard', 'CRAN', 'Bitnami', 'UVI', 'Wolfi', 'RubyGems', 'SwiftURL', 'Pub', 'Packagist']
+    # Chainguard and Wolfi are excluded: they publish one advisory per
+    # package rebuild for upstream CVEs already covered by the other
+    # ecosystems, and together they grew data.js past 1GB (~830MB of it),
+    # too large for a browser to load.
+    ecosystems = ['GIT', 'OSS-Fuzz', 'npm', 'PyPI', 'NuGet', 'JavaScript', 'Linux', 'Go', 'GitHub Actions', 'GSD', 'Hex', 'Maven', 'DWF', 'CRAN', 'Bitnami', 'UVI', 'RubyGems', 'SwiftURL', 'Pub', 'Packagist']
 
     if not os.path.exists('data'):
         os.makedirs('data')
